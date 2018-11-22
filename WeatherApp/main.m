@@ -8,8 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
+#import "SQLManager.h"
+#import <SBJson5/SBJson5.h>
 
 int main(int argc, char * argv[]) {
+    SQLManager* sql = [[SQLManager alloc]initWithDatabaseName:@"sampledb.sql"];
+    //[sql executeQuery:@"insert into peopleInfo values(null, 'Test', 'Test1', 23)"];
+    NSArray* query2 = [sql loadDataFromDB:@"select * from peopleInfo"];
     @autoreleasepool {
         return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
     }
