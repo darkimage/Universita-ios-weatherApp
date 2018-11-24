@@ -26,6 +26,20 @@
 //MAIN IMPLEMETATION
 @implementation SQLManager
 
+-(instancetype)init{
+    self = [super init];
+    if (self) {
+        //setta la path documenti nella proprieta -documentsDirectory
+        self.documentsDirectory = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+        
+        self.databaseFilename = @"WeatherDB.sql";
+        //Copiamo il database nella cartella documenti se necessario (siccome il database risiede nell
+        //App boundle non e cosigliato modificarlo)
+        [self copyDatabaseToDocuments];
+    }
+    return self;
+}
+
 -(instancetype) initWithDatabaseName:(NSString *)name{
     self = [super init];
     if (self) {

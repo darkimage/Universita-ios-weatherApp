@@ -9,12 +9,16 @@
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
 #import "SQLManager.h"
-#import <SBJson5/SBJson5.h>
+#import "WeatherData.h"
 
 int main(int argc, char * argv[]) {
-    SQLManager* sql = [[SQLManager alloc]initWithDatabaseName:@"sampledb.sql"];
+    //SQLManager* sql = [[SQLManager alloc]initWithDatabaseName:@"WeatherDB.sql"];
     //[sql executeQuery:@"insert into peopleInfo values(null, 'Test', 'Test1', 23)"];
-    NSArray* query2 = [sql loadDataFromDB:@"select * from peopleInfo"];
+   //NSArray* query2 = [sql loadDataFromDB:@"select * from city_data where id=707860"];
+    
+    WeatherData* data = [WeatherData sharedData];
+    NSArray* test = [data getCitybyPartialName:@"Ma"];
+    
     @autoreleasepool {
         return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
     }
