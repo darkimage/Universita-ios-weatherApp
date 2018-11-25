@@ -14,14 +14,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DBManager : NSObject
 
-//PROPRIETIES
-@property (nonatomic, strong) NSMutableArray *arrColumnNames;
-@property (nonatomic) int affectedRows;
-@property (nonatomic) long long lastInsertedRowID;
-
 //"VIRTUAL" METHODS
 -(NSArray *)loadDataFromDB:(NSString *)query; //esegue una query di tipo not executable e ritorna i risultati
 -(void)executeQuery:(NSString *)query; //esegue una query di tipo executable non ce ritorno di risultati perche sono accedibi tramite le proprieties (affectedRows,lastInsertedRowID)
+
+-(NSArray*)getCitiesbyPartialName:(NSString *)partialname;
+-(NSArray*)getCitybyId:(NSNumber*)city_id;
+-(NSArray*)getFavoriteCities;
+-(void)addFavoriteCity:(NSNumber*)city_id;
 
 @end
 

@@ -17,7 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 +(id) sharedData;
 
--(NSArray*) getCitybyPartialName:(NSString*)partialname;
+-(void) getCityCurrentWeatherbyId:(NSNumber*)city_id withSelector:(SEL)selector ofObject:(id)object;
+-(void) getCityForecastWeatherbyId:(NSNumber*)city_id withSelector:(SEL)selector ofObject:(id)object;
 
 @end
 

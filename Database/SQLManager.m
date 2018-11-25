@@ -13,9 +13,11 @@
 //metodi e proprieta private della classe
 @interface SQLManager()
 
-@property (nonatomic, strong) NSString *documentsDirectory;
-@property (nonatomic, strong) NSString *databaseFilename;
+@property (nonatomic,strong) NSString *documentsDirectory;
+@property (nonatomic,strong) NSString *databaseFilename;
 @property (nonatomic,strong) NSMutableArray* resultArray;
+@property (nonatomic,strong) NSString* city_table;
+@property (nonatomic,strong) NSString* favorite_table;
 
 -(void) copyDatabaseToDocuments; //Copia il database dal boundle alla cartella documents
 -(void)runQuery:(const char *)query isQueryExecutable:(BOOL)queryExecutable; // core metodo privato per l esecuzione delle query (compiled e non)
@@ -25,6 +27,11 @@
 
 //MAIN IMPLEMETATION
 @implementation SQLManager
+
+-(void)initProperties{
+    self.city_table = @"city_data";
+    self.favorite_table = @"favorite_data";
+}
 
 -(instancetype)init{
     self = [super init];
@@ -36,6 +43,7 @@
         //Copiamo il database nella cartella documenti se necessario (siccome il database risiede nell
         //App boundle non e cosigliato modificarlo)
         [self copyDatabaseToDocuments];
+        [self initProperties];
     }
     return self;
 }
@@ -43,13 +51,10 @@
 -(instancetype) initWithDatabaseName:(NSString *)name{
     self = [super init];
     if (self) {
-        //setta la path documenti nella proprieta -documentsDirectory
         self.documentsDirectory = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
-        
         self.databaseFilename = name;
-        //Copiamo il database nella cartella documenti se necessario (siccome il database risiede nell
-        //App boundle non e cosigliato modificarlo)
         [self copyDatabaseToDocuments];
+        [self initProperties];
     }
     return self;
 }
@@ -155,6 +160,26 @@
 
 -(void)executeQuery:(NSString *)query{
     [self runQuery:[query UTF8String] isQueryExecutable:YES];
+}
+
+-(NSArray*)getCitiesbyPartialName:(NSString *)partialname{
+    NSString* query = [NSString stringWithFormat:@"select * from %@ where name like '%@%%'",self.city_table,partialname];
+    return [self loadDataFromDB:query];
+}
+
+-(NSArray*)getCitybyId:(NSNumber *)city_id{
+    NSString *query = [NSString stringWithFormat:@"select * from %@ where id=%@",self.city_table,city_id];
+    return [self loadDataFromDB:query][0];
+}
+
+-(NSArray*)getFavoriteCities{
+    NSString *query = [NSString stringWithFormat:@"select id from %@",self.favorite_table];
+    return [self loadDataFromDB:query];
+}
+
+-(void) addFavoriteCity:(NSNumber*)city_id{
+    NSString *query = [NSString stringWithFormat:@"insert into %@ (id) values(%@)",self.favorite_table,city_id];
+    [self executeQuery:query];
 }
 
 @end

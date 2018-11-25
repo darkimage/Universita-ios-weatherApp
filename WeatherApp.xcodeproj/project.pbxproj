@@ -22,6 +22,11 @@
 		9D50924A21A72601005A30AB /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D50924921A72601005A30AB /* DBManager.m */; };
 		9DD95E6A21A8A9AF006CF255 /* WeatherData.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD95E6921A8A9AF006CF255 /* WeatherData.m */; };
 		9DD95E6D21A8CFB0006CF255 /* WeatherDB.sql in Resources */ = {isa = PBXBuildFile; fileRef = 9DD95E6C21A8CFB0006CF255 /* WeatherDB.sql */; };
+		9DF4AC1721A9E50F006A0BBF /* Test.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF4AC1621A9E50F006A0BBF /* Test.m */; };
+		9DF4AC1A21A9EE4E006A0BBF /* currentWeather.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF4AC1921A9EE4E006A0BBF /* currentWeather.m */; };
+		9DF4AC2021A9F471006A0BBF /* CityWeather.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF4AC1F21A9F471006A0BBF /* CityWeather.m */; };
+		9DF4AC2321A9F672006A0BBF /* WeatherAppModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF4AC2221A9F672006A0BBF /* WeatherAppModel.m */; };
+		9DF4AC2621AA23AE006A0BBF /* forecastWeather.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF4AC2521AA23AE006A0BBF /* forecastWeather.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +73,16 @@
 		9DD95E6821A8A9AF006CF255 /* WeatherData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeatherData.h; sourceTree = "<group>"; };
 		9DD95E6921A8A9AF006CF255 /* WeatherData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeatherData.m; sourceTree = "<group>"; };
 		9DD95E6C21A8CFB0006CF255 /* WeatherDB.sql */ = {isa = PBXFileReference; lastKnownFileType = file; path = WeatherDB.sql; sourceTree = "<group>"; };
+		9DF4AC1521A9E50F006A0BBF /* Test.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Test.h; sourceTree = "<group>"; };
+		9DF4AC1621A9E50F006A0BBF /* Test.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test.m; sourceTree = "<group>"; };
+		9DF4AC1821A9EE4E006A0BBF /* currentWeather.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = currentWeather.h; sourceTree = "<group>"; };
+		9DF4AC1921A9EE4E006A0BBF /* currentWeather.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = currentWeather.m; sourceTree = "<group>"; };
+		9DF4AC1E21A9F471006A0BBF /* CityWeather.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityWeather.h; sourceTree = "<group>"; };
+		9DF4AC1F21A9F471006A0BBF /* CityWeather.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityWeather.m; sourceTree = "<group>"; };
+		9DF4AC2121A9F672006A0BBF /* WeatherAppModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeatherAppModel.h; sourceTree = "<group>"; };
+		9DF4AC2221A9F672006A0BBF /* WeatherAppModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeatherAppModel.m; sourceTree = "<group>"; };
+		9DF4AC2421AA23AE006A0BBF /* forecastWeather.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = forecastWeather.h; sourceTree = "<group>"; };
+		9DF4AC2521AA23AE006A0BBF /* forecastWeather.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = forecastWeather.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +196,10 @@
 		9D50924621A725B3005A30AB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9DF4AC1521A9E50F006A0BBF /* Test.h */,
+				9DF4AC1621A9E50F006A0BBF /* Test.m */,
+				9DF4AC2121A9F672006A0BBF /* WeatherAppModel.h */,
+				9DF4AC2221A9F672006A0BBF /* WeatherAppModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -188,8 +207,14 @@
 		9DD95E6721A8A993006CF255 /* WeatherData */ = {
 			isa = PBXGroup;
 			children = (
+				9DF4AC1E21A9F471006A0BBF /* CityWeather.h */,
+				9DF4AC1F21A9F471006A0BBF /* CityWeather.m */,
 				9DD95E6821A8A9AF006CF255 /* WeatherData.h */,
 				9DD95E6921A8A9AF006CF255 /* WeatherData.m */,
+				9DF4AC1821A9EE4E006A0BBF /* currentWeather.h */,
+				9DF4AC1921A9EE4E006A0BBF /* currentWeather.m */,
+				9DF4AC2421AA23AE006A0BBF /* forecastWeather.h */,
+				9DF4AC2521AA23AE006A0BBF /* forecastWeather.m */,
 			);
 			path = WeatherData;
 			sourceTree = "<group>";
@@ -325,12 +350,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DF4AC2621AA23AE006A0BBF /* forecastWeather.m in Sources */,
 				9D50920E21A71A45005A30AB /* ViewController.m in Sources */,
+				9DF4AC1A21A9EE4E006A0BBF /* currentWeather.m in Sources */,
 				9D50921921A71A47005A30AB /* main.m in Sources */,
 				9D50924521A71D9B005A30AB /* SQLManager.m in Sources */,
 				9D50920B21A71A45005A30AB /* AppDelegate.m in Sources */,
+				9DF4AC1721A9E50F006A0BBF /* Test.m in Sources */,
 				9DD95E6A21A8A9AF006CF255 /* WeatherData.m in Sources */,
 				9D50924A21A72601005A30AB /* DBManager.m in Sources */,
+				9DF4AC2321A9F672006A0BBF /* WeatherAppModel.m in Sources */,
+				9DF4AC2021A9F471006A0BBF /* CityWeather.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
