@@ -20,6 +20,7 @@
 		9D50924121A71D50005A30AB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D50924021A71D50005A30AB /* UIKit.framework */; };
 		9D50924521A71D9B005A30AB /* SQLManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D50924421A71D9B005A30AB /* SQLManager.m */; };
 		9D50924A21A72601005A30AB /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D50924921A72601005A30AB /* DBManager.m */; };
+		9DAD1FD421ABE83300C966DB /* TutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DAD1FD321ABE83300C966DB /* TutorialViewController.m */; };
 		9DD95E6A21A8A9AF006CF255 /* WeatherData.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD95E6921A8A9AF006CF255 /* WeatherData.m */; };
 		9DD95E6D21A8CFB0006CF255 /* WeatherDB.sql in Resources */ = {isa = PBXBuildFile; fileRef = 9DD95E6C21A8CFB0006CF255 /* WeatherDB.sql */; };
 		9DF4AC1721A9E50F006A0BBF /* Test.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF4AC1621A9E50F006A0BBF /* Test.m */; };
@@ -70,6 +71,8 @@
 		9D50924421A71D9B005A30AB /* SQLManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SQLManager.m; sourceTree = "<group>"; };
 		9D50924821A72601005A30AB /* DBManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBManager.h; sourceTree = "<group>"; };
 		9D50924921A72601005A30AB /* DBManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DBManager.m; sourceTree = "<group>"; };
+		9DAD1FD221ABE83300C966DB /* TutorialViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TutorialViewController.h; sourceTree = "<group>"; };
+		9DAD1FD321ABE83300C966DB /* TutorialViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TutorialViewController.m; sourceTree = "<group>"; };
 		9DD95E6821A8A9AF006CF255 /* WeatherData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeatherData.h; sourceTree = "<group>"; };
 		9DD95E6921A8A9AF006CF255 /* WeatherData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeatherData.m; sourceTree = "<group>"; };
 		9DD95E6C21A8CFB0006CF255 /* WeatherDB.sql */ = {isa = PBXFileReference; lastKnownFileType = file; path = WeatherDB.sql; sourceTree = "<group>"; };
@@ -149,6 +152,8 @@
 				9D50921421A71A47005A30AB /* LaunchScreen.storyboard */,
 				9D50921721A71A47005A30AB /* Info.plist */,
 				9D50921821A71A47005A30AB /* main.m */,
+				9DAD1FD221ABE83300C966DB /* TutorialViewController.h */,
+				9DAD1FD321ABE83300C966DB /* TutorialViewController.m */,
 			);
 			path = WeatherApp;
 			sourceTree = "<group>";
@@ -352,6 +357,7 @@
 			files = (
 				9DF4AC2621AA23AE006A0BBF /* forecastWeather.m in Sources */,
 				9D50920E21A71A45005A30AB /* ViewController.m in Sources */,
+				9DAD1FD421ABE83300C966DB /* TutorialViewController.m in Sources */,
 				9DF4AC1A21A9EE4E006A0BBF /* currentWeather.m in Sources */,
 				9D50921921A71A47005A30AB /* main.m in Sources */,
 				9D50924521A71D9B005A30AB /* SQLManager.m in Sources */,

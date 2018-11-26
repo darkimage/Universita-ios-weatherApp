@@ -9,6 +9,7 @@
 #import "ViewController.h"
 
 @interface ViewController ()
+@property (weak, nonatomic) IBOutlet UIScrollView *ScrollView;
 
 @end
 
@@ -16,7 +17,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.ScrollView.delegate = self;
     // Do any additional setup after loading the view, typically from a nib.
 }
+
+- (void) scrollViewDidScroll:(UIScrollView *) scrollView
+{
+    NSLog(@"%@", NSStringFromCGPoint(scrollView.contentOffset));
+}
+
 
 @end

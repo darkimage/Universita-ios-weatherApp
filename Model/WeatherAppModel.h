@@ -16,6 +16,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 +(id) sharedModel;
 
+-(DBManager*) getDatabase;
+-(WeatherData*) getWeatherData;
+
 @end
 
 NS_ASSUME_NONNULL_END

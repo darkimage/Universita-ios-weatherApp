@@ -19,6 +19,9 @@
 @property (nonatomic,strong) NSString* city_table;
 @property (nonatomic,strong) NSString* favorite_table;
 
+-(NSArray *)loadDataFromDB:(NSString *)query; //esegue una query di tipo not executable e ritorna i risultati
+-(void)executeQuery:(NSString *)query; //esegue una query di tipo executable non ce ritorno di risultati perche sono accedibi tramite le proprieties (affectedRows,lastInsertedRowID)
+
 -(void) copyDatabaseToDocuments; //Copia il database dal boundle alla cartella documents
 -(void)runQuery:(const char *)query isQueryExecutable:(BOOL)queryExecutable; // core metodo privato per l esecuzione delle query (compiled e non)
 
@@ -47,6 +50,7 @@
     }
     return self;
 }
+
 
 -(instancetype) initWithDatabaseName:(NSString *)name{
     self = [super init];

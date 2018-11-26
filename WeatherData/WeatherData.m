@@ -11,22 +11,11 @@
 @interface WeatherData()
 @property (nonatomic,strong) NSString* api_key; //private api key for openweathermap.org
 @property (nonatomic,strong) NSString *api_url;
--(NSData*) dataFromAPI:(NSString*)formatString,...;
+-(NSURLRequest*) setUpRequestAPI:(NSString *)formatString, ...;
 -(void) callCallback:(SEL)selector ofObject:(id)object withData:(NSData *)data;
 @end
 
 @implementation WeatherData
-
-//Singleton Pattern
-+(id) sharedData{
-    static WeatherData* sharedweatherData;
-    @synchronized (self) {
-        if(sharedweatherData == nil){
-            sharedweatherData = [[self alloc]init];
-        }
-        return sharedweatherData;
-    }
-}
 
 -(id) init{
     if(self =[super init]){
@@ -36,43 +25,44 @@
     return self;
 }
 
--(NSData*) dataFromAPI:(NSString *)formatString, ...{
+-(NSURLRequest*) setUpRequestAPI:(NSString *)formatString, ...{
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setHTTPMethod:@"GET"];
+
     va_list args;
     va_start(args, formatString);
-    NSMutableString* url_string = [[NSMutableString alloc] initWithString:self.api_url];
+    NSMutableString* url = [[NSMutableString alloc] initWithString:self.api_url];
     NSString* url_str = [[NSString alloc] initWithFormat:formatString arguments:args];
     NSString* api_str = [NSString stringWithFormat:@"&APPID=%@",self.api_key];
-    [url_string appendString:url_str];
-    [url_string appendString:api_str];
+    [url appendString:url_str];
+    [url appendString:api_str];
     va_end(args);
-    NSData* data =[NSData dataWithContentsOfURL: [NSURL URLWithString:url_string]];
-    return data;
+    
+    [request setURL:[NSURL URLWithString:url]];
+    
+    return (NSURLRequest*)request;
 }
 
 -(void) callCallback:(SEL)selector ofObject:(id)object withData:(NSData *)data{
     NSInvocation *inv = [NSInvocation invocationWithMethodSignature:[object methodSignatureForSelector:selector]];
     [inv setSelector:selector];
     [inv setTarget:object];
-    [inv setArgument:&data atIndex:2]; //arguments 0 and 1 are self and _cmd respectively, automatically set by NSInvocation
+    [inv setArgument:&data atIndex:2]; //gli argomenti 0 e 1 sono rispettivamente self e _cmd, settati automaticamente da NSInvocation
     [inv invoke];
 }
 
 -(void) getCityCurrentWeatherbyId:(NSNumber*)city_id withSelector:(SEL)selector ofObject:(id)object;{
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSData * data = [self dataFromAPI:@"weather?id=%@",city_id];
-        dispatch_sync(dispatch_get_main_queue(), ^{
-            [self callCallback:selector ofObject:object withData:data];
-        });
-    });
+    [[[NSURLSession sharedSession] dataTaskWithRequest:[self setUpRequestAPI:@"weather?id=%@",city_id]
+            completionHandler:^(NSData *data,NSURLResponse *response,NSError *error) {
+                [self callCallback:selector ofObject:object withData:data];
+            }] resume];
 }
 
 -(void) getCityForecastWeatherbyId:(NSNumber*)city_id withSelector:(SEL)selector ofObject:(id)object;{
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSData * data = [self dataFromAPI:@"forecast?id=%@",city_id];
-        dispatch_sync(dispatch_get_main_queue(), ^{
-            [self callCallback:selector ofObject:object withData:data];
-        });
-    });
+    [[[NSURLSession sharedSession] dataTaskWithRequest:[self setUpRequestAPI:@"forecast?id=%@",city_id]
+             completionHandler:^(NSData *data,NSURLResponse *response,NSError *error) {
+                 [self callCallback:selector ofObject:object withData:data];
+             }] resume];
 }
 
 

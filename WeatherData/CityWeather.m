@@ -20,6 +20,8 @@
             self.country = arrCity[1];
             self.lon = arrCity[2];
             self.lat = arrCity[3];
+            self.forecast = [[forecastWeather alloc] init];
+            self.current = [[currentWeather alloc]init];
         }else{
             return nil;
         }

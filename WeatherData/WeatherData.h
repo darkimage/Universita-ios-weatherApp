@@ -13,10 +13,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface WeatherData : NSObject
 
-@property (nonatomic,strong) NSString* city_table;
-
-+(id) sharedData;
-
 -(void) getCityCurrentWeatherbyId:(NSNumber*)city_id withSelector:(SEL)selector ofObject:(id)object;
 -(void) getCityForecastWeatherbyId:(NSNumber*)city_id withSelector:(SEL)selector ofObject:(id)object;
 
