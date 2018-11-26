@@ -10,9 +10,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TutorialViewController : UIViewController
-@property (nonatomic,strong) UIColor* color;
-@property NSInteger pageIndex;
+@interface TutorialViewNavController : UIViewController<UIPageViewControllerDataSource>
+
 @end
 
 NS_ASSUME_NONNULL_END

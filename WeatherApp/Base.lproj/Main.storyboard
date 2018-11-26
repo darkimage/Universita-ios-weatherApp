@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="q6c-B5-F5W">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,18 +10,18 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Page View Controller-->
+        <!--TutorialPageViewController-->
         <scene sceneID="LgG-EU-jVQ">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="U6I-Vs-wrW" sceneMemberID="viewController"/>
+                <pageViewController storyboardIdentifier="TutorialPageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="U6I-Vs-wrW" userLabel="TutorialPageViewController" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xT9-J9-Ve0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1506" y="-607"/>
+            <point key="canvasLocation" x="-999" y="-597"/>
         </scene>
-        <!--TutorialView-->
+        <!--TutorialViewController-->
         <scene sceneID="OWw-Jz-1Vk">
             <objects>
-                <viewController id="Iwg-zN-4Op" userLabel="TutorialView" customClass="TutorialViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TutorialViewController" id="Iwg-zN-4Op" userLabel="TutorialViewController" customClass="TutorialViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YKL-fH-gpB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -29,36 +29,51 @@
                         <viewLayoutGuide key="safeArea" id="4S3-UJ-LDc"/>
                     </view>
                     <connections>
-                        <outlet property="MainView" destination="YKL-fH-gpB" id="Oh9-FO-zhZ"/>
+                        <outlet property="TutorialView" destination="YKL-fH-gpB" id="ftM-Xb-J1L"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zug-Du-6UE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2668" y="15"/>
+            <point key="canvasLocation" x="-2575" y="72"/>
         </scene>
-        <!--View Controller-->
+        <!--TutorialViewController-->
         <scene sceneID="ohF-go-bPb">
             <objects>
-                <viewController id="RmQ-tz-VSj" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TutorialViewNavController" id="RmQ-tz-VSj" userLabel="TutorialViewController" customClass="TutorialViewNavController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RyB-LU-pA1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="8zw-cz-HrH"/>
                     </view>
+                    <navigationItem key="navigationItem" id="dyn-yY-i3o">
+                        <barButtonItem key="rightBarButtonItem" title="Skip" id="C1L-Rt-5EL">
+                            <connections>
+                                <action selector="skipToApp:" destination="RmQ-tz-VSj" id="4nc-4S-hZl"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V4x-Z5-6Vi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1705" y="72"/>
+            <point key="canvasLocation" x="-998" y="72"/>
         </scene>
-        <!--View Controller-->
+        <!--Weather View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WeatherViewController" id="BYZ-38-t0r" customClass="WeatherViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K7k-ka-RZ4" userLabel="Weather Image">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X2x-sv-RSG" userLabel="Weather Image2">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cZa-hY-djt" userLabel="ScrollViewTest">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
@@ -70,44 +85,44 @@
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jfc-pP-xIm" userLabel="test1" colorLabel="IBBuiltInLabel-Red">
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
-                                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="0.24645136443661972" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="200" id="kE8-kT-3kr"/>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kPs-1F-ZZa" userLabel="test2" colorLabel="IBBuiltInLabel-Red">
                                                         <rect key="frame" x="0.0" y="210" width="375" height="200"/>
-                                                        <color key="backgroundColor" red="1" green="0.11606880396841079" blue="0.039739161852564986" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" red="1" green="0.11606880396841079" blue="0.039739161852564986" alpha="0.25" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="200" id="Vh9-Hp-ODq"/>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ef3-I5-V1I" userLabel="test3" colorLabel="IBBuiltInLabel-Red">
                                                         <rect key="frame" x="0.0" y="420" width="375" height="200"/>
-                                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="backgroundColor" white="0.33333333333333331" alpha="0.25" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="200" id="J4U-iS-Bfl"/>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Fq-QI-gjz" userLabel="test4" colorLabel="IBBuiltInLabel-Red">
                                                         <rect key="frame" x="0.0" y="630" width="375" height="200"/>
-                                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.25" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="200" id="rMb-o7-slY"/>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e9z-9v-OJ6" userLabel="test3" colorLabel="IBBuiltInLabel-Red">
                                                         <rect key="frame" x="0.0" y="840" width="375" height="200"/>
-                                                        <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="backgroundColor" white="0.33333333329999998" alpha="0.25" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="200" id="HqR-Wx-Ucj"/>
                                                         </constraints>
                                                     </view>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.91961627367313004" green="1" blue="0.99330445779296161" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" secondItem="1Mc-W1-LQ0" secondAttribute="height" id="Vs2-id-cEP"/>
                                             <constraint firstItem="1Mc-W1-LQ0" firstAttribute="bottom" secondItem="JLq-4c-R8P" secondAttribute="bottom" id="iaH-ee-pwF"/>
@@ -138,11 +153,31 @@
                     </view>
                     <connections>
                         <outlet property="ScrollView" destination="cZa-hY-djt" id="meG-ky-eyE"/>
+                        <outlet property="WeatherImage" destination="K7k-ka-RZ4" id="Zau-SZ-bLc"/>
+                        <outlet property="WeatherImage2" destination="X2x-sv-RSG" id="VRw-c5-SUc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-623" y="73"/>
+            <point key="canvasLocation" x="316" y="72.413793103448285"/>
+        </scene>
+        <!--TutorialNavigationViewController-->
+        <scene sceneID="C3y-hy-fD1">
+            <objects>
+                <navigationController storyboardIdentifier="TutorialNavigationViewController" automaticallyAdjustsScrollViewInsets="NO" id="q6c-B5-F5W" userLabel="TutorialNavigationViewController" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="HYr-W4-SXc">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="RmQ-tz-VSj" kind="relationship" relationship="rootViewController" id="RgC-4U-gF8"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dg8-ND-yIB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1870" y="72"/>
         </scene>
     </scenes>
 </document>

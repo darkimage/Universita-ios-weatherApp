@@ -9,6 +9,7 @@
 #import "TutorialViewController.h"
 
 @interface TutorialViewController ()
+@property (weak, nonatomic) IBOutlet UIView *TutorialView;
 
 @end
 
@@ -16,7 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.TutorialView.backgroundColor = self.color;
 }
 
 /*

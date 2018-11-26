@@ -1,0 +1,16 @@
+PODS:
+  - RZViewActions (0.4.0)
+
+DEPENDENCIES:
+  - RZViewActions
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - RZViewActions
+
+SPEC CHECKSUMS:
+  RZViewActions: 31c231845e6a7dd8a0c7cd463203e509635cc06b
+
+PODFILE CHECKSUM: 5ee6d354e98a795c7cc37db7005c0b6b8db0e9ff
+
+COCOAPODS: 1.6.0.beta.2

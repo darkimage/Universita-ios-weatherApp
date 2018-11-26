@@ -6,7 +6,7 @@ target 'WeatherApp' do
   use_frameworks!
 
   # Pods for WeatherApp
-  pod 'SBJson5', '~> 5.0.0'
+  pod 'RZViewActions'
 
   target 'WeatherAppTests' do
     inherit! :search_paths
