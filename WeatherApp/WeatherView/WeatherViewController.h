@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WeatherViewDelegate.h"
 
 @interface WeatherViewController : UIViewController<UIScrollViewDelegate>
-
+@property (nonatomic,strong) NSObject<WeatherViewDelegate>* delegate;
 @end
 

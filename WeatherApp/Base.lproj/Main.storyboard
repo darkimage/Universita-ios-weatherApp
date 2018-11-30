@@ -66,14 +66,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K7k-ka-RZ4" userLabel="Weather Image">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X2x-sv-RSG" userLabel="Weather Image2">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cZa-hY-djt" userLabel="ScrollViewTest">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
@@ -153,8 +145,6 @@
                     </view>
                     <connections>
                         <outlet property="ScrollView" destination="cZa-hY-djt" id="meG-ky-eyE"/>
-                        <outlet property="WeatherImage" destination="K7k-ka-RZ4" id="Zau-SZ-bLc"/>
-                        <outlet property="WeatherImage2" destination="X2x-sv-RSG" id="VRw-c5-SUc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
