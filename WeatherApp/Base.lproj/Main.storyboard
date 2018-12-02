@@ -34,7 +34,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zug-Du-6UE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2575" y="72"/>
+            <point key="canvasLocation" x="-1871" y="774"/>
         </scene>
         <!--TutorialViewController-->
         <scene sceneID="ohF-go-bPb">
@@ -75,9 +75,9 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="1Mc-W1-LQ0">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="1040"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jfc-pP-xIm" userLabel="test1" colorLabel="IBBuiltInLabel-Red">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jfc-pP-xIm" userLabel="test1" customClass="WeatherHeaderView" colorLabel="IBBuiltInLabel-Red">
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
-                                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="0.24645136443661972" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="200" id="kE8-kT-3kr"/>
                                                         </constraints>
@@ -150,6 +150,35 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="316" y="72.413793103448285"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Ra9-3F-gpI">
+            <objects>
+                <viewController id="17P-7H-Y30" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ggw-hE-kp4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xGa-Dh-usk" customClass="WeatherHeaderView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="171"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="171" id="kt0-Wi-qna"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="xGa-Dh-usk" firstAttribute="width" secondItem="Ggw-hE-kp4" secondAttribute="width" id="Bld-vk-T9l"/>
+                            <constraint firstItem="xGa-Dh-usk" firstAttribute="leading" secondItem="Ggw-hE-kp4" secondAttribute="leading" id="TgR-Jz-SR4"/>
+                            <constraint firstItem="xGa-Dh-usk" firstAttribute="top" secondItem="Ggw-hE-kp4" secondAttribute="top" id="teb-ZE-V0q"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="VGB-XA-Efk"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1U1-U8-P37" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="176.80000000000001" y="850.52473763118451"/>
         </scene>
         <!--TutorialNavigationViewController-->
         <scene sceneID="C3y-hy-fD1">

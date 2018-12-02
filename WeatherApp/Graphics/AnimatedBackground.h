@@ -9,20 +9,21 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "WeatherViewDelegate.h"
+#import "BGSlot.h"
 
 NS_ASSUME_NONNULL_BEGIN
-struct animBackgroundData {
-    NSString* imagename;
-    NSNumber* duration;
-    CGPoint offset;
-    UIColor*  backgroundColor;
-    CGRect frame;
-};
-
 @interface AnimatedBackground : NSObject<WeatherViewDelegate>
-@property struct animBackgroundData backgroundData;
+@property (nonatomic,strong) NSNumber* parallaxMaxOffset;
+@property (nonatomic,strong) NSNumber* parallaxMultiplier;
 
--(instancetype) initWithStructData:(struct animBackgroundData)bgData addto:(UIView*)view;
+-(instancetype) initWithStructData:(struct animBackgroundData)bgData withColor:(UIColor*)backgroundColor addTo:(UIView*)view;
+-(instancetype) initWithPreset:(NSString*)name addTo:(UIView*)view;
+
+-(void) addBackgroundToBack:(struct  animBackgroundData) bgData;
+
+-(void) addBackgroundToFront:(struct  animBackgroundData) bgData;
+
+-(void) addBackground:(struct  animBackgroundData) bgData atPosition:(NSInteger)index;
 
 @end
 
