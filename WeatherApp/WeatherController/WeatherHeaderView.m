@@ -10,6 +10,7 @@
 
 @interface WeatherHeaderView()
 @property (strong, nonatomic) IBOutlet UIView *contentView;
+@property (weak, nonatomic) IBOutlet UIStackView *stackView;
 -(void) internalInit;
 @end
 
@@ -34,7 +35,8 @@
 -(void)internalInit{
     [[NSBundle mainBundle] loadNibNamed:@"WeatherHeaderView" owner:self options:nil];
     [self addSubview:self.contentView];
-    self.contentView.frame = self.bounds;
+    NSLayoutConstraint* height = [NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0 constant:self.stackView.bounds.size.height];
+    [self addConstraint:height];
 }
 
 @end

@@ -16,7 +16,7 @@
                 <pageViewController storyboardIdentifier="TutorialPageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="U6I-Vs-wrW" userLabel="TutorialPageViewController" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xT9-J9-Ve0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-999" y="-597"/>
+            <point key="canvasLocation" x="-1871" y="-598"/>
         </scene>
         <!--TutorialViewController-->
         <scene sceneID="OWw-Jz-1Vk">
@@ -34,7 +34,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zug-Du-6UE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1871" y="774"/>
+            <point key="canvasLocation" x="-204" y="72"/>
         </scene>
         <!--TutorialViewController-->
         <scene sceneID="ohF-go-bPb">
@@ -75,37 +75,34 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="1Mc-W1-LQ0">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="1040"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jfc-pP-xIm" userLabel="test1" customClass="WeatherHeaderView" colorLabel="IBBuiltInLabel-Red">
+                                                    <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jfc-pP-xIm" userLabel="test1" customClass="WeatherHeaderView" colorLabel="IBBuiltInLabel-Red">
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="200" id="kE8-kT-3kr"/>
-                                                        </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kPs-1F-ZZa" userLabel="test2" colorLabel="IBBuiltInLabel-Red">
                                                         <rect key="frame" x="0.0" y="210" width="375" height="200"/>
-                                                        <color key="backgroundColor" red="1" green="0.11606880396841079" blue="0.039739161852564986" alpha="0.25" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" red="1" green="0.11606880396841079" blue="0.039739161852564986" alpha="0.40825814260563381" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="200" id="Vh9-Hp-ODq"/>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ef3-I5-V1I" userLabel="test3" colorLabel="IBBuiltInLabel-Red">
                                                         <rect key="frame" x="0.0" y="420" width="375" height="200"/>
-                                                        <color key="backgroundColor" white="0.33333333333333331" alpha="0.25" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="backgroundColor" white="0.33333333333333331" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="200" id="J4U-iS-Bfl"/>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Fq-QI-gjz" userLabel="test4" colorLabel="IBBuiltInLabel-Red">
                                                         <rect key="frame" x="0.0" y="630" width="375" height="200"/>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.25" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="200" id="rMb-o7-slY"/>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e9z-9v-OJ6" userLabel="test3" colorLabel="IBBuiltInLabel-Red">
                                                         <rect key="frame" x="0.0" y="840" width="375" height="200"/>
-                                                        <color key="backgroundColor" white="0.33333333329999998" alpha="0.25" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="backgroundColor" white="0.33333333329999998" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="200" id="HqR-Wx-Ucj"/>
                                                         </constraints>
@@ -134,7 +131,7 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="cZa-hY-djt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="7sM-wa-aUl"/>
                             <constraint firstItem="cZa-hY-djt" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="FvS-xk-vjM"/>
@@ -149,36 +146,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="316" y="72.413793103448285"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="Ra9-3F-gpI">
-            <objects>
-                <viewController id="17P-7H-Y30" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Ggw-hE-kp4">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xGa-Dh-usk" customClass="WeatherHeaderView">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="171"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="171" id="kt0-Wi-qna"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="xGa-Dh-usk" firstAttribute="width" secondItem="Ggw-hE-kp4" secondAttribute="width" id="Bld-vk-T9l"/>
-                            <constraint firstItem="xGa-Dh-usk" firstAttribute="leading" secondItem="Ggw-hE-kp4" secondAttribute="leading" id="TgR-Jz-SR4"/>
-                            <constraint firstItem="xGa-Dh-usk" firstAttribute="top" secondItem="Ggw-hE-kp4" secondAttribute="top" id="teb-ZE-V0q"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="VGB-XA-Efk"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1U1-U8-P37" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="176.80000000000001" y="850.52473763118451"/>
+            <point key="canvasLocation" x="-999" y="-599"/>
         </scene>
         <!--TutorialNavigationViewController-->
         <scene sceneID="C3y-hy-fD1">

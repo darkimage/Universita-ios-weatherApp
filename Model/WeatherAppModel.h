@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface WeatherAppModel : NSObject
 
-+(id) sharedModel;
++(instancetype) sharedModel;
 
 -(DBManager*) getDatabase;
 -(WeatherData*) getWeatherData;

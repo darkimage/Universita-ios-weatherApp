@@ -23,6 +23,7 @@
 		9D50924521A71D9B005A30AB /* SQLManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D50924421A71D9B005A30AB /* SQLManager.m */; };
 		9D50924A21A72601005A30AB /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D50924921A72601005A30AB /* DBManager.m */; };
 		9D7ACE3D21B18DF4005EA339 /* BGSlot.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D7ACE3C21B18DF4005EA339 /* BGSlot.m */; };
+		9DA5702821B5969100CF6FC3 /* WeatherBackgroundPresets.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DA5702721B5969100CF6FC3 /* WeatherBackgroundPresets.m */; };
 		9DAD1FD421ABE83300C966DB /* TutorialViewNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DAD1FD321ABE83300C966DB /* TutorialViewNavController.m */; };
 		9DAD1FD721ABEFE000C966DB /* TutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DAD1FD621ABEFE000C966DB /* TutorialViewController.m */; };
 		9DD95E6A21A8A9AF006CF255 /* WeatherData.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD95E6921A8A9AF006CF255 /* WeatherData.m */; };
@@ -88,6 +89,8 @@
 		9D50924921A72601005A30AB /* DBManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DBManager.m; sourceTree = "<group>"; };
 		9D7ACE3C21B18DF4005EA339 /* BGSlot.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BGSlot.m; sourceTree = "<group>"; };
 		9D8E0D8221B1845200D2FD2B /* BGSlot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BGSlot.h; sourceTree = "<group>"; };
+		9DA5702621B5969100CF6FC3 /* WeatherBackgroundPresets.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeatherBackgroundPresets.h; sourceTree = "<group>"; };
+		9DA5702721B5969100CF6FC3 /* WeatherBackgroundPresets.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeatherBackgroundPresets.m; sourceTree = "<group>"; };
 		9DAD1FD221ABE83300C966DB /* TutorialViewNavController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TutorialViewNavController.h; sourceTree = "<group>"; };
 		9DAD1FD321ABE83300C966DB /* TutorialViewNavController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TutorialViewNavController.m; sourceTree = "<group>"; };
 		9DAD1FD521ABEFE000C966DB /* TutorialViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TutorialViewController.h; sourceTree = "<group>"; };
@@ -166,6 +169,8 @@
 				9D4F8D7C21B14838007254A5 /* AnimatedBackground.m */,
 				9D8E0D8221B1845200D2FD2B /* BGSlot.h */,
 				9D7ACE3C21B18DF4005EA339 /* BGSlot.m */,
+				9DA5702621B5969100CF6FC3 /* WeatherBackgroundPresets.h */,
+				9DA5702721B5969100CF6FC3 /* WeatherBackgroundPresets.m */,
 			);
 			path = Graphics;
 			sourceTree = "<group>";
@@ -546,6 +551,7 @@
 				9D50920E21A71A45005A30AB /* WeatherViewController.m in Sources */,
 				9DAD1FD421ABE83300C966DB /* TutorialViewNavController.m in Sources */,
 				9DF4AC1A21A9EE4E006A0BBF /* currentWeather.m in Sources */,
+				9DA5702821B5969100CF6FC3 /* WeatherBackgroundPresets.m in Sources */,
 				9D50921921A71A47005A30AB /* main.m in Sources */,
 				9D50924521A71D9B005A30AB /* SQLManager.m in Sources */,
 				9D50920B21A71A45005A30AB /* AppDelegate.m in Sources */,

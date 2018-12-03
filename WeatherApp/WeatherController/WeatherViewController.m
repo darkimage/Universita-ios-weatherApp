@@ -9,6 +9,8 @@
 #import "WeatherViewController.h"
 #import <RZViewActions/UIView+RZViewActions.h>
 #import "AnimatedBackground.h"
+#import "WeatherBackgroundPresets.h"
+#import "WeatherHeaderView.h"
 
 @interface WeatherViewController()
 @property (weak, nonatomic) IBOutlet UIScrollView *ScrollView;
@@ -19,25 +21,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.ScrollView.delegate = self;
-    struct animBackgroundData bg;
-    bg.imagename=@"cloud_blurred";
-    bg.frame = CGRectMake(0, 0, 1000, 500);
-    bg.offset = [NSNumber numberWithFloat:-200];
-    bg.duration = [NSNumber numberWithFloat:20.0f];
     
-    struct animBackgroundData bg1;
-    bg1.imagename=@"cloud_blurred";
-    bg1.frame = CGRectMake(0, 0, 700, 350);
-    bg1.offset = [NSNumber numberWithFloat:-150];
-    bg1.duration = [NSNumber numberWithFloat:50.0f];
-    
-    struct animBackgroundData bg2;
-    bg2.imagename=@"cloud_blurred";
-    bg2.frame = CGRectMake(0, 0, 500, 250);
-    bg2.offset = [NSNumber numberWithFloat:-100];
-    bg2.duration = [NSNumber numberWithFloat:100.0f];
+    struct animBackgroundData bg = AnimBackgroundDataMake(@"cloud_blurred", 20.0f, -200.0f, CGRectMake(0, 0, 1000, 500), 1.0f);
+    struct animBackgroundData bg1 = AnimBackgroundDataMake(@"cloud_blurred", 50.0f, -150.0f,  CGRectMake(0, 0, 700, 350), 0.5f);
+    struct animBackgroundData bg2 = AnimBackgroundDataMake(@"cloud_blurred", 100.0f, -100.0f, CGRectMake(0, 0, 500, 250), 0.3f);
+    CAGradientLayer* gradient = [CAGradientLayer layer];
+    gradient.frame = self.view.bounds;
+    UIColor* bottom = [UIColor colorWithRed:130.0/255.0 green:165.0/255.0 blue:188.0/255.0 alpha:1.0];
+    UIColor* top = [UIColor colorWithRed:37.0/255.0 green:98.0/255.0 blue:129.0/255.0 alpha:1.0];
+    gradient.colors = [NSArray arrayWithObjects:(id)bottom.CGColor,(id)top.CGColor, nil];
     //52    108    216
-    AnimatedBackground* bgAnim =[[AnimatedBackground alloc] initWithStructData:bg withColor: [UIColor colorWithRed:0.203 green:0.423 blue:0.847 alpha:1.0] addTo:self.view];
+    AnimatedBackground* bgAnim =[[AnimatedBackground alloc] initWithStructData:bg withGradient:gradient addTo:self.view];
     bgAnim.parallaxMultiplier = [NSNumber numberWithFloat:2.0];
     [bgAnim addBackgroundToBack:bg1];
     [bgAnim addBackgroundToBack:bg2];

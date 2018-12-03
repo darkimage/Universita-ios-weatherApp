@@ -18,14 +18,13 @@
 @implementation WeatherAppModel
 
 //Singleton Pattern
-+(id) sharedModel{
-    static WeatherAppModel* sharedAppModel;
-    @synchronized (self) {
-        if(sharedAppModel == nil){
++(instancetype) sharedModel{
+    static WeatherAppModel* sharedAppModel = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
             sharedAppModel = [[self alloc]init];
-        }
-        return sharedAppModel;
-    }
+    });
+    return sharedAppModel;
 }
 
 - (instancetype)init

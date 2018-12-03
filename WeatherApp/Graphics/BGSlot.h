@@ -8,13 +8,17 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+
 struct animBackgroundData {
     NSString* imagename;
-    NSNumber* duration;
-    NSNumber* offset;
+    CGFloat duration;
+    CGFloat offset_y;
     CGRect frame;
+    CGFloat alpha;
 };
 
+struct animBackgroundData DefaultAnimBackgroundData(void);
+struct animBackgroundData AnimBackgroundDataMake(NSString* imagename,CGFloat duration,CGFloat offset_y,CGRect frame,CGFloat alpha);
 
 NS_ASSUME_NONNULL_BEGIN
 @interface BGSlot : NSObject
