@@ -10,6 +10,6 @@
 #import "WeatherViewDelegate.h"
 
 @interface WeatherViewController : UIViewController<UIScrollViewDelegate>
-@property (nonatomic,strong) NSObject<WeatherViewDelegate>* delegate;
+@property NSInteger pageIndex;
 @end
 

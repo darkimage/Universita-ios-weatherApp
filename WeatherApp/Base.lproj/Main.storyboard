@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="q6c-B5-F5W">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="isb-Ox-cZ2">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -34,7 +34,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zug-Du-6UE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-204" y="72"/>
+            <point key="canvasLocation" x="-254" y="84"/>
         </scene>
         <!--TutorialViewController-->
         <scene sceneID="ohF-go-bPb">
@@ -48,6 +48,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="dyn-yY-i3o">
                         <barButtonItem key="rightBarButtonItem" title="Skip" id="C1L-Rt-5EL">
+                            <attributedString key="userComments">
+                                <fragment content="Skip tutorial"/>
+                            </attributedString>
                             <connections>
                                 <action selector="skipToApp:" destination="RmQ-tz-VSj" id="4nc-4S-hZl"/>
                             </connections>
@@ -56,7 +59,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V4x-Z5-6Vi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-998" y="72"/>
+            <point key="canvasLocation" x="-1057" y="113"/>
         </scene>
         <!--Weather View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -146,7 +149,30 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-999" y="-599"/>
+            <point key="canvasLocation" x="-327" y="-918"/>
+        </scene>
+        <!--Weather Page View Controller-->
+        <scene sceneID="cHz-Vg-AeT">
+            <objects>
+                <viewController storyboardIdentifier="WeatherPageNav" id="isb-Ox-cZ2" customClass="WeatherPageViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zrR-fE-foh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="azf-vB-jiB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="byE-hv-pei" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="521" y="-734"/>
+        </scene>
+        <!--WeatherPageViewController-->
+        <scene sceneID="NrK-pJ-XCi">
+            <objects>
+                <pageViewController storyboardIdentifier="WeatherPageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="vq0-9r-vAA" userLabel="WeatherPageViewController" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rjj-Ws-ciB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1452" y="-762"/>
         </scene>
         <!--TutorialNavigationViewController-->
         <scene sceneID="C3y-hy-fD1">
@@ -164,7 +190,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dg8-ND-yIB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1870" y="72"/>
+            <point key="canvasLocation" x="-1871" y="85"/>
         </scene>
     </scenes>
 </document>

@@ -14,6 +14,7 @@
 
 @interface WeatherViewController()
 @property (weak, nonatomic) IBOutlet UIScrollView *ScrollView;
+@property (nonatomic,strong) NSObject<WeatherViewDelegate>* delegate;
 @end
 
 @implementation WeatherViewController
