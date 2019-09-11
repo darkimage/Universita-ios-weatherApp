@@ -186,6 +186,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		9D492BFA23291E0D0006F83C /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				9D4F8D8121B14D7C007254A5 /* WeatherViewDelegate.h */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
 		9D4F8D7A21B14809007254A5 /* Graphics */ = {
 			isa = PBXGroup;
 			children = (
@@ -204,10 +212,10 @@
 		9D4F8D7F21B14D52007254A5 /* WeatherController */ = {
 			isa = PBXGroup;
 			children = (
+				9D492BFA23291E0D0006F83C /* Delegates */,
 				9DFDC4312322E59900F1D09D /* Views */,
 				9D50920C21A71A45005A30AB /* WeatherViewController.h */,
 				9D50920D21A71A45005A30AB /* WeatherViewController.m */,
-				9D4F8D8121B14D7C007254A5 /* WeatherViewDelegate.h */,
 				9D503A4B232295E600954139 /* WeatherPageViewController.h */,
 				9D503A4C232295E600954139 /* WeatherPageViewController.m */,
 			);
