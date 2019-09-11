@@ -8,6 +8,7 @@
 
 #import "WeatherPageViewController.h"
 #import "WeatherViewController.h"
+#import "AnimatedBackground.h"
 
 @interface WeatherPageViewController ()
 //PROPRIETA
@@ -15,9 +16,11 @@
 @property NSInteger currentIndex; //Index attuale settato solo dopo che la transizione e completa
 @property NSInteger nextIndex;    //Index verso il quai si sta facendo una transizione
 @property NSMutableArray<WeatherViewController*>* viewControllers;
+@property AnimatedBackground* backgroundAnimation;
 //METODI
 - (WeatherViewController*) viewAtIndex:(NSInteger)index;
 - (WeatherViewController*) instantiateView:(NSInteger)index;
+- (AnimatedBackground*) createAnimatedBackground;
 - (void) updateViewAtIndex:(NSInteger)index;
 - (NSInteger) getCount; //Ritorna il numero di schermate presenti
 @end
@@ -31,8 +34,11 @@
     self.currentIndex = 0;
     self.nextIndex = 0;
     self.viewControllers = [[NSMutableArray<WeatherViewController*> alloc] init];
+    self.backgroundAnimation = [self createAnimatedBackground];
     for (int i = 0; i <= 3; i++){
-        [self.viewControllers addObject:[self instantiateView:i]];
+        WeatherViewController* controller = [self instantiateView:i];
+        controller.delegate = self.backgroundAnimation;
+        [self.viewControllers addObject:controller];
     }
     
     //Init PageViewController dalla Storyboard
@@ -105,6 +111,25 @@
     WeatherViewController* weatherViewController = (WeatherViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"WeatherViewController"];
     weatherViewController.pageIndex = index;
     return weatherViewController;
+}
+
+- (AnimatedBackground *)createAnimatedBackground {
+    NSValue* bg = [NSValue valueWithImage:@"cloud_blurred" withDuration:20.0f withOffset:-200.0f withSize:CGRectMake(0, 0, 1000, 500) andOpacity: 1.0f];
+    
+    NSValue* bg1 = [NSValue valueWithImage:@"cloud_blurred" withDuration:50.0f withOffset:-150.0f withSize:CGRectMake(0, 0, 700, 350) andOpacity: 0.5f];
+    
+    NSValue* bg2 = [NSValue valueWithImage:@"cloud_blurred" withDuration: 100.0f withOffset:-100.0f withSize:CGRectMake(0, 0, 500, 250) andOpacity: 0.3f];
+    
+    CAGradientLayer* gradient = [CAGradientLayer layer];
+    gradient.frame = self.view.bounds;
+    UIColor* bottom = [UIColor colorWithRed:130.0/255.0 green:165.0/255.0 blue:188.0/255.0 alpha:1.0];
+    UIColor* top = [UIColor colorWithRed:37.0/255.0 green:98.0/255.0 blue:129.0/255.0 alpha:1.0];
+    gradient.colors = [NSArray arrayWithObjects:(id)bottom.CGColor,(id)top.CGColor, nil];
+    //52    108    216
+    NSArray<NSValue*>* animDataArray = [[NSArray<NSValue*> alloc] initWithObjects:bg2,bg1,bg, nil];
+    AnimatedBackground* bgAnim = [[AnimatedBackground alloc] initWithStructDataArray:animDataArray withGradient:gradient addTo:self.view];
+    bgAnim.parallaxMultiplier = [NSNumber numberWithFloat:2.0];
+    return bgAnim;
 }
 
 @end

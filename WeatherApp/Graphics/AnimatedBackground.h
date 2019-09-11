@@ -10,6 +10,7 @@
 #import <UIKit/UIKit.h>
 #import "WeatherViewDelegate.h"
 #import "BackgroundLayer.h"
+#import "NSValue+AnimBackgroundData.h"
 
 NS_ASSUME_NONNULL_BEGIN
 @interface AnimatedBackground : NSObject<WeatherViewDelegate>
