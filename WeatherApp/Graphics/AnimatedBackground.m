@@ -24,7 +24,7 @@
 @property BOOL hasGradient;
 
 //HELPER FUNCTIONS
--(BGSlot*) createSlotandAddtoView:(NSValue*)bgData;
+-(BackgroundLayer*) createSlotAndAddtoView:(NSValue*)bgData;
 -(void) initInternal:(UIView*)view;
 -(void) initWithColor:(UIColor*)color;
 -(void) initWithGradient:(CAGradientLayer*)gradient;
@@ -112,7 +112,7 @@
     //self.lastScrollPoint = scrollView.contentOffset;
     
     NSInteger index = 0;
-    for (BGSlot* slot in self.bgArray) {
+    for (BackgroundLayer* slot in self.bgArray) {
         float parallaxlayer = (float)[self.bgArray count] - (float)index; //Layer attuale nell array (inverso rispetto ad ordine nell'array)
         float percent = parallaxlayer*1./[self.bgArray count];            //percentuale dell'attuale layer
         float offset = [self remapto01f:0.0 high1:200.0 value:[self maxf:scrollView.contentOffset.y b:200.0]]*percent; //offset del parallax
@@ -128,7 +128,7 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    for (BGSlot* slot in self.bgArray) {
+    for (BackgroundLayer* slot in self.bgArray) {
     RZViewAction* moveimage1 = [RZViewAction action:^{
         slot.image1.center = CGPointMake(slot.image1.bounds.size.width+self.view.bounds.size.width/2, slot.image1.center.y);
     } withOptions:UIViewAnimationOptionRepeat|UIViewAnimationOptionCurveLinear duration:[slot.bgData animDataValue].duration];
@@ -141,26 +141,26 @@
     }
 }
 -(void) addBackgroundToFront:(NSValue*)bgData{
-    BGSlot* nslot = [self createSlotandAddtoView:bgData];
+    BackgroundLayer* nslot = [self createSlotAndAddtoView:bgData];
     [self.bgArray insertObject:nslot atIndex:0];
     [self sortsubViews];
 }
 
 -(void) addBackgroundToBack:(NSValue*)bgData{
-    BGSlot* nslot = [self createSlotandAddtoView:bgData];
+    BackgroundLayer* nslot = [self createSlotAndAddtoView:bgData];
     [self.bgArray addObject:nslot];
     [self sortsubViews];
 }
 
 
 -(void) addBackground:(NSValue*)bgData atPosition:(NSInteger)index{
-    BGSlot* nslot = [self createSlotandAddtoView:bgData];
+    BackgroundLayer* nslot = [self createSlotAndAddtoView:bgData];
     [self.bgArray insertObject:nslot atIndex:index];
     [self sortsubViews];
 }
 
 -(void) sortsubViews{
-    for (BGSlot* slot in self.bgArray) {
+    for (BackgroundLayer* slot in self.bgArray) {
         [self.view sendSubviewToBack:slot.image1];
         [self.view sendSubviewToBack:slot.image2];
     }
@@ -170,31 +170,11 @@
     }
 }
 
--(BGSlot*) createSlotandAddtoView:(NSValue*)bgData{
-    
-    BGSlot* slot = [[BGSlot alloc]init];
-    slot.bgData = bgData;
-    slot.image1 = [[UIImageView alloc]initWithImage:[UIImage imageNamed:[bgData animDataValue].imagename]];
-    slot.image1.frame = [bgData animDataValue].frame;
-    slot.image1.center = CGPointMake(self.view.bounds.size.width/2,self.view.bounds.size.height/2+[bgData animDataValue].offset_y);
-    slot.image1Start = slot.image1.center;
-    slot.image1.backgroundColor = [UIColor clearColor];
-    slot.image1.contentMode = UIViewContentModeScaleAspectFit;
-    slot.image1.alpha = [bgData animDataValue].alpha;
-    
-    slot.image2 = [[UIImageView alloc]initWithImage:[UIImage imageNamed:[bgData animDataValue].imagename]];
-    slot.image2.frame = [bgData animDataValue].frame;
-    slot.image2.center = CGPointMake(self.view.bounds.size.width/2-slot.image2.bounds.size.width,self.view.bounds.size.height/2+[bgData animDataValue].offset_y);
-    slot.image2Start = slot.image2.center;
-    slot.image2.backgroundColor = [UIColor clearColor];
-    slot.image2.contentMode = UIViewContentModeScaleAspectFit;
-    slot.image2.alpha = [bgData animDataValue].alpha;
-    
+-(BackgroundLayer*) createSlotAndAddtoView:(NSValue*)bgData{
+    BackgroundLayer* slot = [[BackgroundLayer alloc]initWithData:bgData andSize:self.view.bounds];
     [self.view addSubview:slot.image1];
     [self.view addSubview:slot.image2];
     return slot;
-    //[self.bgArray addObject:slot];
-
 }
 
 -(float) maxf:(float) a b:(float) b{

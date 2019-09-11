@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "WeatherViewDelegate.h"
-#import "BGSlot.h"
+#import "BackgroundLayer.h"
 
 NS_ASSUME_NONNULL_BEGIN
 @interface AnimatedBackground : NSObject<WeatherViewDelegate>
@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(instancetype) initWithStructDataArray:(NSArray<NSValue*>*)bgDataArray withColor:(UIColor*)backgroundColor addTo:(UIView*)view;
 
-- (instancetype)initWithStructDataArray:(NSArray<NSValue*>*)bgDataArray withGradient:(CAGradientLayer*)gradient addTo:(nonnull UIView *)view;
+-(instancetype)initWithStructDataArray:(NSArray<NSValue*>*)bgDataArray withGradient:(CAGradientLayer*)gradient addTo:(nonnull UIView *)view;
 
 -(instancetype) initWithStructData:(NSValue*)bgData withColor:(UIColor*)backgroundColor addTo:(UIView*)view;
 
