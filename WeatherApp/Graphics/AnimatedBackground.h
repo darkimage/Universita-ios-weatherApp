@@ -16,19 +16,19 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,strong) NSNumber* parallaxMaxOffset;
 @property (nonatomic,strong) NSNumber* parallaxMultiplier;
 
--(instancetype) initWithStructDataArray:(struct animBackgroundData[])bgDataArray ofElements:(NSInteger)count withColor:(UIColor*)backgroundColor addTo:(UIView*)view;
+-(instancetype) initWithStructDataArray:(NSArray<NSValue*>*)bgDataArray withColor:(UIColor*)backgroundColor addTo:(UIView*)view;
 
-- (instancetype)initWithStructDataArray:(struct animBackgroundData *)bgDataArray ofElements:(NSInteger)count withGradient:(CAGradientLayer*)gradient addTo:(nonnull UIView *)view;
+- (instancetype)initWithStructDataArray:(NSArray<NSValue*>*)bgDataArray withGradient:(CAGradientLayer*)gradient addTo:(nonnull UIView *)view;
 
--(instancetype) initWithStructData:(struct animBackgroundData)bgData withColor:(UIColor*)backgroundColor addTo:(UIView*)view;
+-(instancetype) initWithStructData:(NSValue*)bgData withColor:(UIColor*)backgroundColor addTo:(UIView*)view;
 
--(instancetype) initWithStructData:(struct animBackgroundData)bgData withGradient:(CAGradientLayer*)gradient addTo:(UIView*)view;
+-(instancetype) initWithStructData:(NSValue*)bgData withGradient:(CAGradientLayer*)gradient addTo:(UIView*)view;
 
--(void) addBackgroundToBack:(struct  animBackgroundData) bgData;
+-(void) addBackgroundToBack:(NSValue*)bgData;
 
--(void) addBackgroundToFront:(struct  animBackgroundData) bgData;
+-(void) addBackgroundToFront:(NSValue*)bgData;
 
--(void) addBackground:(struct  animBackgroundData) bgData atPosition:(NSInteger)index;
+-(void) addBackground:(NSValue*)bgData atPosition:(NSInteger)index;
 
 @end
 

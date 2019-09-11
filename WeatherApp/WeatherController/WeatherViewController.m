@@ -12,6 +12,7 @@
 #import "WeatherBackgroundPresets.h"
 #import "WeatherHeaderView.h"
 #import "WeatherAverageView.h"
+#import "NSValue+AnimBackGroundData.h"
 
 @interface WeatherViewController()
 @property (weak, nonatomic) IBOutlet UIScrollView *ScrollView;
@@ -32,19 +33,21 @@
     [super viewDidLoad];
     self.ScrollView.delegate = self;
     
-    struct animBackgroundData bg = AnimBackgroundDataMake(@"cloud_blurred", 20.0f, -200.0f, CGRectMake(0, 0, 1000, 500), 1.0f);
-    struct animBackgroundData bg1 = AnimBackgroundDataMake(@"cloud_blurred", 50.0f, -150.0f,  CGRectMake(0, 0, 700, 350), 0.5f);
-    struct animBackgroundData bg2 = AnimBackgroundDataMake(@"cloud_blurred", 100.0f, -100.0f, CGRectMake(0, 0, 500, 250), 0.3f);
+    NSValue* bg = [NSValue valueWithImage:@"cloud_blurred" withDuration:20.0f withOffset:-200.0f withSize:CGRectMake(0, 0, 1000, 500) andOpacity: 1.0f];
+    
+    NSValue* bg1 = [NSValue valueWithImage:@"cloud_blurred" withDuration:50.0f withOffset:-150.0f withSize:CGRectMake(0, 0, 700, 350) andOpacity: 0.5f];
+    
+    NSValue* bg2 = [NSValue valueWithImage:@"cloud_blurred" withDuration: 100.0f withOffset:-100.0f withSize:CGRectMake(0, 0, 500, 250) andOpacity: 0.3f];
+
     CAGradientLayer* gradient = [CAGradientLayer layer];
     gradient.frame = self.view.bounds;
     UIColor* bottom = [UIColor colorWithRed:130.0/255.0 green:165.0/255.0 blue:188.0/255.0 alpha:1.0];
     UIColor* top = [UIColor colorWithRed:37.0/255.0 green:98.0/255.0 blue:129.0/255.0 alpha:1.0];
     gradient.colors = [NSArray arrayWithObjects:(id)bottom.CGColor,(id)top.CGColor, nil];
     //52    108    216
-    AnimatedBackground* bgAnim =[[AnimatedBackground alloc] initWithStructData:bg withGradient:gradient addTo:self.view];
+    NSArray<NSValue*>* animDataArray = [[NSArray<NSValue*> alloc] initWithObjects:bg2,bg1,bg, nil];
+    AnimatedBackground* bgAnim = [[AnimatedBackground alloc] initWithStructDataArray:animDataArray withGradient:gradient addTo:self.view];
     bgAnim.parallaxMultiplier = [NSNumber numberWithFloat:2.0];
-    [bgAnim addBackgroundToBack:bg1];
-    [bgAnim addBackgroundToBack:bg2];
     self.delegate = bgAnim;
     [self.view bringSubviewToFront:self.stackView];
 }

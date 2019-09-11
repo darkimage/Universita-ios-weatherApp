@@ -10,6 +10,7 @@
 
 #import "AnimatedBackground.h"
 #import <RZViewActions/UIView+RZViewActions.h>
+#import "NSValue+AnimBackgroundData.h"
 
 @interface AnimatedBackground()
 //PRIVATE PROPRIETIES
@@ -23,7 +24,7 @@
 @property BOOL hasGradient;
 
 //HELPER FUNCTIONS
--(BGSlot*) createSlotandAddtoView:(struct  animBackgroundData) bgData;
+-(BGSlot*) createSlotandAddtoView:(NSValue*)bgData;
 -(void) initInternal:(UIView*)view;
 -(void) initWithColor:(UIColor*)color;
 -(void) initWithGradient:(CAGradientLayer*)gradient;
@@ -61,31 +62,31 @@
     self.view.backgroundColor = color;
 }
 
-- (instancetype)initWithStructDataArray:(struct animBackgroundData *)bgDataArray ofElements:(NSInteger)count withColor:(nonnull UIColor *)backgroundColor addTo:(nonnull UIView *)view {
+- (instancetype)initWithStructDataArray:(NSArray<NSValue*>*)bgDataArray withColor:(nonnull UIColor *)backgroundColor addTo:(nonnull UIView *)view {
     self = [super init];
     if (self) {
         [self initInternal:view];
         [self initWithColor:backgroundColor];
-        for (int i=0; i<count; i++) {
-            [self addBackgroundToBack:bgDataArray[i]];
+        for (NSValue* data in bgDataArray) {
+            [self addBackgroundToBack:data];
         }
     }
     return self;
 }
 
-- (instancetype)initWithStructDataArray:(struct animBackgroundData *)bgDataArray ofElements:(NSInteger)count withGradient:(CAGradientLayer*)gradient addTo:(nonnull UIView *)view {
+- (instancetype)initWithStructDataArray:(NSArray<NSValue*>*)bgDataArray withGradient:(CAGradientLayer*)gradient addTo:(nonnull UIView *)view {
     self = [super init];
     if (self) {
         [self initInternal:view];
         [self initWithGradient:gradient];
-        for (int i=0; i<count; i++) {
-            [self addBackgroundToBack:bgDataArray[i]];
+        for (NSValue* data in bgDataArray) {
+            [self addBackgroundToBack:data];
         }
     }
     return self;
 }
 
--(instancetype) initWithStructData:(struct animBackgroundData)bgData withColor:(UIColor *)backgroundColor addTo:(UIView *)view{
+-(instancetype) initWithStructData:(NSValue*)bgData withColor:(UIColor *)backgroundColor addTo:(UIView *)view{
     self = [super init];
     if (self) {
         [self initInternal:view];
@@ -95,7 +96,7 @@
     return self;
 }
 
--(instancetype) initWithStructData:(struct animBackgroundData)bgData withGradient:(CAGradientLayer*)gradient addTo:(UIView*)view{
+-(instancetype) initWithStructData:(NSValue*)bgData withGradient:(CAGradientLayer*)gradient addTo:(UIView*)view{
     self = [super init];
     if (self) {
         [self initInternal:view];
@@ -130,30 +131,29 @@
     for (BGSlot* slot in self.bgArray) {
     RZViewAction* moveimage1 = [RZViewAction action:^{
         slot.image1.center = CGPointMake(slot.image1.bounds.size.width+self.view.bounds.size.width/2, slot.image1.center.y);
-    } withOptions:UIViewAnimationOptionRepeat|UIViewAnimationOptionCurveLinear duration:slot.bgData.duration];
-    
+    } withOptions:UIViewAnimationOptionRepeat|UIViewAnimationOptionCurveLinear duration:[slot.bgData animDataValue].duration];
     RZViewAction* movecimage2 = [RZViewAction action:^{
         slot.image2.center =CGPointMake(self.view.bounds.size.width/2, slot.image2.center.y);
-    } withOptions:UIViewAnimationOptionRepeat|UIViewAnimationOptionCurveLinear duration:slot.bgData.duration];
+    } withOptions:UIViewAnimationOptionRepeat|UIViewAnimationOptionCurveLinear duration:[slot.bgData animDataValue].duration];
     
     RZViewAction *group = [RZViewAction group:@[moveimage1, movecimage2]];
     [UIView rz_runAction:group];
     }
 }
--(void) addBackgroundToFront:(struct  animBackgroundData) bgData{
+-(void) addBackgroundToFront:(NSValue*)bgData{
     BGSlot* nslot = [self createSlotandAddtoView:bgData];
     [self.bgArray insertObject:nslot atIndex:0];
     [self sortsubViews];
 }
 
--(void) addBackgroundToBack:(struct  animBackgroundData) bgData{
+-(void) addBackgroundToBack:(NSValue*)bgData{
     BGSlot* nslot = [self createSlotandAddtoView:bgData];
     [self.bgArray addObject:nslot];
     [self sortsubViews];
 }
 
 
--(void) addBackground:(struct  animBackgroundData) bgData atPosition:(NSInteger)index{
+-(void) addBackground:(NSValue*)bgData atPosition:(NSInteger)index{
     BGSlot* nslot = [self createSlotandAddtoView:bgData];
     [self.bgArray insertObject:nslot atIndex:index];
     [self sortsubViews];
@@ -170,25 +170,25 @@
     }
 }
 
--(BGSlot*) createSlotandAddtoView:(struct  animBackgroundData) bgData{
+-(BGSlot*) createSlotandAddtoView:(NSValue*)bgData{
     
     BGSlot* slot = [[BGSlot alloc]init];
     slot.bgData = bgData;
-    slot.image1 = [[UIImageView alloc]initWithImage:[UIImage imageNamed:bgData.imagename]];
-    slot.image1.frame = bgData.frame;
-    slot.image1.center = CGPointMake(self.view.bounds.size.width/2,self.view.bounds.size.height/2+bgData.offset_y);
+    slot.image1 = [[UIImageView alloc]initWithImage:[UIImage imageNamed:[bgData animDataValue].imagename]];
+    slot.image1.frame = [bgData animDataValue].frame;
+    slot.image1.center = CGPointMake(self.view.bounds.size.width/2,self.view.bounds.size.height/2+[bgData animDataValue].offset_y);
     slot.image1Start = slot.image1.center;
     slot.image1.backgroundColor = [UIColor clearColor];
     slot.image1.contentMode = UIViewContentModeScaleAspectFit;
-    slot.image1.alpha = bgData.alpha;
+    slot.image1.alpha = [bgData animDataValue].alpha;
     
-    slot.image2 = [[UIImageView alloc]initWithImage:[UIImage imageNamed:bgData.imagename]];
-    slot.image2.frame = bgData.frame;
-    slot.image2.center = CGPointMake(self.view.bounds.size.width/2-slot.image2.bounds.size.width,self.view.bounds.size.height/2+bgData.offset_y);
+    slot.image2 = [[UIImageView alloc]initWithImage:[UIImage imageNamed:[bgData animDataValue].imagename]];
+    slot.image2.frame = [bgData animDataValue].frame;
+    slot.image2.center = CGPointMake(self.view.bounds.size.width/2-slot.image2.bounds.size.width,self.view.bounds.size.height/2+[bgData animDataValue].offset_y);
     slot.image2Start = slot.image2.center;
     slot.image2.backgroundColor = [UIColor clearColor];
     slot.image2.contentMode = UIViewContentModeScaleAspectFit;
-    slot.image2.alpha = bgData.alpha;
+    slot.image2.alpha = [bgData animDataValue].alpha;
     
     [self.view addSubview:slot.image1];
     [self.view addSubview:slot.image2];
