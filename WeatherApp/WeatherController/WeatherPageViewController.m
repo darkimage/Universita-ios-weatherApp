@@ -10,23 +10,37 @@
 #import "WeatherViewController.h"
 
 @interface WeatherPageViewController ()
-- (WeatherViewController*) wheatherViewAtIndex:(NSInteger)index;
-@property NSInteger count;
+//PROPRIETA
 @property (nonatomic,strong) UIPageViewController* pageController;
-- (NSInteger) getCount;
+@property NSInteger currentIndex; //Index attuale settato solo dopo che la transizione e completa
+@property NSInteger nextIndex;    //Index verso il quai si sta facendo una transizione
+@property NSMutableArray<WeatherViewController*>* viewControllers;
+//METODI
+- (WeatherViewController*) viewAtIndex:(NSInteger)index;
+- (WeatherViewController*) instantiateView:(NSInteger)index;
+- (void) updateViewAtIndex:(NSInteger)index;
+- (NSInteger) getCount; //Ritorna il numero di schermate presenti
 @end
 
 @implementation WeatherPageViewController
 
+//INITIALIZZAZIONE
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.count = 3;
-
-    // Create page view controller
+    
+    self.currentIndex = 0;
+    self.nextIndex = 0;
+    self.viewControllers = [[NSMutableArray<WeatherViewController*> alloc] init];
+    for (int i = 0; i <= 3; i++){
+        [self.viewControllers addObject:[self instantiateView:i]];
+    }
+    
+    //Init PageViewController dalla Storyboard
     self.pageController = [self.storyboard instantiateViewControllerWithIdentifier:@"WeatherPageViewController"];
     self.pageController.dataSource = self;
+    self.pageController.delegate = self;
     
-    NSArray* firstview = [[NSArray alloc]initWithObjects:[self wheatherViewAtIndex:0],nil];
+    NSArray* firstview = [[NSArray alloc]initWithObjects:[self viewAtIndex:0],nil];
     [self.pageController setViewControllers:firstview direction:UIPageViewControllerNavigationDirectionForward animated:true completion:nil];
     
     [self addChildViewController:self.pageController];
@@ -34,36 +48,63 @@
     [self.pageController didMoveToParentViewController:self];
 }
 
+//METODI DEI DELEGATI O DATASOURCE
+//transizione in avanti
 - (nullable UIViewController *)pageViewController:(nonnull UIPageViewController *)pageViewController viewControllerBeforeViewController:(nonnull UIViewController *)viewController { 
     WeatherViewController* weatherView = (WeatherViewController*)viewController;
     NSInteger index = weatherView.pageIndex;
-    if(index == NSNotFound){
+    if(index == 0 || index == NSNotFound){
         return nil;
     }
-    index = (index-1) % [self getCount];
+    index-=1;
     
-    return [self wheatherViewAtIndex:index ];
+    return [self viewAtIndex:index ];
 }
 
+//transizione all'indietro
 - (nullable UIViewController *)pageViewController:(nonnull UIPageViewController *)pageViewController viewControllerAfterViewController:(nonnull UIViewController *)viewController { 
     WeatherViewController* weatherView = (WeatherViewController*)viewController;
     NSInteger index = weatherView.pageIndex;
     if(index == NSNotFound){
         return nil;
     }
-    index = (index+1) % [self getCount];
+    index+=1;
     
-    return [self wheatherViewAtIndex:index ];
+    if(index == [self getCount]){
+        return nil;
+    }
+    
+    return [self viewAtIndex:index ];
 }
 
-- (WeatherViewController *)wheatherViewAtIndex:(NSInteger)index {
-    WeatherViewController* weatherViewController = (WeatherViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"WeatherViewController"];
-    weatherViewController.pageIndex = index;
-    return weatherViewController;
+- (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray<UIViewController *> *)previousViewControllers transitionCompleted:(BOOL)completed{
+    if(completed){
+        self.currentIndex = self.nextIndex;
+    }
+}
+
+- (void)pageViewController:(UIPageViewController *)pageViewController willTransitionToViewControllers:(NSArray<UIViewController *> *)pendingViewControllers NS_AVAILABLE_IOS(6_0){
+    self.nextIndex = ((WeatherViewController*)pendingViewControllers.firstObject).pageIndex;
+}
+
+//METODI PRIVATI
+
+- (void)updateViewAtIndex:(NSInteger)index {
+    //update view
+}
+
+- (WeatherViewController *)viewAtIndex:(NSInteger)index {
+    return [self.viewControllers objectAtIndex:index];
 }
 
 - (NSInteger)getCount {
-    return self.count;
+    return self.viewControllers.count;
+}
+
+- (WeatherViewController *)instantiateView:(NSInteger)index {
+    WeatherViewController* weatherViewController = (WeatherViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"WeatherViewController"];
+    weatherViewController.pageIndex = index;
+    return weatherViewController;
 }
 
 @end

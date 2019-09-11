@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "WeatherViewDelegate.h"
+#import "CityWeather.h"
 
 @interface WeatherViewController : UIViewController<UIScrollViewDelegate>
 @property NSInteger pageIndex;
+- (void) populateView:(CityWeather*)weatherData;
 @end
 

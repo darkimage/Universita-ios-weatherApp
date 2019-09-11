@@ -16,7 +16,7 @@
                 <pageViewController storyboardIdentifier="TutorialPageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="U6I-Vs-wrW" userLabel="TutorialPageViewController" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xT9-J9-Ve0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1871" y="-598"/>
+            <point key="canvasLocation" x="-2639" y="84"/>
         </scene>
         <!--TutorialViewController-->
         <scene sceneID="OWw-Jz-1Vk">
@@ -34,7 +34,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zug-Du-6UE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-254" y="84"/>
+            <point key="canvasLocation" x="-326" y="83"/>
         </scene>
         <!--TutorialViewController-->
         <scene sceneID="ohF-go-bPb">
@@ -59,7 +59,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V4x-Z5-6Vi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1057" y="113"/>
+            <point key="canvasLocation" x="-1065" y="84"/>
         </scene>
         <!--Weather View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -73,83 +73,47 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JLq-4c-R8P" userLabel="ViewContent">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1040"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="1Mc-W1-LQ0">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="1040"/>
-                                                <subviews>
-                                                    <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jfc-pP-xIm" userLabel="test1" customClass="WeatherHeaderView" colorLabel="IBBuiltInLabel-Red">
-                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kPs-1F-ZZa" userLabel="test2" colorLabel="IBBuiltInLabel-Red">
-                                                        <rect key="frame" x="0.0" y="210" width="375" height="200"/>
-                                                        <color key="backgroundColor" red="1" green="0.11606880396841079" blue="0.039739161852564986" alpha="0.40825814260563381" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="200" id="Vh9-Hp-ODq"/>
-                                                        </constraints>
-                                                    </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ef3-I5-V1I" userLabel="test3" colorLabel="IBBuiltInLabel-Red">
-                                                        <rect key="frame" x="0.0" y="420" width="375" height="200"/>
-                                                        <color key="backgroundColor" white="0.33333333333333331" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="200" id="J4U-iS-Bfl"/>
-                                                        </constraints>
-                                                    </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Fq-QI-gjz" userLabel="test4" colorLabel="IBBuiltInLabel-Red">
-                                                        <rect key="frame" x="0.0" y="630" width="375" height="200"/>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="200" id="rMb-o7-slY"/>
-                                                        </constraints>
-                                                    </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e9z-9v-OJ6" userLabel="test3" colorLabel="IBBuiltInLabel-Red">
-                                                        <rect key="frame" x="0.0" y="840" width="375" height="200"/>
-                                                        <color key="backgroundColor" white="0.33333333329999998" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="200" id="HqR-Wx-Ucj"/>
-                                                        </constraints>
-                                                    </view>
-                                                </subviews>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="eNs-CW-18n">
+                                                <rect key="frame" x="8" y="8" width="359" height="91"/>
                                             </stackView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" secondItem="1Mc-W1-LQ0" secondAttribute="height" id="Vs2-id-cEP"/>
-                                            <constraint firstItem="1Mc-W1-LQ0" firstAttribute="bottom" secondItem="JLq-4c-R8P" secondAttribute="bottom" id="iaH-ee-pwF"/>
-                                            <constraint firstItem="1Mc-W1-LQ0" firstAttribute="leading" secondItem="JLq-4c-R8P" secondAttribute="leading" id="lVk-Mf-kza"/>
-                                            <constraint firstItem="1Mc-W1-LQ0" firstAttribute="trailing" secondItem="JLq-4c-R8P" secondAttribute="trailing" id="w7K-je-tUb"/>
-                                            <constraint firstItem="1Mc-W1-LQ0" firstAttribute="top" secondItem="JLq-4c-R8P" secondAttribute="top" id="xfu-ka-B1E"/>
+                                            <constraint firstItem="eNs-CW-18n" firstAttribute="trailing" secondItem="JLq-4c-R8P" secondAttribute="trailingMargin" id="tu3-Jh-9SW"/>
+                                            <constraint firstItem="eNs-CW-18n" firstAttribute="leading" secondItem="JLq-4c-R8P" secondAttribute="leadingMargin" id="wCb-1G-5oe"/>
+                                            <constraint firstItem="eNs-CW-18n" firstAttribute="top" secondItem="JLq-4c-R8P" secondAttribute="topMargin" id="z3F-UE-u7c"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="JLq-4c-R8P" firstAttribute="top" secondItem="cZa-hY-djt" secondAttribute="top" id="1ln-sd-HCd"/>
-                                    <constraint firstItem="JLq-4c-R8P" firstAttribute="bottom" secondItem="cZa-hY-djt" secondAttribute="bottom" id="9du-B5-Rua"/>
-                                    <constraint firstItem="1Mc-W1-LQ0" firstAttribute="width" secondItem="cZa-hY-djt" secondAttribute="width" id="CsO-j6-ppF"/>
-                                    <constraint firstItem="JLq-4c-R8P" firstAttribute="width" secondItem="cZa-hY-djt" secondAttribute="width" id="JkJ-Nx-tny"/>
-                                    <constraint firstItem="JLq-4c-R8P" firstAttribute="leading" secondItem="cZa-hY-djt" secondAttribute="leading" id="WfQ-pk-Bk6"/>
-                                    <constraint firstItem="JLq-4c-R8P" firstAttribute="trailing" secondItem="cZa-hY-djt" secondAttribute="trailing" id="tRX-jV-Z6J"/>
+                                    <constraint firstItem="JLq-4c-R8P" firstAttribute="top" secondItem="cZa-hY-djt" secondAttribute="top" id="85f-R2-g0E"/>
+                                    <constraint firstAttribute="trailing" secondItem="JLq-4c-R8P" secondAttribute="trailing" id="QP1-yJ-5ir"/>
+                                    <constraint firstItem="JLq-4c-R8P" firstAttribute="leading" secondItem="cZa-hY-djt" secondAttribute="leading" id="WKj-ST-bGz"/>
+                                    <constraint firstItem="JLq-4c-R8P" firstAttribute="centerY" secondItem="cZa-hY-djt" secondAttribute="centerY" id="XAI-Ry-ae7"/>
+                                    <constraint firstItem="JLq-4c-R8P" firstAttribute="centerX" secondItem="cZa-hY-djt" secondAttribute="centerX" id="om2-kz-YCI"/>
+                                    <constraint firstAttribute="bottom" secondItem="JLq-4c-R8P" secondAttribute="bottom" id="q7K-69-bQz"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="cZa-hY-djt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="7sM-wa-aUl"/>
-                            <constraint firstItem="cZa-hY-djt" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="FvS-xk-vjM"/>
-                            <constraint firstItem="cZa-hY-djt" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="ShP-iV-BKs"/>
-                            <constraint firstItem="cZa-hY-djt" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="V0M-iR-4Ul"/>
+                            <constraint firstItem="cZa-hY-djt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="1ia-g8-fzI"/>
+                            <constraint firstItem="cZa-hY-djt" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="2XM-AO-eRP"/>
+                            <constraint firstItem="cZa-hY-djt" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="OW8-td-lTR"/>
+                            <constraint firstItem="cZa-hY-djt" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="tbF-Bd-egf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="ScrollView" destination="cZa-hY-djt" id="meG-ky-eyE"/>
+                        <outlet property="stackView" destination="eNs-CW-18n" id="faH-0u-zDp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-327" y="-918"/>
+            <point key="canvasLocation" x="-327.19999999999999" y="-734.48275862068976"/>
         </scene>
         <!--Weather Page View Controller-->
         <scene sceneID="cHz-Vg-AeT">
@@ -172,7 +136,7 @@
                 <pageViewController storyboardIdentifier="WeatherPageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="vq0-9r-vAA" userLabel="WeatherPageViewController" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rjj-Ws-ciB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1452" y="-762"/>
+            <point key="canvasLocation" x="-327" y="-1418"/>
         </scene>
         <!--TutorialNavigationViewController-->
         <scene sceneID="C3y-hy-fD1">

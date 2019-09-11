@@ -24,6 +24,9 @@
 
 //HELPER FUNCTIONS
 -(BGSlot*) createSlotandAddtoView:(struct  animBackgroundData) bgData;
+-(void) initInternal:(UIView*)view;
+-(void) initWithColor:(UIColor*)color;
+-(void) initWithGradient:(CAGradientLayer*)gradient;
 
 //MATH FUNCTIONS
 -(float) maxf:(float) a b:(float) b;
@@ -33,17 +36,61 @@
 
 @implementation AnimatedBackground
 
+- (void)initInternal:(UIView*)view{
+    self.view = view;
+    self.parallaxMaxOffset = [NSNumber numberWithFloat:200.0];
+    self.parallaxMultiplier = [NSNumber numberWithFloat:1.0];
+    //self.lastScrollPoint = CGPointZero;
+    self.bgArray = [[NSMutableArray alloc]init];
+}
+
+-(void) initWithGradient:(CAGradientLayer*)gradient{
+    self.hasGradient = YES;
+    gradient.startPoint = CGPointMake(0, 1);
+    gradient.endPoint = CGPointMake(0, 0);
+    self.view.backgroundColor = [UIColor colorWithCGColor:CFBridgingRetain(gradient.colors[0])];
+    self.maingradient = [[UIView alloc]initWithFrame:CGRectMake(0,0, self.view.bounds.size.width, self.view.bounds.size.height)];
+    self.topgradient = [[UIView alloc]initWithFrame:CGRectMake(0, -self.view.bounds.size.height-500, self.view.bounds.size.width, self.view.bounds.size.height+500)];
+    self.topgradient.backgroundColor = [UIColor colorWithCGColor:CFBridgingRetain(gradient.colors[1])];
+    [self.maingradient.layer insertSublayer:gradient atIndex:0];
+    [self.view addSubview:self.maingradient];
+    [self.view addSubview:self.topgradient];
+}
+
+- (void)initWithColor:(UIColor *)color {
+    self.view.backgroundColor = color;
+}
+
+- (instancetype)initWithStructDataArray:(struct animBackgroundData *)bgDataArray ofElements:(NSInteger)count withColor:(nonnull UIColor *)backgroundColor addTo:(nonnull UIView *)view {
+    self = [super init];
+    if (self) {
+        [self initInternal:view];
+        [self initWithColor:backgroundColor];
+        for (int i=0; i<count; i++) {
+            [self addBackgroundToBack:bgDataArray[i]];
+        }
+    }
+    return self;
+}
+
+- (instancetype)initWithStructDataArray:(struct animBackgroundData *)bgDataArray ofElements:(NSInteger)count withGradient:(CAGradientLayer*)gradient addTo:(nonnull UIView *)view {
+    self = [super init];
+    if (self) {
+        [self initInternal:view];
+        [self initWithGradient:gradient];
+        for (int i=0; i<count; i++) {
+            [self addBackgroundToBack:bgDataArray[i]];
+        }
+    }
+    return self;
+}
+
 -(instancetype) initWithStructData:(struct animBackgroundData)bgData withColor:(UIColor *)backgroundColor addTo:(UIView *)view{
     self = [super init];
     if (self) {
-        self.view = view;
-        view.backgroundColor = backgroundColor;
-        self.parallaxMaxOffset = [NSNumber numberWithFloat:200.0];
-        self.parallaxMultiplier = [NSNumber numberWithFloat:1.0];
-        //self.lastScrollPoint = CGPointZero;
-        self.bgArray = [[NSMutableArray alloc]init];
-        [self addBackgroundToFront:bgData];
-
+        [self initInternal:view];
+        [self initWithColor:backgroundColor];
+        [self addBackgroundToBack:bgData];
     }
     return self;
 }
@@ -51,24 +98,9 @@
 -(instancetype) initWithStructData:(struct animBackgroundData)bgData withGradient:(CAGradientLayer*)gradient addTo:(UIView*)view{
     self = [super init];
     if (self) {
-        self.hasGradient = YES;
-        self.view = view;
-        gradient.startPoint = CGPointMake(0, 1);
-        gradient.endPoint = CGPointMake(0, 0);
-        self.view.backgroundColor = [UIColor colorWithCGColor:CFBridgingRetain(gradient.colors[0])];
-        self.maingradient = [[UIView alloc]initWithFrame:CGRectMake(0,0, self.view.bounds.size.width, self.view.bounds.size.height)];
-        self.topgradient = [[UIView alloc]initWithFrame:CGRectMake(0, -self.view.bounds.size.height-500, self.view.bounds.size.width, view.bounds.size.height+500)];
-        self.topgradient.backgroundColor = [UIColor colorWithCGColor:CFBridgingRetain(gradient.colors[1])];
-        [self.maingradient.layer insertSublayer:gradient atIndex:0];
-        [self.view addSubview:self.maingradient];
-        [self.view addSubview:self.topgradient];
-        
-        self.parallaxMaxOffset = [NSNumber numberWithFloat:200.0];
-        self.parallaxMultiplier = [NSNumber numberWithFloat:1.0];
-        //self.lastScrollPoint = CGPointZero;
-        self.bgArray = [[NSMutableArray alloc]init];
-        [self addBackgroundToFront:bgData];
-        
+        [self initInternal:view];
+        [self initWithGradient:gradient];
+        [self addBackgroundToBack:bgData];
     }
     return self;
 }

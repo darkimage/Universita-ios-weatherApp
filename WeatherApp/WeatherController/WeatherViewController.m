@@ -11,15 +11,24 @@
 #import "AnimatedBackground.h"
 #import "WeatherBackgroundPresets.h"
 #import "WeatherHeaderView.h"
+#import "WeatherAverageView.h"
 
 @interface WeatherViewController()
 @property (weak, nonatomic) IBOutlet UIScrollView *ScrollView;
-@property (nonatomic,strong) NSObject<WeatherViewDelegate>* delegate;
+@property (strong, nonatomic) NSObject<WeatherViewDelegate>* delegate;
+@property (weak, nonatomic) IBOutlet UIStackView* stackView;
+@property (strong, nonatomic) WeatherHeaderView* header;
 @end
 
 @implementation WeatherViewController
 
 - (void)viewDidLoad {
+    
+    self.header = [[WeatherHeaderView alloc] init];
+    [self.stackView addArrangedSubview:self.header];
+    [self.stackView addArrangedSubview:[[WeatherAverageView alloc]init]];
+    [self.stackView layoutIfNeeded];
+    
     [super viewDidLoad];
     self.ScrollView.delegate = self;
     
@@ -36,8 +45,8 @@
     bgAnim.parallaxMultiplier = [NSNumber numberWithFloat:2.0];
     [bgAnim addBackgroundToBack:bg1];
     [bgAnim addBackgroundToBack:bg2];
-    
     self.delegate = bgAnim;
+    [self.view bringSubviewToFront:self.stackView];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -50,5 +59,10 @@
     NSLog(@"%@", NSStringFromCGPoint(scrollView.contentOffset));
 }
 
+- (void)populateView:(CityWeather *)weatherData {
+    self.header.CityName.text = weatherData.name;
+    self.header.Temperature.text = [weatherData.current.mainTemp stringValue];
+    self.header.TemperatureDesc.text = weatherData.current.weatherDescription;
+}
 
 @end

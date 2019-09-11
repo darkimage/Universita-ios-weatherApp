@@ -36,6 +36,8 @@
 		9DF4AC1A21A9EE4E006A0BBF /* currentWeather.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF4AC1921A9EE4E006A0BBF /* currentWeather.m */; };
 		9DF4AC2021A9F471006A0BBF /* CityWeather.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF4AC1F21A9F471006A0BBF /* CityWeather.m */; };
 		9DF4AC2621AA23AE006A0BBF /* forecastWeather.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF4AC2521AA23AE006A0BBF /* forecastWeather.m */; };
+		9DFDC4332322E64F00F1D09D /* WeatherAverageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DFDC4322322E64F00F1D09D /* WeatherAverageView.xib */; };
+		9DFDC4362322E91A00F1D09D /* WeatherAverageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DFDC4352322E91A00F1D09D /* WeatherAverageView.m */; };
 		B519E34BBF04E1864D66F1E2 /* Pods_WeatherApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC727E748DC98D38C793A4BD /* Pods_WeatherApp.framework */; };
 		F39E6C53AD4D1020F8243FDD /* Pods_WeatherAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E849A464322DE0769A8F0435 /* Pods_WeatherAppUITests.framework */; };
 /* End PBXBuildFile section */
@@ -116,6 +118,9 @@
 		9DF4AC1F21A9F471006A0BBF /* CityWeather.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityWeather.m; sourceTree = "<group>"; };
 		9DF4AC2421AA23AE006A0BBF /* forecastWeather.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = forecastWeather.h; sourceTree = "<group>"; };
 		9DF4AC2521AA23AE006A0BBF /* forecastWeather.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = forecastWeather.m; sourceTree = "<group>"; };
+		9DFDC4322322E64F00F1D09D /* WeatherAverageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeatherAverageView.xib; sourceTree = "<group>"; };
+		9DFDC4342322E91A00F1D09D /* WeatherAverageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeatherAverageView.h; sourceTree = "<group>"; };
+		9DFDC4352322E91A00F1D09D /* WeatherAverageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeatherAverageView.m; sourceTree = "<group>"; };
 		AFD50A74C5784AA42CB5246E /* Pods_WeatherAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB98A39F3E063F8E4A36008A /* Pods-WeatherApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherApp.release.xcconfig"; path = "Target Support Files/Pods-WeatherApp/Pods-WeatherApp.release.xcconfig"; sourceTree = "<group>"; };
 		BC727E748DC98D38C793A4BD /* Pods_WeatherApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -194,12 +199,10 @@
 		9D4F8D7F21B14D52007254A5 /* WeatherController */ = {
 			isa = PBXGroup;
 			children = (
+				9DFDC4312322E59900F1D09D /* Views */,
 				9D50920C21A71A45005A30AB /* WeatherViewController.h */,
 				9D50920D21A71A45005A30AB /* WeatherViewController.m */,
 				9D4F8D8121B14D7C007254A5 /* WeatherViewDelegate.h */,
-				9DE4165D21B4673200B09DB0 /* WeatherHeaderView.xib */,
-				9DE4165F21B48A9B00B09DB0 /* WeatherHeaderView.h */,
-				9DE4166021B48A9B00B09DB0 /* WeatherHeaderView.m */,
 				9D503A4B232295E600954139 /* WeatherPageViewController.h */,
 				9D503A4C232295E600954139 /* WeatherPageViewController.m */,
 			);
@@ -325,6 +328,19 @@
 			path = WeatherData;
 			sourceTree = "<group>";
 		};
+		9DFDC4312322E59900F1D09D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9DE4165D21B4673200B09DB0 /* WeatherHeaderView.xib */,
+				9DE4165F21B48A9B00B09DB0 /* WeatherHeaderView.h */,
+				9DE4166021B48A9B00B09DB0 /* WeatherHeaderView.m */,
+				9DFDC4322322E64F00F1D09D /* WeatherAverageView.xib */,
+				9DFDC4342322E91A00F1D09D /* WeatherAverageView.h */,
+				9DFDC4352322E91A00F1D09D /* WeatherAverageView.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -436,6 +452,7 @@
 				9DE4165E21B4673200B09DB0 /* WeatherHeaderView.xib in Resources */,
 				9DD95E6D21A8CFB0006CF255 /* WeatherDB.sql in Resources */,
 				9D50921321A71A47005A30AB /* Assets.xcassets in Resources */,
+				9DFDC4332322E64F00F1D09D /* WeatherAverageView.xib in Resources */,
 				9D50921121A71A45005A30AB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -570,6 +587,7 @@
 				9D4F8D7D21B14838007254A5 /* AnimatedBackground.m in Sources */,
 				9D10BC4F21B91252001A2E7C /* WeatherAppModel.m in Sources */,
 				9DF4AC2021A9F471006A0BBF /* CityWeather.m in Sources */,
+				9DFDC4362322E91A00F1D09D /* WeatherAverageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

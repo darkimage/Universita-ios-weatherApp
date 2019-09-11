@@ -15,7 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *TemperatureDesc;
 @property (weak, nonatomic) IBOutlet UILabel *TemperatureSymbol;
 @property (weak, nonatomic) IBOutlet UIImageView *WeatherIcon;
-
+@property (weak, nonatomic) IBOutlet UILabel *CityName;
++ (WeatherHeaderView*) createView:(NSObject*)owner;
 @end
 
 NS_ASSUME_NONNULL_END

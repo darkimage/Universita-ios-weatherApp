@@ -16,12 +16,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,strong) NSNumber* parallaxMaxOffset;
 @property (nonatomic,strong) NSNumber* parallaxMultiplier;
 
+-(instancetype) initWithStructDataArray:(struct animBackgroundData[])bgDataArray ofElements:(NSInteger)count withColor:(UIColor*)backgroundColor addTo:(UIView*)view;
+
+- (instancetype)initWithStructDataArray:(struct animBackgroundData *)bgDataArray ofElements:(NSInteger)count withGradient:(CAGradientLayer*)gradient addTo:(nonnull UIView *)view;
+
 -(instancetype) initWithStructData:(struct animBackgroundData)bgData withColor:(UIColor*)backgroundColor addTo:(UIView*)view;
 
-
 -(instancetype) initWithStructData:(struct animBackgroundData)bgData withGradient:(CAGradientLayer*)gradient addTo:(UIView*)view;
-
--(instancetype) initWithPreset:(NSString*)name addTo:(UIView*)view;
 
 -(void) addBackgroundToBack:(struct  animBackgroundData) bgData;
 

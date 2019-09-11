@@ -10,8 +10,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface WeatherPageViewController : UIViewController<UIPageViewControllerDataSource>
-
+//Questo controller si assicura di presentare in forma scrollabile orizzontale
+//i WeatherViewController ed e'anche responsabile di tenerli aggiornati
+@interface WeatherPageViewController : UIViewController<UIPageViewControllerDataSource, UIPageViewControllerDelegate>
+//AGGIUNGERE METODI PER SALVARE I DATI ETC
 @end
 
 NS_ASSUME_NONNULL_END

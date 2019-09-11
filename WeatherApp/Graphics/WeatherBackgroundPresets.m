@@ -38,7 +38,7 @@
 }
 
 
--(AnimatedBackground*) setWeatherBackgroundPreset:(NSString*) name toView:(UIView*) view{
+-(AnimatedBackground*) setWeatherBackgroundPreset:(NSString*)name toView:(UIView*) view{
     return [AnimatedBackground alloc];
 }
 
