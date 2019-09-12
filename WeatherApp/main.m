@@ -12,19 +12,19 @@
 #import "WeatherData.h"
 #import "Test.h"
 #import "CityWeather.h"
-#import "forecastWeather.h"
+#import "ForecastWeather.h"
 
 int main(int argc, char * argv[]) {
     //SQLManager* sql = [[SQLManager alloc]initWithDatabaseName:@"WeatherDB.sql"];
     //[sql executeQuery:@"insert into peopleInfo values(null, 'Test', 'Test1', 23)"];
     //NSArray* query2 = [sql loadDataFromDB:@"select * from city_data where id=707860"];
     
-    WeatherData* data = [[WeatherData alloc]init];
-    Test* t = [[Test alloc]init];
-    [data getCityCurrentWeatherbyId:[NSNumber numberWithInt:2172797] withSelector:@selector(updateAfterGetCity:) ofObject:t];
-    [data getCityForecastWeatherbyId:[NSNumber numberWithInt:2172797] withSelector:@selector(updateAfterGetCityforecast:) ofObject:t];
+//    WeatherData* data = [[WeatherData alloc]init];
+//    Test* t = [[Test alloc]init];
+//    [data getCityCurrentWeatherbyId:[NSNumber numberWithInt:2172797] withSelector:@selector(updateAfterGetCity:) ofObject:t];
+//    [data getCityForecastWeatherbyId:[NSNumber numberWithInt:2172797] withSelector:@selector(updateAfterGetCityforecast:) ofObject:t];
     
-    CityWeather* city = [[CityWeather alloc]initWithDatabase:[[SQLManager alloc]init] fromId:[NSNumber numberWithInt:2172797]];
+    CityWeather* city = [[CityWeather alloc] initWithCityID:[NSNumber numberWithInt:2172797]];
     
     @autoreleasepool {
         return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));

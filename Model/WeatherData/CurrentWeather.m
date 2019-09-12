@@ -6,9 +6,9 @@
 //  Copyright © 2018 Luca Faggion. All rights reserved.
 //
 
-#import "currentWeather.h"
+#import "CurrentWeather.h"
 
-@implementation currentWeather
+@implementation CurrentWeather
 
 -(instancetype) initWithDictionary:(NSDictionary *)dict{
     self = [super init];

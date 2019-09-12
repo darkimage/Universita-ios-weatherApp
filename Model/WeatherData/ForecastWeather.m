@@ -6,16 +6,16 @@
 //  Copyright © 2018 Luca Faggion. All rights reserved.
 //
 
-#import "forecastWeather.h"
+#import "ForecastWeather.h"
 
-@implementation forecastWeather
+@implementation ForecastWeather
 
 -(instancetype)initWithDictionary:(NSDictionary *)dict{
     self = [super init];
     if (self) {
         self.forecastWeather = [[NSMutableArray alloc]init];
         for (int i = 0; i < [dict[@"list"] count]; i++) {
-            [self.forecastWeather addObject:[[currentWeather alloc]initWithDictionary:dict[@"list"][i]]];
+            [self.forecastWeather addObject:[[CurrentWeather alloc]initWithDictionary:dict[@"list"][i]]];
         }
     }
     return self;

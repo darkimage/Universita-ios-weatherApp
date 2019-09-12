@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface currentWeather : NSObject
+@interface CurrentWeather : NSObject
 
 @property (nonatomic,strong) NSString* weatherMain;
 @property (nonatomic,strong) NSString* weatherDescription;

@@ -16,7 +16,9 @@
 @property NSInteger currentIndex; //Index attuale settato solo dopo che la transizione e completa
 @property NSInteger nextIndex;    //Index verso il quai si sta facendo una transizione
 @property NSMutableArray<WeatherViewController*>* viewControllers;
+@property WeatherViewController* currentController;
 @property AnimatedBackground* backgroundAnimation;
+
 //METODI
 - (WeatherViewController*) viewAtIndex:(NSInteger)index;
 - (WeatherViewController*) instantiateView:(NSInteger)index;
@@ -86,6 +88,7 @@
 - (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray<UIViewController *> *)previousViewControllers transitionCompleted:(BOOL)completed{
     if(completed){
         self.currentIndex = self.nextIndex;
+        self.currentController = [self.viewControllers objectAtIndex:self.currentIndex];
     }
 }
 
@@ -130,6 +133,14 @@
     AnimatedBackground* bgAnim = [[AnimatedBackground alloc] initWithStructDataArray:animDataArray withGradient:gradient addTo:self.view];
     bgAnim.parallaxMultiplier = [NSNumber numberWithFloat:2.0];
     return bgAnim;
+}
+
+- (nonnull WeatherViewController *)getCurrentController { 
+    return self.currentController;
+}
+
+- (nonnull NSArray<WeatherViewController *> *)getControllers { 
+    return [[NSArray alloc] initWithArray:self.viewControllers];
 }
 
 @end

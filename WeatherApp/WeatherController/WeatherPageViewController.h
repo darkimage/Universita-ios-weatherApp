@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WeatherViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -14,6 +15,10 @@ NS_ASSUME_NONNULL_BEGIN
 //i WeatherViewController ed e'anche responsabile di tenerli aggiornati
 @interface WeatherPageViewController : UIViewController<UIPageViewControllerDataSource, UIPageViewControllerDelegate>
 //AGGIUNGERE METODI PER SALVARE I DATI ETC
+
+- (NSArray<WeatherViewController*>*) getControllers;
+- (WeatherViewController*) getCurrentController;
+
 @end
 
 NS_ASSUME_NONNULL_END

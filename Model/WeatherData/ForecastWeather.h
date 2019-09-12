@@ -7,11 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "currentWeather.h"
+#import "CurrentWeather.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface forecastWeather : NSObject
+@interface ForecastWeather : NSObject
 
 @property (nonatomic,strong) NSMutableArray* forecastWeather;
 

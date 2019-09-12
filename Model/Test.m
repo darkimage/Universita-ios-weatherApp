@@ -7,8 +7,8 @@
 //
 
 #import "Test.h"
-#import "currentWeather.h"
-#import "forecastWeather.h"
+#import "CurrentWeather.h"
+#import "ForecastWeather.h"
 
 @implementation Test
 
@@ -16,7 +16,7 @@
     if(data != nil){
         NSError* error;
         NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-        currentWeather* dw = [[currentWeather alloc]initWithDictionary:json];
+        CurrentWeather* dw = [[CurrentWeather alloc]initWithDictionary:json];
     }else{
         NSLog(@"Data is nil");
     }
@@ -26,7 +26,7 @@
     if(data != nil){
         NSError* error;
         NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-        forecastWeather* dw = [[forecastWeather alloc]initWithDictionary:json];
+        ForecastWeather* dw = [[ForecastWeather alloc]initWithDictionary:json];
     }else{
         NSLog(@"Data is nil");
     }
