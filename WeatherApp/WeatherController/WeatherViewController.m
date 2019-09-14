@@ -36,6 +36,12 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [self.delegate viewDidAppear:animated];
+    [self.headerController showLoadingAnimation:20.0f];
+}
+
+-(void)viewDidLayoutSubviews{
+//    [self.headerController showLoadingAnimation:20.0f];
+//    CGRect rect1 = self.headerController.CityName.bounds;
 }
 
 - (void) scrollViewDidScroll:(UIScrollView *) scrollView

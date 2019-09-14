@@ -12,10 +12,9 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface WeatherBackgroundPresets : NSObject
-@property (nonatomic,strong) NSDictionary* presets;
 +(instancetype) sharedPresets;
--(AnimatedBackground*) setWeatherBackgroundPreset:(NSString*)name toView:(UIView*) view;
-
+-(void) setWeatherBackgroundPreset:(NSString*)name toView:(UIView*) view;
+-(AnimatedBackground*) getWeatherBackgroundPreset:(NSString*)name;
 @end
 
 NS_ASSUME_NONNULL_END

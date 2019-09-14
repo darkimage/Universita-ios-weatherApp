@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		527157B651948B89F9FFDDD7 /* Pods_WeatherAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFD50A74C5784AA42CB5246E /* Pods_WeatherAppTests.framework */; };
-		9D10BC4E21B91252001A2E7C /* Test.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D10BC4B21B91252001A2E7C /* Test.m */; };
 		9D10BC4F21B91252001A2E7C /* WeatherAppModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D10BC4D21B91252001A2E7C /* WeatherAppModel.m */; };
 		9D4F8D7D21B14838007254A5 /* AnimatedBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D4F8D7C21B14838007254A5 /* AnimatedBackground.m */; };
 		9D503A4D232295E600954139 /* WeatherPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D503A4C232295E600954139 /* WeatherPageViewController.m */; };
@@ -67,8 +66,6 @@
 		839F89C0A3FF42B49C53F30D /* Pods-WeatherApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherApp.debug.xcconfig"; path = "Target Support Files/Pods-WeatherApp/Pods-WeatherApp.debug.xcconfig"; sourceTree = "<group>"; };
 		9D10BC4721B91229001A2E7C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9D10BC4821B91229001A2E7C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		9D10BC4A21B91252001A2E7C /* Test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Test.h; sourceTree = "<group>"; };
-		9D10BC4B21B91252001A2E7C /* Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Test.m; sourceTree = "<group>"; };
 		9D10BC4C21B91252001A2E7C /* WeatherAppModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherAppModel.h; sourceTree = "<group>"; };
 		9D10BC4D21B91252001A2E7C /* WeatherAppModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherAppModel.m; sourceTree = "<group>"; };
 		9D10BC5021B91269001A2E7C /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Main.strings; sourceTree = "<group>"; };
@@ -180,8 +177,6 @@
 			isa = PBXGroup;
 			children = (
 				9DD95E6721A8A993006CF255 /* WeatherData */,
-				9D10BC4A21B91252001A2E7C /* Test.h */,
-				9D10BC4B21B91252001A2E7C /* Test.m */,
 				9D10BC4C21B91252001A2E7C /* WeatherAppModel.h */,
 				9D10BC4D21B91252001A2E7C /* WeatherAppModel.m */,
 			);
@@ -595,7 +590,6 @@
 				9D7ACE3D21B18DF4005EA339 /* BackgroundLayer.m in Sources */,
 				9DF4AC2621AA23AE006A0BBF /* ForecastWeather.m in Sources */,
 				9DE4166121B48A9B00B09DB0 /* WeatherHeaderView.m in Sources */,
-				9D10BC4E21B91252001A2E7C /* Test.m in Sources */,
 				9D50920E21A71A45005A30AB /* WeatherViewController.m in Sources */,
 				9DAD1FD421ABE83300C966DB /* TutorialViewNavController.m in Sources */,
 				9DF4AC1A21A9EE4E006A0BBF /* CurrentWeather.m in Sources */,

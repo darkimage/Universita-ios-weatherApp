@@ -24,62 +24,63 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="186"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="hFD-EM-BjG">
-                    <rect key="frame" x="88" y="0.0" width="199" height="185.66666666666666"/>
-                    <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Parma" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kha-5j-mo6">
-                            <rect key="frame" x="0.0" y="0.0" width="199" height="38"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <nil key="highlightedColor"/>
-                            <color key="shadowColor" white="0.33333333329999998" alpha="0.25" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <size key="shadowOffset" width="2" height="2"/>
-                        </label>
-                        <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="QvL-Ug-DGT">
-                            <rect key="frame" x="0.0" y="38.000000000000007" width="199" height="121.66666666666669"/>
-                            <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="21" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fdo-Na-8RB" userLabel="Temperature">
-                                    <rect key="frame" x="0.0" y="0.0" width="97.333333333333329" height="121.66666666666667"/>
-                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="100"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <nil key="highlightedColor"/>
-                                    <color key="shadowColor" white="0.0" alpha="0.25" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <size key="shadowOffset" width="2" height="2"/>
-                                </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="°" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="chV-j2-K5s" userLabel="TemperatureSymbol">
-                                    <rect key="frame" x="97.333333333333343" y="0.0" width="38.666666666666657" height="121.66666666666667"/>
-                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="100"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <nil key="highlightedColor"/>
-                                    <color key="shadowColor" white="0.0" alpha="0.25" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <size key="shadowOffset" width="2" height="2"/>
-                                </label>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KSU-dS-ySi">
-                                    <rect key="frame" x="136" y="29" width="63" height="64"/>
-                                </imageView>
-                            </subviews>
-                        </stackView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Clear sky" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TdF-0n-hPr" userLabel="TemperatureDesc">
-                            <rect key="frame" x="0.0" y="159.66666666666666" width="199" height="26"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <nil key="highlightedColor"/>
-                            <color key="shadowColor" white="0.0" alpha="0.25" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <size key="shadowOffset" width="2" height="2"/>
-                        </label>
-                    </subviews>
-                    <directionalEdgeInsets key="directionalLayoutMargins" top="0.0" leading="0.0" bottom="0.0" trailing="0.0"/>
-                </stackView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Parma" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kha-5j-mo6">
+                    <rect key="frame" x="146" y="0.0" width="83.333333333333314" height="38"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                    <color key="shadowColor" white="0.33333333329999998" alpha="0.25" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <size key="shadowOffset" width="2" height="2"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Clear sky" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TdF-0n-hPr" userLabel="TemperatureDesc">
+                    <rect key="frame" x="146.33333333333334" y="159.66666666666666" width="82.666666666666657" height="26"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                    <color key="shadowColor" white="0.0" alpha="0.25" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <size key="shadowOffset" width="2" height="2"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" text="21" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fdo-Na-8RB" userLabel="Temperature">
+                    <rect key="frame" x="90.333333333333343" y="38.000000000000007" width="97.333333333333343" height="121.66666666666669"/>
+                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="100"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                    <color key="shadowColor" white="0.0" alpha="0.25" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <size key="shadowOffset" width="2" height="2"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="°" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="chV-j2-K5s" userLabel="TemperatureSymbol">
+                    <rect key="frame" x="187.66666666666666" y="38.000000000000007" width="38.666666666666657" height="121.66666666666669"/>
+                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="100"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                    <color key="shadowColor" white="0.0" alpha="0.25" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <size key="shadowOffset" width="2" height="2"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KSU-dS-ySi">
+                    <rect key="frame" x="226.33333333333337" y="67" width="64" height="64"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="64" id="jhu-qT-lt1"/>
+                        <constraint firstAttribute="width" constant="64" id="kre-Xh-YbK"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="hFD-EM-BjG" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Syy-nC-72d"/>
-                <constraint firstItem="hFD-EM-BjG" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="kk6-ax-prV"/>
+                <constraint firstItem="TdF-0n-hPr" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="5zo-So-Vog"/>
+                <constraint firstItem="TdF-0n-hPr" firstAttribute="top" secondItem="chV-j2-K5s" secondAttribute="bottom" id="792-ZS-gfJ"/>
+                <constraint firstItem="kha-5j-mo6" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="9YY-HQ-nDk"/>
+                <constraint firstItem="KSU-dS-ySi" firstAttribute="centerY" secondItem="chV-j2-K5s" secondAttribute="centerY" id="GZR-52-ksX"/>
+                <constraint firstItem="Fdo-Na-8RB" firstAttribute="trailing" secondItem="chV-j2-K5s" secondAttribute="leading" id="Jxy-cZ-nc9"/>
+                <constraint firstItem="Fdo-Na-8RB" firstAttribute="top" secondItem="chV-j2-K5s" secondAttribute="top" id="NuH-jB-y9o"/>
+                <constraint firstItem="chV-j2-K5s" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="centerX" id="QLc-Ns-hNe"/>
+                <constraint firstItem="KSU-dS-ySi" firstAttribute="leading" secondItem="chV-j2-K5s" secondAttribute="trailing" id="UUh-02-VJi"/>
+                <constraint firstItem="chV-j2-K5s" firstAttribute="top" secondItem="kha-5j-mo6" secondAttribute="bottom" id="hXb-zb-DkK"/>
+                <constraint firstItem="kha-5j-mo6" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="oeD-2p-gsF"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-290.39999999999998" y="-271.18226600985224"/>
+            <point key="canvasLocation" x="-327" y="-267"/>
         </view>
     </objects>
 </document>

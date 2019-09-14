@@ -15,12 +15,14 @@
 @interface AnimatedBackground()
 //PRIVATE PROPRIETIES
 @property (nonatomic,strong) NSMutableArray* bgArray;
+@property (nonatomic, strong) NSArray<NSValue*>* layers;
 @property (nonatomic,weak)   UIView*view;
 @property CGPoint image1Start;
 @property CGPoint image2Start;
 @property CGPoint lastScrollPoint;
 @property (nonatomic,strong) UIView* maingradient;
 @property (nonatomic,strong) UIView* topgradient;
+@property UIColor* color;
 @property BOOL hasGradient;
 
 //HELPER FUNCTIONS
@@ -28,6 +30,7 @@
 -(void) initInternal:(UIView*)view;
 -(void) initWithColor:(UIColor*)color;
 -(void) initWithGradient:(CAGradientLayer*)gradient;
+-(void) applyBackground;
 
 //MATH FUNCTIONS
 -(float) maxf:(float) a b:(float) b;
@@ -49,59 +52,59 @@
     self.hasGradient = YES;
     gradient.startPoint = CGPointMake(0, 1);
     gradient.endPoint = CGPointMake(0, 0);
-    self.view.backgroundColor = [UIColor colorWithCGColor:CFBridgingRetain(gradient.colors[0])];
+    self.color =[UIColor colorWithCGColor:CFBridgingRetain(gradient.colors[0])];
     self.maingradient = [[UIView alloc]initWithFrame:CGRectMake(0,0, self.view.bounds.size.width, self.view.bounds.size.height)];
     self.topgradient = [[UIView alloc]initWithFrame:CGRectMake(0, -self.view.bounds.size.height-500, self.view.bounds.size.width, self.view.bounds.size.height+500)];
     self.topgradient.backgroundColor = [UIColor colorWithCGColor:CFBridgingRetain(gradient.colors[1])];
     [self.maingradient.layer insertSublayer:gradient atIndex:0];
-    [self.view addSubview:self.maingradient];
-    [self.view addSubview:self.topgradient];
+    [self applyBackground];
 }
 
 - (void)initWithColor:(UIColor *)color {
-    self.view.backgroundColor = color;
+    self.color = color;
+    [self applyBackground];
 }
 
-- (instancetype)initWithStructDataArray:(NSArray<NSValue*>*)bgDataArray withColor:(nonnull UIColor *)backgroundColor addTo:(nonnull UIView *)view {
+- (instancetype)initWithStructDataArray:(NSArray<NSValue*>*)bgDataArray withColor:(nonnull UIColor *)backgroundColor addTo:(nullable UIView *)view {
     self = [super init];
     if (self) {
         [self initInternal:view];
         [self initWithColor:backgroundColor];
-        for (NSValue* data in bgDataArray) {
-            [self addBackgroundToBack:data];
-        }
+        self.layers = bgDataArray;
+        [self applyToView:self.view];
     }
     return self;
 }
 
-- (instancetype)initWithStructDataArray:(NSArray<NSValue*>*)bgDataArray withGradient:(CAGradientLayer*)gradient addTo:(nonnull UIView *)view {
+- (instancetype)initWithStructDataArray:(NSArray<NSValue*>*)bgDataArray withGradient:(CAGradientLayer*)gradient addTo:(nullable UIView *)view {
     self = [super init];
     if (self) {
         [self initInternal:view];
         [self initWithGradient:gradient];
-        for (NSValue* data in bgDataArray) {
-            [self addBackgroundToBack:data];
-        }
+        self.layers = bgDataArray;
+        [self applyToView:self.view];
     }
     return self;
 }
 
--(instancetype) initWithStructData:(NSValue*)bgData withColor:(UIColor *)backgroundColor addTo:(UIView *)view{
+-(instancetype) initWithStructData:(NSValue*)bgData withColor:(UIColor *)backgroundColor addTo:(nullable UIView *)view{
     self = [super init];
     if (self) {
         [self initInternal:view];
         [self initWithColor:backgroundColor];
-        [self addBackgroundToBack:bgData];
+        self.layers = [[NSArray<NSValue*> alloc] initWithObjects:bgData, nil];
+        [self applyToView:self.view];
     }
     return self;
 }
 
--(instancetype) initWithStructData:(NSValue*)bgData withGradient:(CAGradientLayer*)gradient addTo:(UIView*)view{
+-(instancetype) initWithStructData:(NSValue*)bgData withGradient:(CAGradientLayer*)gradient addTo:(nullable UIView*)view{
     self = [super init];
     if (self) {
         [self initInternal:view];
         [self initWithGradient:gradient];
-        [self addBackgroundToBack:bgData];
+        self.layers = [[NSArray<NSValue*> alloc] initWithObjects:bgData, nil];
+        [self applyToView:self.view];
     }
     return self;
 }
@@ -143,23 +146,23 @@
 -(void) addBackgroundToFront:(NSValue*)bgData{
     BackgroundLayer* nslot = [self createSlotAndAddtoView:bgData];
     [self.bgArray insertObject:nslot atIndex:0];
-    [self sortsubViews];
+    [self sortSubViews];
 }
 
 -(void) addBackgroundToBack:(NSValue*)bgData{
     BackgroundLayer* nslot = [self createSlotAndAddtoView:bgData];
     [self.bgArray addObject:nslot];
-    [self sortsubViews];
+    [self sortSubViews];
 }
 
 
 -(void) addBackground:(NSValue*)bgData atPosition:(NSInteger)index{
     BackgroundLayer* nslot = [self createSlotAndAddtoView:bgData];
     [self.bgArray insertObject:nslot atIndex:index];
-    [self sortsubViews];
+    [self sortSubViews];
 }
 
--(void) sortsubViews{
+-(void) sortSubViews{
     for (BackgroundLayer* slot in self.bgArray) {
         [self.view sendSubviewToBack:slot.image1];
         [self.view sendSubviewToBack:slot.image2];
@@ -187,6 +190,30 @@
 
 - (CGPoint) subtractPoint:(CGPoint) p1 toPoint:(CGPoint) p2{
     return CGPointMake(p1.x - p2.x, p1.y - p2.y);
+}
+
+- (void)applyBackground {
+    if(self.view){
+        self.view.backgroundColor = self.color;
+        if(self.hasGradient){
+            [self.view addSubview:self.maingradient];
+            [self.view addSubview:self.topgradient];
+        }
+    }
+}
+
+- (void)applyToView {
+
+}
+
+- (void)applyToView:(nullable UIView *)view {
+    self.view = view;
+    if(self.view){
+        [self applyBackground];
+        for (NSValue* layer in self.layers) {
+            [self addBackgroundToBack:layer];
+        }
+    }
 }
 
 @end

@@ -12,6 +12,7 @@
 
 @property (nonatomic, strong) DBManager* DBData;
 @property (nonatomic, strong) WeatherData* WeatherData;
+@property (nonatomic, strong) WeatherBackgroundPresets* WeatherBackgroundData;
 
 @end
 
@@ -33,6 +34,7 @@
     if (self) {
         self.DBData = [[SQLManager alloc] init];
         self.WeatherData = [[WeatherData alloc]init];
+        self.WeatherBackgroundData = [[WeatherBackgroundPresets alloc] init];
     }
     return self;
 }
@@ -43,6 +45,16 @@
 
 -(WeatherData*) getWeatherData{
     return self.WeatherData;
+}
+
+- (nonnull CAShapeLayer *)getPlaceHolderShapeLayerStyled { 
+    CAShapeLayer *placeHolderLayer = [CAShapeLayer layer];
+    placeHolderLayer.fillColor = [UIColor colorWithRed:.9 green:.9 blue:.9 alpha:0.8].CGColor;
+    return placeHolderLayer;
+}
+
+- (nonnull WeatherBackgroundPresets *)getWeatherBackgroundPreset { 
+    return self.WeatherBackgroundData;
 }
 
 @end

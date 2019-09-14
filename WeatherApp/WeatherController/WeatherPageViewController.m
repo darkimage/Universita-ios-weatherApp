@@ -9,6 +9,7 @@
 #import "WeatherPageViewController.h"
 #import "WeatherViewController.h"
 #import "AnimatedBackground.h"
+#import "WeatherAppModel.h"
 
 @interface WeatherPageViewController ()
 //PROPRIETA
@@ -22,7 +23,6 @@
 //METODI
 - (WeatherViewController*) viewAtIndex:(NSInteger)index;
 - (WeatherViewController*) instantiateView:(NSInteger)index;
-- (AnimatedBackground*) createAnimatedBackground;
 - (void) updateViewAtIndex:(NSInteger)index;
 - (NSInteger) getCount; //Ritorna il numero di schermate presenti
 @end
@@ -36,7 +36,8 @@
     self.currentIndex = 0;
     self.nextIndex = 0;
     self.viewControllers = [[NSMutableArray<WeatherViewController*> alloc] init];
-    self.backgroundAnimation = [self createAnimatedBackground];
+    self.backgroundAnimation = [[[WeatherAppModel sharedModel] getWeatherBackgroundPreset] getWeatherBackgroundPreset:@"clear_sky"];
+    [self.backgroundAnimation applyToView:self.view];
     for (int i = 0; i <= 3; i++){
         WeatherViewController* controller = [self instantiateView:i];
         controller.delegate = self.backgroundAnimation;
@@ -116,31 +117,12 @@
     return weatherViewController;
 }
 
-- (AnimatedBackground *)createAnimatedBackground {
-    NSValue* bg = [NSValue valueWithImage:@"cloud_blurred" withDuration:20.0f withOffset:-200.0f withSize:CGRectMake(0, 0, 1000, 500) andOpacity: 1.0f];
-    
-    NSValue* bg1 = [NSValue valueWithImage:@"cloud_blurred" withDuration:50.0f withOffset:-150.0f withSize:CGRectMake(0, 0, 700, 350) andOpacity: 0.5f];
-    
-    NSValue* bg2 = [NSValue valueWithImage:@"cloud_blurred" withDuration: 100.0f withOffset:-100.0f withSize:CGRectMake(0, 0, 500, 250) andOpacity: 0.3f];
-    
-    CAGradientLayer* gradient = [CAGradientLayer layer];
-    gradient.frame = self.view.bounds;
-    UIColor* bottom = [UIColor colorWithRed:130.0/255.0 green:165.0/255.0 blue:188.0/255.0 alpha:1.0];
-    UIColor* top = [UIColor colorWithRed:37.0/255.0 green:98.0/255.0 blue:129.0/255.0 alpha:1.0];
-    gradient.colors = [NSArray arrayWithObjects:(id)bottom.CGColor,(id)top.CGColor, nil];
-    //52    108    216
-    NSArray<NSValue*>* animDataArray = [[NSArray<NSValue*> alloc] initWithObjects:bg2,bg1,bg, nil];
-    AnimatedBackground* bgAnim = [[AnimatedBackground alloc] initWithStructDataArray:animDataArray withGradient:gradient addTo:self.view];
-    bgAnim.parallaxMultiplier = [NSNumber numberWithFloat:2.0];
-    return bgAnim;
-}
-
 - (nonnull WeatherViewController *)getCurrentController { 
     return self.currentController;
 }
 
 - (nonnull NSArray<WeatherViewController *> *)getControllers { 
-    return [[NSArray alloc] initWithArray:self.viewControllers];
+    return (NSArray*)self.viewControllers;
 }
 
 @end
