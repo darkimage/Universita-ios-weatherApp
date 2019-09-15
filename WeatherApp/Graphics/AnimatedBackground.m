@@ -23,6 +23,7 @@
 @property (nonatomic,strong) UIView* maingradient;
 @property (nonatomic,strong) UIView* topgradient;
 @property UIColor* color;
+@property (nonatomic,strong) CAGradientLayer* gradientRef;
 @property BOOL hasGradient;
 
 //HELPER FUNCTIONS
@@ -31,6 +32,7 @@
 -(void) initWithColor:(UIColor*)color;
 -(void) initWithGradient:(CAGradientLayer*)gradient;
 -(void) applyBackground;
+-(void) createGradients:(CAGradientLayer*)gradient withSize:(CGRect)rect ;
 
 //MATH FUNCTIONS
 -(float) maxf:(float) a b:(float) b;
@@ -49,14 +51,12 @@
 }
 
 -(void) initWithGradient:(CAGradientLayer*)gradient{
+    self.gradientRef = gradient;
     self.hasGradient = YES;
     gradient.startPoint = CGPointMake(0, 1);
     gradient.endPoint = CGPointMake(0, 0);
     self.color =[UIColor colorWithCGColor:CFBridgingRetain(gradient.colors[0])];
-    self.maingradient = [[UIView alloc]initWithFrame:CGRectMake(0,0, self.view.bounds.size.width, self.view.bounds.size.height)];
-    self.topgradient = [[UIView alloc]initWithFrame:CGRectMake(0, -self.view.bounds.size.height-500, self.view.bounds.size.width, self.view.bounds.size.height+500)];
-    self.topgradient.backgroundColor = [UIColor colorWithCGColor:CFBridgingRetain(gradient.colors[1])];
-    [self.maingradient.layer insertSublayer:gradient atIndex:0];
+    [self createGradients:gradient withSize:self.view.bounds];
     [self applyBackground];
 }
 
@@ -125,8 +125,8 @@
         index++;
     }
     if(self.hasGradient){
-    self.maingradient.center = CGPointMake(self.maingradient.center.x,self.view.bounds.size.height/2-scrollView.contentOffset.y);
-    self.topgradient.center = CGPointMake(self.topgradient.center.x,self.view.bounds.size.height/2-self.maingradient.bounds.size.height - scrollView.contentOffset.y);
+        self.maingradient.center = CGPointMake(self.maingradient.center.x,self.view.bounds.size.height/2-scrollView.contentOffset.y);
+        self.topgradient.center = CGPointMake(self.topgradient.center.x,self.view.bounds.size.height/2-self.maingradient.bounds.size.height - scrollView.contentOffset.y);
     }
 }
 
@@ -196,6 +196,7 @@
     if(self.view){
         self.view.backgroundColor = self.color;
         if(self.hasGradient){
+            [self createGradients:self.gradientRef withSize:self.view.bounds];
             [self.view addSubview:self.maingradient];
             [self.view addSubview:self.topgradient];
         }
@@ -214,6 +215,13 @@
             [self addBackgroundToBack:layer];
         }
     }
+}
+
+- (void)createGradients:(CAGradientLayer *)gradient withSize:(CGRect)rect {
+    self.maingradient = [[UIView alloc]initWithFrame:CGRectMake(0,0, rect.size.width, rect.size.height)];
+    self.topgradient = [[UIView alloc]initWithFrame:CGRectMake(0, -rect.size.height-500, rect.size.width, rect.size.height+500)];
+    self.topgradient.backgroundColor = [UIColor colorWithCGColor:CFBridgingRetain(gradient.colors[1])];
+    [self.maingradient.layer insertSublayer:gradient atIndex:0];
 }
 
 @end
