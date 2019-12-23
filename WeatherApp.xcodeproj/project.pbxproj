@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		527157B651948B89F9FFDDD7 /* Pods_WeatherAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFD50A74C5784AA42CB5246E /* Pods_WeatherAppTests.framework */; };
 		9D10BC4F21B91252001A2E7C /* WeatherAppModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D10BC4D21B91252001A2E7C /* WeatherAppModel.m */; };
+		9D20C386232EE62B007FF9A3 /* WeatherForecastSlideView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D20C385232EE62B007FF9A3 /* WeatherForecastSlideView.m */; };
+		9D20C388232EE63F007FF9A3 /* WeatherForecastSlideView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D20C387232EE63F007FF9A3 /* WeatherForecastSlideView.xib */; };
+		9D20C38B232EE8F7007FF9A3 /* WeatherForecastSlotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D20C38A232EE8F7007FF9A3 /* WeatherForecastSlotView.m */; };
+		9D20C38D232EE905007FF9A3 /* WeatherForecastSlotView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D20C38C232EE905007FF9A3 /* WeatherForecastSlotView.xib */; };
 		9D4F8D7D21B14838007254A5 /* AnimatedBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D4F8D7C21B14838007254A5 /* AnimatedBackground.m */; };
 		9D503A4D232295E600954139 /* WeatherPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D503A4C232295E600954139 /* WeatherPageViewController.m */; };
 		9D50920B21A71A45005A30AB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D50920A21A71A45005A30AB /* AppDelegate.m */; };
@@ -70,6 +74,13 @@
 		9D10BC4D21B91252001A2E7C /* WeatherAppModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherAppModel.m; sourceTree = "<group>"; };
 		9D10BC5021B91269001A2E7C /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Main.strings; sourceTree = "<group>"; };
 		9D10BC5121B91269001A2E7C /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		9D20C383232EE467007FF9A3 /* WeatherBaseView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeatherBaseView.h; sourceTree = "<group>"; };
+		9D20C384232EE62B007FF9A3 /* WeatherForecastSlideView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeatherForecastSlideView.h; sourceTree = "<group>"; };
+		9D20C385232EE62B007FF9A3 /* WeatherForecastSlideView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeatherForecastSlideView.m; sourceTree = "<group>"; };
+		9D20C387232EE63F007FF9A3 /* WeatherForecastSlideView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeatherForecastSlideView.xib; sourceTree = "<group>"; };
+		9D20C389232EE8F7007FF9A3 /* WeatherForecastSlotView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeatherForecastSlotView.h; sourceTree = "<group>"; };
+		9D20C38A232EE8F7007FF9A3 /* WeatherForecastSlotView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeatherForecastSlotView.m; sourceTree = "<group>"; };
+		9D20C38C232EE905007FF9A3 /* WeatherForecastSlotView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeatherForecastSlotView.xib; sourceTree = "<group>"; };
 		9D4F8D7B21B14838007254A5 /* AnimatedBackground.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AnimatedBackground.h; sourceTree = "<group>"; };
 		9D4F8D7C21B14838007254A5 /* AnimatedBackground.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AnimatedBackground.m; sourceTree = "<group>"; };
 		9D4F8D8121B14D7C007254A5 /* WeatherViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeatherViewDelegate.h; sourceTree = "<group>"; };
@@ -349,12 +360,19 @@
 		9DFDC4312322E59900F1D09D /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				9DE4165D21B4673200B09DB0 /* WeatherHeaderView.xib */,
-				9DE4165F21B48A9B00B09DB0 /* WeatherHeaderView.h */,
-				9DE4166021B48A9B00B09DB0 /* WeatherHeaderView.m */,
-				9DFDC4322322E64F00F1D09D /* WeatherAverageView.xib */,
 				9DFDC4342322E91A00F1D09D /* WeatherAverageView.h */,
 				9DFDC4352322E91A00F1D09D /* WeatherAverageView.m */,
+				9DFDC4322322E64F00F1D09D /* WeatherAverageView.xib */,
+				9D20C383232EE467007FF9A3 /* WeatherBaseView.h */,
+				9D20C384232EE62B007FF9A3 /* WeatherForecastSlideView.h */,
+				9D20C385232EE62B007FF9A3 /* WeatherForecastSlideView.m */,
+				9D20C387232EE63F007FF9A3 /* WeatherForecastSlideView.xib */,
+				9DE4165F21B48A9B00B09DB0 /* WeatherHeaderView.h */,
+				9DE4166021B48A9B00B09DB0 /* WeatherHeaderView.m */,
+				9DE4165D21B4673200B09DB0 /* WeatherHeaderView.xib */,
+				9D20C389232EE8F7007FF9A3 /* WeatherForecastSlotView.h */,
+				9D20C38A232EE8F7007FF9A3 /* WeatherForecastSlotView.m */,
+				9D20C38C232EE905007FF9A3 /* WeatherForecastSlotView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -466,10 +484,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D20C38D232EE905007FF9A3 /* WeatherForecastSlotView.xib in Resources */,
 				9D50921621A71A47005A30AB /* LaunchScreen.storyboard in Resources */,
 				9DE4165E21B4673200B09DB0 /* WeatherHeaderView.xib in Resources */,
 				9DD95E6D21A8CFB0006CF255 /* WeatherDB.sql in Resources */,
 				9D50921321A71A47005A30AB /* Assets.xcassets in Resources */,
+				9D20C388232EE63F007FF9A3 /* WeatherForecastSlideView.xib in Resources */,
 				9DFDC4332322E64F00F1D09D /* WeatherAverageView.xib in Resources */,
 				9D50921121A71A45005A30AB /* Main.storyboard in Resources */,
 			);
@@ -587,8 +607,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D20C386232EE62B007FF9A3 /* WeatherForecastSlideView.m in Sources */,
 				9D7ACE3D21B18DF4005EA339 /* BackgroundLayer.m in Sources */,
 				9DF4AC2621AA23AE006A0BBF /* ForecastWeather.m in Sources */,
+				9D20C38B232EE8F7007FF9A3 /* WeatherForecastSlotView.m in Sources */,
 				9DE4166121B48A9B00B09DB0 /* WeatherHeaderView.m in Sources */,
 				9D50920E21A71A45005A30AB /* WeatherViewController.m in Sources */,
 				9DAD1FD421ABE83300C966DB /* TutorialViewNavController.m in Sources */,

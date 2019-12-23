@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WeatherForecastSlotView">
+            <connections>
+                <outlet property="PrecipitationLabel" destination="ohY-da-Ne1" id="DK0-g9-4wD"/>
+                <outlet property="TemperatureLabel" destination="oUH-mN-ITU" id="0E0-aZ-ohj"/>
+                <outlet property="TimeFromNowLabel" destination="RuB-xt-uGH" id="C9Q-Ua-78w"/>
+                <outlet property="WeatherIcon" destination="CLR-wJ-wMA" id="pWV-ok-TQG"/>
+                <outlet property="contentView" destination="iN0-l3-epB" id="pd1-Oh-wE1"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="62" height="100"/>
+            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kEH-mZ-WBJ">
+                    <rect key="frame" x="0.0" y="-1" width="62" height="102"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Now" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RuB-xt-uGH">
+                            <rect key="frame" x="13" y="2" width="36.5" height="22.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                            <color key="shadowColor" white="0.33333333329999998" alpha="0.25" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <size key="shadowOffset" width="2" height="2"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ohY-da-Ne1">
+                            <rect key="frame" x="16.5" y="24.5" width="29.5" height="18"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <color key="textColor" red="0.32469122388499128" green="0.65221612934328443" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                            <color key="shadowColor" white="0.33333333329999998" alpha="0.25" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <size key="shadowOffset" width="2" height="2"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="42°" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oUH-mN-ITU">
+                            <rect key="frame" x="13" y="74.5" width="36.5" height="27.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                            <color key="shadowColor" white="0.33333333329999998" alpha="0.25" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <size key="shadowOffset" width="2" height="2"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CLR-wJ-wMA">
+                            <rect key="frame" x="15" y="42.5" width="32" height="32"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="32" id="4UL-lX-Ytj"/>
+                                <constraint firstAttribute="height" constant="32" id="dbI-dC-SAf"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="ohY-da-Ne1" firstAttribute="centerX" secondItem="kEH-mZ-WBJ" secondAttribute="centerX" id="0FX-JQ-J2T"/>
+                        <constraint firstAttribute="height" constant="102" id="65v-mx-SCU"/>
+                        <constraint firstItem="CLR-wJ-wMA" firstAttribute="centerX" secondItem="kEH-mZ-WBJ" secondAttribute="centerX" id="AdF-LS-wfW"/>
+                        <constraint firstItem="ohY-da-Ne1" firstAttribute="top" secondItem="RuB-xt-uGH" secondAttribute="bottom" id="AtJ-9s-3WO"/>
+                        <constraint firstItem="CLR-wJ-wMA" firstAttribute="top" secondItem="ohY-da-Ne1" secondAttribute="bottom" id="HyB-wD-PLz"/>
+                        <constraint firstItem="oUH-mN-ITU" firstAttribute="centerX" secondItem="kEH-mZ-WBJ" secondAttribute="centerX" id="IFU-oP-rDf"/>
+                        <constraint firstItem="RuB-xt-uGH" firstAttribute="centerX" secondItem="kEH-mZ-WBJ" secondAttribute="centerX" id="Vn9-L5-yt5"/>
+                        <constraint firstAttribute="width" constant="62" id="h8D-g9-QBF"/>
+                        <constraint firstAttribute="bottom" secondItem="oUH-mN-ITU" secondAttribute="bottom" id="r7b-aE-FIO"/>
+                        <constraint firstItem="RuB-xt-uGH" firstAttribute="top" secondItem="kEH-mZ-WBJ" secondAttribute="top" constant="2" id="yPX-F2-uxU"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="kEH-mZ-WBJ" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="HiN-dF-Hg3"/>
+                <constraint firstItem="kEH-mZ-WBJ" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="RYQ-QC-RGj"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="-502.39999999999998" y="-385.0074962518741"/>
+        </view>
+    </objects>
+</document>

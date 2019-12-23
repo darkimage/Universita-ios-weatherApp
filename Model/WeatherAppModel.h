@@ -10,6 +10,7 @@
 #import "WeatherData.h"
 #import "SQLManager.h"
 #import "WeatherBackgroundPresets.h"
+#import "AppDelegate.h"
 #import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
@@ -20,6 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(DBManager*) getDatabase;
 -(WeatherData*) getWeatherData;
+-(AppDelegate*) getAppDelegate;
 -(WeatherBackgroundPresets*) getWeatherBackgroundPreset;
 -(CAShapeLayer*) getPlaceHolderShapeLayerStyled;
 

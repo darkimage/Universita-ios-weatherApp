@@ -1,20 +1,18 @@
 //
-//  WeatherAverageView.m
+//  WeatherForecastSlotView.m
 //  WeatherApp
 //
-//  Created by Luca Faggion on 06/09/2019.
+//  Created by Luca Faggion on 15/09/2019.
 //  Copyright © 2019 Luca Faggion. All rights reserved.
 //
 
-#import "WeatherAverageView.h"
+#import "WeatherForecastSlotView.h"
 
-@interface WeatherAverageView()
+@interface WeatherForecastSlotView()
 @property (strong, nonatomic) IBOutlet UIView *contentView;
-@property (weak, nonatomic) IBOutlet UIStackView *stackView;
--(void) internalInit;
 @end
 
-@implementation WeatherAverageView
+@implementation WeatherForecastSlotView
 
 -(id) init{
     self = [super init];
@@ -38,10 +36,12 @@
 }
 
 -(void)internalInit{
-    [[NSBundle mainBundle] loadNibNamed:@"WeatherAverageView" owner:self options:nil];
+    [[NSBundle mainBundle] loadNibNamed:@"WeatherForecastSlotView" owner:self options:nil];
     [self addSubview:self.contentView];
     self.translatesAutoresizingMaskIntoConstraints = NO;
     [self.heightAnchor constraintEqualToConstant:self.contentView.bounds.size.height].active = true;
+    [self.widthAnchor constraintEqualToConstant:self.contentView.bounds.size.width].active = true;
 }
+
 
 @end

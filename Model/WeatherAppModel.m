@@ -57,4 +57,8 @@
     return self.WeatherBackgroundData;
 }
 
+- (nonnull AppDelegate *)getAppDelegate { 
+    return (AppDelegate *)[UIApplication sharedApplication].delegate;
+}
+
 @end

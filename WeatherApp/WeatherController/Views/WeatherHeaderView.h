@@ -7,18 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WeatherBaseView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface WeatherHeaderView : UIView
+@interface WeatherHeaderView : UIView<WeatherBaseView>
 @property (weak, nonatomic) IBOutlet UILabel *Temperature;
 @property (weak, nonatomic) IBOutlet UILabel *TemperatureDesc;
 @property (weak, nonatomic) IBOutlet UILabel *TemperatureSymbol;
 @property (weak, nonatomic) IBOutlet UIImageView *WeatherIcon;
 @property (weak, nonatomic) IBOutlet UILabel *CityName;
 
--(void)showLoadingAnimation:(CGFloat)delay;
--(void)hideLoadingAnimation:(CGFloat)delay;
+- (void) updateView:(nonnull CityWeather *)weather;
 
 @end
 
