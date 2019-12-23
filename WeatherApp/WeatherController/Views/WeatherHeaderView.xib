@@ -11,10 +11,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WeatherHeaderView">
             <connections>
-                <outlet property="CityName" destination="kha-5j-mo6" id="7gf-lX-PiD"/>
-                <outlet property="Temperature" destination="Fdo-Na-8RB" id="xKZ-RJ-jQK"/>
-                <outlet property="TemperatureDesc" destination="TdF-0n-hPr" id="Fht-jG-UXa"/>
-                <outlet property="TemperatureSymbol" destination="chV-j2-K5s" id="1WM-zc-08J"/>
+                <outlet property="CityName" destination="kha-5j-mo6" id="TFS-UO-FkU"/>
+                <outlet property="Temperature" destination="Fdo-Na-8RB" id="tgH-KM-siq"/>
+                <outlet property="TemperatureDesc" destination="TdF-0n-hPr" id="huK-2P-Ejq"/>
+                <outlet property="TemperatureSymbol" destination="chV-j2-K5s" id="qL3-4d-Y0D"/>
                 <outlet property="WeatherIcon" destination="KSU-dS-ySi" id="vtG-QT-9z0"/>
                 <outlet property="content" destination="iN0-l3-epB" id="GgK-zs-LZk"/>
             </connections>
@@ -24,7 +24,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="186"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Parma" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kha-5j-mo6">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Parma" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kha-5j-mo6" userLabel="CityName">
                     <rect key="frame" x="146" y="0.0" width="83.333333333333314" height="38"/>
                     <fontDescription key="fontDescription" type="system" pointSize="30"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

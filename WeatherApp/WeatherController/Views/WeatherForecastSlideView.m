@@ -8,6 +8,7 @@
 
 #import "WeatherForecastSlideView.h"
 #import "WeatherForecastSlotView.h"
+#import "UIView+WeatherViewCategory.h"
 
 @interface WeatherForecastSlideView()
 @property (strong, nonatomic) IBOutlet UIView *contentView;
@@ -18,30 +19,8 @@
 
 @implementation WeatherForecastSlideView
 
--(id) init{
-    self = [super init];
-    return self;
-}
-
--(id) initWithCoder:(NSCoder *)aDecoder{
-    self = [super initWithCoder:aDecoder];
-    if (self) {
-        [self internalInit];
-    }
-    return self;
-}
-
--(id) initWithFrame:(CGRect)frame{
-    self = [super initWithFrame:frame];
-    if (self) {
-        [self internalInit];
-    }
-    return self;
-}
-
--(void)internalInit{
-    [[NSBundle mainBundle] loadNibNamed:@"WeatherForecastSlideView" owner:self options:nil];
-    [self addSubview:self.contentView];
+-(void)initView{
+    [self initViewFromNib:@"WeatherForecastSlideView"];
     self.scrollView.delegate = self;
     self.translatesAutoresizingMaskIntoConstraints = NO;
     NSLayoutConstraint* height = [self.heightAnchor constraintEqualToConstant:self.contentView.bounds.size.height];
@@ -63,6 +42,7 @@
 -(void) updateView:(nonnull CityWeather*)weather{
     
 }
+
 @end
 
 

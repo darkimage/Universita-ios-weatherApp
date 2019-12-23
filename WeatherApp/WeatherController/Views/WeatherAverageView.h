@@ -7,16 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "WeatherBaseView.h"
+#import "WeatherViewProtocol.h"
+#import "WeatherView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface WeatherAverageView : UIView<WeatherBaseView>
-@property (weak, nonatomic) IBOutlet UILabel* TodayLabel;
-@property (weak, nonatomic) IBOutlet UILabel* AverageLabel;
--(void) showLoadingAnimation:(CGFloat)delay;
--(void) hideLoadingAnimation:(CGFloat)delay;
--(void) updateView:(nonnull CityWeather*)weather;
+@interface WeatherAverageView : WeatherView<WeatherViewProtocol>
 @end
 
 NS_ASSUME_NONNULL_END

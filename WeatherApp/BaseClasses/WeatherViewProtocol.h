@@ -11,10 +11,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@protocol WeatherBaseView <NSObject>
-//-(void) showLoadingAnimation:(CGFloat)delay;
-//-(void) hideLoadingAnimation:(CGFloat)delay;
+@protocol WeatherViewProtocol <NSObject>
 -(void) updateView:(nonnull CityWeather*)weather;
+-(void) initView;
 @end
 
 NS_ASSUME_NONNULL_END

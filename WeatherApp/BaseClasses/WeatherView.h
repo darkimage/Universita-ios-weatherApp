@@ -1,19 +1,19 @@
 //
-//  WeatherForecastSlideView.h
+//  WeatherView.h
 //  WeatherApp
 //
-//  Created by Luca Faggion on 15/09/2019.
+//  Created by Luca Faggion on 23/12/2019.
 //  Copyright © 2019 Luca Faggion. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import "WeatherViewProtocol.h"
-#import "WeatherView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface WeatherForecastSlideView : WeatherView<WeatherViewProtocol, UIScrollViewDelegate>
-
+@interface WeatherView : UIView<WeatherViewProtocol>
+-(id) initWithCoder:(NSCoder *)aDecoder;
+-(id) initWithFrame:(CGRect)frame;
 @end
 
 NS_ASSUME_NONNULL_END

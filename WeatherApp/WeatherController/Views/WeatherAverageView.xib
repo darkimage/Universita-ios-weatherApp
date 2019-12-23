@@ -12,8 +12,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WeatherAverageView">
             <connections>
-                <outlet property="AverageLabel" destination="h0y-8V-zB6" id="5Bb-rN-3ta"/>
-                <outlet property="TodayLabel" destination="5pP-Tz-Mvb" id="xdn-30-mr9"/>
+                <outlet property="TemperatureLabel" destination="h0y-8V-zB6" id="FSX-e9-Ped"/>
+                <outlet property="TimeLabel" destination="5pP-Tz-Mvb" id="5RB-2c-h5M"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="hvO-3u-QBG"/>
                 <outlet property="stackView" destination="JBX-E9-lWF" id="Jg9-Hz-EJQ"/>
             </connections>

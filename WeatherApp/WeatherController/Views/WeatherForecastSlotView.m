@@ -7,41 +7,27 @@
 //
 
 #import "WeatherForecastSlotView.h"
+#import "UIView+WeatherViewCategory.h"
 
 @interface WeatherForecastSlotView()
 @property (strong, nonatomic) IBOutlet UIView *contentView;
+@property (strong, nonatomic) IBOutlet UILabel *TimeFromNowLabel;
+@property (strong, nonatomic) IBOutlet UILabel *TemperatureLabel;
+@property (strong, nonatomic) IBOutlet UILabel *PrecipitationLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *WeatherIcon;
 @end
 
 @implementation WeatherForecastSlotView
 
--(id) init{
-    self = [super init];
-    return self;
-}
-
--(id) initWithCoder:(NSCoder *)aDecoder{
-    self = [super initWithCoder:aDecoder];
-    if (self) {
-        [self internalInit];
-    }
-    return self;
-}
-
--(id) initWithFrame:(CGRect)frame{
-    self = [super initWithFrame:frame];
-    if (self) {
-        [self internalInit];
-    }
-    return self;
-}
-
--(void)internalInit{
-    [[NSBundle mainBundle] loadNibNamed:@"WeatherForecastSlotView" owner:self options:nil];
-    [self addSubview:self.contentView];
+-(void)initView{
+    [self initViewFromNib:@"WeatherForecastSlotView"];
     self.translatesAutoresizingMaskIntoConstraints = NO;
     [self.heightAnchor constraintEqualToConstant:self.contentView.bounds.size.height].active = true;
     [self.widthAnchor constraintEqualToConstant:self.contentView.bounds.size.width].active = true;
 }
 
+-(void) updateView:(CityWeather *)weather{
+    
+}
 
 @end

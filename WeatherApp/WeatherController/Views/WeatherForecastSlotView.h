@@ -7,18 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "WeatherBaseView.h"
+#import "WeatherViewProtocol.h"
+#import "WeatherView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface WeatherForecastSlotView : UIView<WeatherBaseView>
-@property (strong, nonatomic) IBOutlet UILabel *TimeFromNowLabel;
-@property (strong, nonatomic) IBOutlet UILabel *TemperatureLabel;
-@property (strong, nonatomic) IBOutlet UILabel *PrecipitationLabel;
-@property (strong, nonatomic) IBOutlet UIImageView *WeatherIcon;
--(void) showLoadingAnimation:(CGFloat)delay;
--(void) hideLoadingAnimation:(CGFloat)delay;
--(void) updateView:(nonnull CityWeather*)weather;
+@interface WeatherForecastSlotView : WeatherView<WeatherViewProtocol>
+//@property (strong, nonatomic) IBOutlet UILabel *TimeFromNowLabel;
+//@property (strong, nonatomic) IBOutlet UILabel *TemperatureLabel;
+//@property (strong, nonatomic) IBOutlet UILabel *PrecipitationLabel;
+//@property (strong, nonatomic) IBOutlet UIImageView *WeatherIcon;
 @end
 
 NS_ASSUME_NONNULL_END

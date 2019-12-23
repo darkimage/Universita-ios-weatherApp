@@ -9,38 +9,21 @@
 #import "WeatherHeaderView.h"
 #import "WeatherAppModel.h"
 #import <RZViewActions/UIView+RZViewActions.h>
+#import "UIView+WeatherViewCategory.h"
 
 @interface WeatherHeaderView()
 @property (strong, nonatomic) IBOutlet UIView *content;
--(void) internalInit;
+@property (weak, nonatomic) IBOutlet UILabel *Temperature;
+@property (weak, nonatomic) IBOutlet UILabel *TemperatureDesc;
+@property (weak, nonatomic) IBOutlet UILabel *TemperatureSymbol;
+@property (weak, nonatomic) IBOutlet UIImageView *WeatherIcon;
+@property (weak, nonatomic) IBOutlet UILabel *CityName;
 @end
 
 @implementation WeatherHeaderView
 
--(id)init{
-    self = [super init];
-    return self;
-}
-
--(id)initWithCoder:(NSCoder *)aDecoder{
-    self = [super initWithCoder:aDecoder];
-    if (self){
-        [self internalInit];
-    }
-    return self;
-}
-
--(id) initWithFrame:(CGRect)frame{
-    self = [super initWithFrame:frame];
-    if (self) {
-        [self internalInit];
-    }
-    return self;
-}
-
-- (void)internalInit {
-    [[NSBundle mainBundle] loadNibNamed: @"WeatherHeaderView" owner:self options:nil];
-    [self addSubview:self.content];
+- (void)initView {
+    [self initViewFromNib:@"WeatherHeaderView"];
     self.translatesAutoresizingMaskIntoConstraints = NO;
     [self.heightAnchor constraintEqualToConstant:self.content.bounds.size.height].active = true;
 }

@@ -29,9 +29,9 @@
 		9D50924521A71D9B005A30AB /* SQLManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D50924421A71D9B005A30AB /* SQLManager.m */; };
 		9D50924A21A72601005A30AB /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D50924921A72601005A30AB /* DBManager.m */; };
 		9D7ACE3D21B18DF4005EA339 /* BackgroundLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D7ACE3C21B18DF4005EA339 /* BackgroundLayer.m */; };
+		9D8A845123B163D700456394 /* UIView+WeatherViewCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D8A845023B163D700456394 /* UIView+WeatherViewCategory.m */; };
+		9D8A845423B1661500456394 /* WeatherView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D8A845323B1661500456394 /* WeatherView.m */; };
 		9DA5702821B5969100CF6FC3 /* WeatherBackgroundPresets.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DA5702721B5969100CF6FC3 /* WeatherBackgroundPresets.m */; };
-		9DAD1FD421ABE83300C966DB /* TutorialViewNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DAD1FD321ABE83300C966DB /* TutorialViewNavController.m */; };
-		9DAD1FD721ABEFE000C966DB /* TutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DAD1FD621ABEFE000C966DB /* TutorialViewController.m */; };
 		9DD95E6A21A8A9AF006CF255 /* WeatherData.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD95E6921A8A9AF006CF255 /* WeatherData.m */; };
 		9DD95E6D21A8CFB0006CF255 /* WeatherDB.sql in Resources */ = {isa = PBXBuildFile; fileRef = 9DD95E6C21A8CFB0006CF255 /* WeatherDB.sql */; };
 		9DE4165E21B4673200B09DB0 /* WeatherHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DE4165D21B4673200B09DB0 /* WeatherHeaderView.xib */; };
@@ -74,7 +74,7 @@
 		9D10BC4D21B91252001A2E7C /* WeatherAppModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherAppModel.m; sourceTree = "<group>"; };
 		9D10BC5021B91269001A2E7C /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Main.strings; sourceTree = "<group>"; };
 		9D10BC5121B91269001A2E7C /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
-		9D20C383232EE467007FF9A3 /* WeatherBaseView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeatherBaseView.h; sourceTree = "<group>"; };
+		9D20C383232EE467007FF9A3 /* WeatherViewProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeatherViewProtocol.h; sourceTree = "<group>"; };
 		9D20C384232EE62B007FF9A3 /* WeatherForecastSlideView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeatherForecastSlideView.h; sourceTree = "<group>"; };
 		9D20C385232EE62B007FF9A3 /* WeatherForecastSlideView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeatherForecastSlideView.m; sourceTree = "<group>"; };
 		9D20C387232EE63F007FF9A3 /* WeatherForecastSlideView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeatherForecastSlideView.xib; sourceTree = "<group>"; };
@@ -109,13 +109,13 @@
 		9D50924921A72601005A30AB /* DBManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DBManager.m; sourceTree = "<group>"; };
 		9D5B222823294A4D004E268C /* WeatherModelDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeatherModelDelegate.h; sourceTree = "<group>"; };
 		9D7ACE3C21B18DF4005EA339 /* BackgroundLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BackgroundLayer.m; sourceTree = "<group>"; };
+		9D8A844F23B163D700456394 /* UIView+WeatherViewCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+WeatherViewCategory.h"; sourceTree = "<group>"; };
+		9D8A845023B163D700456394 /* UIView+WeatherViewCategory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+WeatherViewCategory.m"; sourceTree = "<group>"; };
+		9D8A845223B1661500456394 /* WeatherView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeatherView.h; sourceTree = "<group>"; };
+		9D8A845323B1661500456394 /* WeatherView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeatherView.m; sourceTree = "<group>"; };
 		9D8E0D8221B1845200D2FD2B /* BackgroundLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BackgroundLayer.h; sourceTree = "<group>"; };
 		9DA5702621B5969100CF6FC3 /* WeatherBackgroundPresets.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeatherBackgroundPresets.h; sourceTree = "<group>"; };
 		9DA5702721B5969100CF6FC3 /* WeatherBackgroundPresets.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeatherBackgroundPresets.m; sourceTree = "<group>"; };
-		9DAD1FD221ABE83300C966DB /* TutorialViewNavController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TutorialViewNavController.h; sourceTree = "<group>"; };
-		9DAD1FD321ABE83300C966DB /* TutorialViewNavController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TutorialViewNavController.m; sourceTree = "<group>"; };
-		9DAD1FD521ABEFE000C966DB /* TutorialViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TutorialViewController.h; sourceTree = "<group>"; };
-		9DAD1FD621ABEFE000C966DB /* TutorialViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TutorialViewController.m; sourceTree = "<group>"; };
 		9DD95E6821A8A9AF006CF255 /* WeatherData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeatherData.h; sourceTree = "<group>"; };
 		9DD95E6921A8A9AF006CF255 /* WeatherData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeatherData.m; sourceTree = "<group>"; };
 		9DD95E6C21A8CFB0006CF255 /* WeatherDB.sql */ = {isa = PBXFileReference; lastKnownFileType = file; path = WeatherDB.sql; sourceTree = "<group>"; };
@@ -230,17 +230,6 @@
 			path = WeatherController;
 			sourceTree = "<group>";
 		};
-		9D4F8D8021B14D5E007254A5 /* TutorialController */ = {
-			isa = PBXGroup;
-			children = (
-				9DAD1FD221ABE83300C966DB /* TutorialViewNavController.h */,
-				9DAD1FD321ABE83300C966DB /* TutorialViewNavController.m */,
-				9DAD1FD521ABEFE000C966DB /* TutorialViewController.h */,
-				9DAD1FD621ABEFE000C966DB /* TutorialViewController.m */,
-			);
-			path = TutorialController;
-			sourceTree = "<group>";
-		};
 		9D5091FD21A71A45005A30AB = {
 			isa = PBXGroup;
 			children = (
@@ -268,7 +257,7 @@
 		9D50920821A71A45005A30AB /* WeatherApp */ = {
 			isa = PBXGroup;
 			children = (
-				9D4F8D8021B14D5E007254A5 /* TutorialController */,
+				9D8A844823B1621100456394 /* BaseClasses */,
 				9D4F8D7A21B14809007254A5 /* Graphics */,
 				9D7ACE3E21B1C88A005EA339 /* Appdelegate */,
 				9D4F8D7F21B14D52007254A5 /* WeatherController */,
@@ -341,6 +330,18 @@
 			path = Appdelegate;
 			sourceTree = "<group>";
 		};
+		9D8A844823B1621100456394 /* BaseClasses */ = {
+			isa = PBXGroup;
+			children = (
+				9D20C383232EE467007FF9A3 /* WeatherViewProtocol.h */,
+				9D8A844F23B163D700456394 /* UIView+WeatherViewCategory.h */,
+				9D8A845023B163D700456394 /* UIView+WeatherViewCategory.m */,
+				9D8A845223B1661500456394 /* WeatherView.h */,
+				9D8A845323B1661500456394 /* WeatherView.m */,
+			);
+			path = BaseClasses;
+			sourceTree = "<group>";
+		};
 		9DD95E6721A8A993006CF255 /* WeatherData */ = {
 			isa = PBXGroup;
 			children = (
@@ -363,7 +364,6 @@
 				9DFDC4342322E91A00F1D09D /* WeatherAverageView.h */,
 				9DFDC4352322E91A00F1D09D /* WeatherAverageView.m */,
 				9DFDC4322322E64F00F1D09D /* WeatherAverageView.xib */,
-				9D20C383232EE467007FF9A3 /* WeatherBaseView.h */,
 				9D20C384232EE62B007FF9A3 /* WeatherForecastSlideView.h */,
 				9D20C385232EE62B007FF9A3 /* WeatherForecastSlideView.m */,
 				9D20C387232EE63F007FF9A3 /* WeatherForecastSlideView.xib */,
@@ -611,9 +611,9 @@
 				9D7ACE3D21B18DF4005EA339 /* BackgroundLayer.m in Sources */,
 				9DF4AC2621AA23AE006A0BBF /* ForecastWeather.m in Sources */,
 				9D20C38B232EE8F7007FF9A3 /* WeatherForecastSlotView.m in Sources */,
+				9D8A845423B1661500456394 /* WeatherView.m in Sources */,
 				9DE4166121B48A9B00B09DB0 /* WeatherHeaderView.m in Sources */,
 				9D50920E21A71A45005A30AB /* WeatherViewController.m in Sources */,
-				9DAD1FD421ABE83300C966DB /* TutorialViewNavController.m in Sources */,
 				9DF4AC1A21A9EE4E006A0BBF /* CurrentWeather.m in Sources */,
 				9DF46F2B2328F4080002553B /* NSValue+AnimBackgroundData.m in Sources */,
 				9DA5702821B5969100CF6FC3 /* WeatherBackgroundPresets.m in Sources */,
@@ -621,9 +621,9 @@
 				9D50924521A71D9B005A30AB /* SQLManager.m in Sources */,
 				9D50920B21A71A45005A30AB /* AppDelegate.m in Sources */,
 				9DD95E6A21A8A9AF006CF255 /* WeatherData.m in Sources */,
+				9D8A845123B163D700456394 /* UIView+WeatherViewCategory.m in Sources */,
 				9D50924A21A72601005A30AB /* DBManager.m in Sources */,
 				9D503A4D232295E600954139 /* WeatherPageViewController.m in Sources */,
-				9DAD1FD721ABEFE000C966DB /* TutorialViewController.m in Sources */,
 				9D4F8D7D21B14838007254A5 /* AnimatedBackground.m in Sources */,
 				9D10BC4F21B91252001A2E7C /* WeatherAppModel.m in Sources */,
 				9DF4AC2021A9F471006A0BBF /* CityWeather.m in Sources */,
