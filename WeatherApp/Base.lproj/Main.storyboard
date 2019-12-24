@@ -24,7 +24,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JLq-4c-R8P" userLabel="ViewContent">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="eNs-CW-18n">
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="eNs-CW-18n">
                                                 <rect key="frame" x="8" y="8" width="359" height="91"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="91" placeholder="YES" id="b7b-18-eF2"/>
@@ -59,6 +59,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="contentView" destination="JLq-4c-R8P" id="B4t-OY-pnX"/>
                         <outlet property="scrollView" destination="cZa-hY-djt" id="meG-ky-eyE"/>
                         <outlet property="stackView" destination="eNs-CW-18n" id="faH-0u-zDp"/>
                     </connections>
@@ -74,7 +75,6 @@
                     <view key="view" contentMode="scaleToFill" id="zrR-fE-foh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="azf-vB-jiB"/>
                     </view>
                 </viewController>

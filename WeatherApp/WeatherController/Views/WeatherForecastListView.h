@@ -1,18 +1,19 @@
 //
-//  WeatherAverageView.h
+//  WeatherForecastListView.h
 //  WeatherApp
 //
-//  Created by Luca Faggion on 06/09/2019.
+//  Created by Luca Faggion on 24/12/2019.
 //  Copyright © 2019 Luca Faggion. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import "WeatherViewProtocol.h"
 #import "WeatherView.h"
+#import "WeatherViewProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface WeatherAverageView : WeatherView<WeatherViewProtocol>
+@interface WeatherForecastListView : WeatherView<WeatherViewProtocol>
+
 @end
 
 NS_ASSUME_NONNULL_END

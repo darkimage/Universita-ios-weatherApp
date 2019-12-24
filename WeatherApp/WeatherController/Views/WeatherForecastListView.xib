@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WeatherForecastListView">
+            <connections>
+                <outlet property="contentView" destination="iN0-l3-epB" id="EM2-ys-c5M"/>
+                <outlet property="forecastList" destination="9Gw-4g-zS9" id="xzD-dC-4Z7"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="646" height="74"/>
+            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="-10" translatesAutoresizingMaskIntoConstraints="NO" id="9Gw-4g-zS9">
+                    <rect key="frame" x="0.0" y="0.0" width="646" height="74"/>
+                </stackView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="9Gw-4g-zS9" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Evs-Er-VPl"/>
+                <constraint firstItem="9Gw-4g-zS9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="OWc-DR-5yn"/>
+                <constraint firstItem="9Gw-4g-zS9" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="ZKO-Bl-4VW"/>
+                <constraint firstItem="9Gw-4g-zS9" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" priority="250" placeholder="YES" id="vfv-4k-1Uh"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="217.59999999999999" y="287.85607196401799"/>
+        </view>
+    </objects>
+</document>

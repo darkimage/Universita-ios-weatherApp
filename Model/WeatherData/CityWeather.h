@@ -24,6 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,strong)NSDate* last_updated;
 @property (nonatomic,strong)CurrentWeather* current;
 @property (nonatomic,strong)ForecastWeather* forecast;
+
 @property NSObject<WeatherModelDelegate>* delegate;
 
 -(instancetype) initWithCityID:(NSNumber*)city_id;

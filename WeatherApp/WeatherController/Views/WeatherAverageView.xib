@@ -10,12 +10,13 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WeatherAverageView">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WeatherItemView">
             <connections>
                 <outlet property="TemperatureLabel" destination="h0y-8V-zB6" id="FSX-e9-Ped"/>
                 <outlet property="TimeLabel" destination="5pP-Tz-Mvb" id="5RB-2c-h5M"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="hvO-3u-QBG"/>
                 <outlet property="stackView" destination="JBX-E9-lWF" id="Jg9-Hz-EJQ"/>
+                <outlet property="weatherIcon" destination="kz7-Dr-Ccu" id="NPu-SR-9yb"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -23,19 +24,26 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="58"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="JBX-E9-lWF">
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="JBX-E9-lWF">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="58"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="TodayLabel" text="Today" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5pP-Tz-Mvb" userLabel="TodayLabel">
-                            <rect key="frame" x="20" y="18" width="122.5" height="22.5"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="TimeLabel" text="Today" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5pP-Tz-Mvb" userLabel="TimeLabel">
+                            <rect key="frame" x="20" y="18" width="48" height="22.5"/>
                             <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                             <color key="shadowColor" white="0.0" alpha="0.25" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <size key="shadowOffset" width="2" height="2"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="AverageLabel" text="20° | 24°" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h0y-8V-zB6" userLabel="AverageLabel">
-                            <rect key="frame" x="172.5" y="19" width="182.5" height="20.5"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kz7-Dr-Ccu">
+                            <rect key="frame" x="161" y="13" width="32" height="32"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="32" id="YY6-IW-gHH"/>
+                                <constraint firstAttribute="height" constant="32" id="uhi-zB-Ahe"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="AverageLabel" text="20° | 24°" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h0y-8V-zB6" userLabel="TemperatureLabel">
+                            <rect key="frame" x="286" y="19" width="69" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>

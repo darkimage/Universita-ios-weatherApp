@@ -12,9 +12,9 @@
 
 @interface WeatherForecastSlideView()
 @property (strong, nonatomic) IBOutlet UIView *contentView;
-//@property (strong, nonatomic) IBOutlet UIView *stackContentView;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) IBOutlet UIStackView *stackView;
+@property (strong, nonatomic) NSArray<WeatherForecastSlotView*>* slots;
 @end
 
 @implementation WeatherForecastSlideView
@@ -29,9 +29,12 @@
     NSLayoutConstraint* width = [self.widthAnchor constraintEqualToConstant:self.contentView.bounds.size.width];
     width.active = YES;
     width.priority = UILayoutPriorityDefaultHigh;
-    for (int i = 0; i<10; i++) {
-        [self.stackView addArrangedSubview:[[WeatherForecastSlotView alloc]init]];
+    WeatherForecastSlotView* viewslots[8];
+    for (int i = 0; i<8; i++) {
+        viewslots[i] = [[WeatherForecastSlotView alloc]init];
+        [self.stackView addArrangedSubview:viewslots[i]];
     }
+    self.slots = [NSArray arrayWithObjects:viewslots count:8];
 }
 
 -(void) scrollViewDidScroll:(UIScrollView *)scrollView{

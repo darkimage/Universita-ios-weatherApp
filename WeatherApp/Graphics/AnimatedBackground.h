@@ -29,8 +29,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(void) addBackgroundToFront:(NSValue*)bgData;
 
--(void) addBackground:(NSValue*)bgData atPosition:(NSInteger)index;
-
 -(void) applyToView:(nullable UIView*)view;
 
 @end

@@ -36,8 +36,7 @@
     self.currentIndex = 0;
     self.nextIndex = 0;
     self.viewControllers = [[NSMutableArray<WeatherViewController*> alloc] init];
-    self.backgroundAnimation = [[[WeatherAppModel sharedModel] getWeatherBackgroundPreset] getWeatherBackgroundPreset:@"clear_sky"];
-    [self.backgroundAnimation applyToView:self.view];
+    self.backgroundAnimation = [[[WeatherAppModel sharedModel] getWeatherBackgroundPreset] setWeatherBackgroundPreset:@"clear_sky" toView:self.view];
     for (int i = 0; i <= 3; i++){
         WeatherViewController* controller = [self instantiateView:i];
         controller.delegate = self.backgroundAnimation;

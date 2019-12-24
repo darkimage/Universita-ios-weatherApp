@@ -6,22 +6,26 @@
 //  Copyright © 2019 Luca Faggion. All rights reserved.
 //
 
-#import "WeatherAverageView.h"
+#import "WeatherItemView.h"
 #import "UIView+WeatherViewCategory.h"
 
-@interface WeatherAverageView()
+@interface WeatherItemView()
 @property (strong, nonatomic) IBOutlet UILabel *TemperatureLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *weatherIcon;
 @property (strong, nonatomic) IBOutlet UILabel *TimeLabel;
 @property (strong, nonatomic) IBOutlet UIView *contentView;
 @property (weak, nonatomic) IBOutlet UIStackView *stackView;
 @end
 
-@implementation WeatherAverageView
+@implementation WeatherItemView
 
 -(void)initView{
     [self initViewFromNib:@"WeatherAverageView"];
     self.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.heightAnchor constraintEqualToConstant:self.contentView.bounds.size.height].active = true;
+    NSLayoutConstraint* height = [self.heightAnchor constraintEqualToConstant:self.contentView.bounds.size.height];
+    height.active = YES;
+    height.priority = UILayoutPriorityDefaultHigh;
+    
 }
 -(void) updateView:(CityWeather *)weather{
     

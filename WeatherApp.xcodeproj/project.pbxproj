@@ -13,6 +13,8 @@
 		9D20C388232EE63F007FF9A3 /* WeatherForecastSlideView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D20C387232EE63F007FF9A3 /* WeatherForecastSlideView.xib */; };
 		9D20C38B232EE8F7007FF9A3 /* WeatherForecastSlotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D20C38A232EE8F7007FF9A3 /* WeatherForecastSlotView.m */; };
 		9D20C38D232EE905007FF9A3 /* WeatherForecastSlotView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D20C38C232EE905007FF9A3 /* WeatherForecastSlotView.xib */; };
+		9D2ED83323B20F4C00D0BB36 /* WeatherForecastListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D2ED83223B20F4C00D0BB36 /* WeatherForecastListView.xib */; };
+		9D2ED83623B2104300D0BB36 /* WeatherForecastListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D2ED83523B2104300D0BB36 /* WeatherForecastListView.m */; };
 		9D4F8D7D21B14838007254A5 /* AnimatedBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D4F8D7C21B14838007254A5 /* AnimatedBackground.m */; };
 		9D503A4D232295E600954139 /* WeatherPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D503A4C232295E600954139 /* WeatherPageViewController.m */; };
 		9D50920B21A71A45005A30AB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D50920A21A71A45005A30AB /* AppDelegate.m */; };
@@ -41,7 +43,7 @@
 		9DF4AC2021A9F471006A0BBF /* CityWeather.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF4AC1F21A9F471006A0BBF /* CityWeather.m */; };
 		9DF4AC2621AA23AE006A0BBF /* ForecastWeather.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF4AC2521AA23AE006A0BBF /* ForecastWeather.m */; };
 		9DFDC4332322E64F00F1D09D /* WeatherAverageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DFDC4322322E64F00F1D09D /* WeatherAverageView.xib */; };
-		9DFDC4362322E91A00F1D09D /* WeatherAverageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DFDC4352322E91A00F1D09D /* WeatherAverageView.m */; };
+		9DFDC4362322E91A00F1D09D /* WeatherItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DFDC4352322E91A00F1D09D /* WeatherItemView.m */; };
 		B519E34BBF04E1864D66F1E2 /* Pods_WeatherApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC727E748DC98D38C793A4BD /* Pods_WeatherApp.framework */; };
 		F39E6C53AD4D1020F8243FDD /* Pods_WeatherAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E849A464322DE0769A8F0435 /* Pods_WeatherAppUITests.framework */; };
 /* End PBXBuildFile section */
@@ -81,6 +83,9 @@
 		9D20C389232EE8F7007FF9A3 /* WeatherForecastSlotView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeatherForecastSlotView.h; sourceTree = "<group>"; };
 		9D20C38A232EE8F7007FF9A3 /* WeatherForecastSlotView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeatherForecastSlotView.m; sourceTree = "<group>"; };
 		9D20C38C232EE905007FF9A3 /* WeatherForecastSlotView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeatherForecastSlotView.xib; sourceTree = "<group>"; };
+		9D2ED83223B20F4C00D0BB36 /* WeatherForecastListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeatherForecastListView.xib; sourceTree = "<group>"; };
+		9D2ED83423B2104300D0BB36 /* WeatherForecastListView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeatherForecastListView.h; sourceTree = "<group>"; };
+		9D2ED83523B2104300D0BB36 /* WeatherForecastListView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeatherForecastListView.m; sourceTree = "<group>"; };
 		9D4F8D7B21B14838007254A5 /* AnimatedBackground.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AnimatedBackground.h; sourceTree = "<group>"; };
 		9D4F8D7C21B14838007254A5 /* AnimatedBackground.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AnimatedBackground.m; sourceTree = "<group>"; };
 		9D4F8D8121B14D7C007254A5 /* WeatherViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeatherViewDelegate.h; sourceTree = "<group>"; };
@@ -131,8 +136,8 @@
 		9DF4AC2421AA23AE006A0BBF /* ForecastWeather.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ForecastWeather.h; sourceTree = "<group>"; };
 		9DF4AC2521AA23AE006A0BBF /* ForecastWeather.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ForecastWeather.m; sourceTree = "<group>"; };
 		9DFDC4322322E64F00F1D09D /* WeatherAverageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeatherAverageView.xib; sourceTree = "<group>"; };
-		9DFDC4342322E91A00F1D09D /* WeatherAverageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeatherAverageView.h; sourceTree = "<group>"; };
-		9DFDC4352322E91A00F1D09D /* WeatherAverageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeatherAverageView.m; sourceTree = "<group>"; };
+		9DFDC4342322E91A00F1D09D /* WeatherItemView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeatherItemView.h; sourceTree = "<group>"; };
+		9DFDC4352322E91A00F1D09D /* WeatherItemView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeatherItemView.m; sourceTree = "<group>"; };
 		AFD50A74C5784AA42CB5246E /* Pods_WeatherAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB98A39F3E063F8E4A36008A /* Pods-WeatherApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherApp.release.xcconfig"; path = "Target Support Files/Pods-WeatherApp/Pods-WeatherApp.release.xcconfig"; sourceTree = "<group>"; };
 		BC727E748DC98D38C793A4BD /* Pods_WeatherApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -361,8 +366,8 @@
 		9DFDC4312322E59900F1D09D /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				9DFDC4342322E91A00F1D09D /* WeatherAverageView.h */,
-				9DFDC4352322E91A00F1D09D /* WeatherAverageView.m */,
+				9DFDC4342322E91A00F1D09D /* WeatherItemView.h */,
+				9DFDC4352322E91A00F1D09D /* WeatherItemView.m */,
 				9DFDC4322322E64F00F1D09D /* WeatherAverageView.xib */,
 				9D20C384232EE62B007FF9A3 /* WeatherForecastSlideView.h */,
 				9D20C385232EE62B007FF9A3 /* WeatherForecastSlideView.m */,
@@ -373,6 +378,9 @@
 				9D20C389232EE8F7007FF9A3 /* WeatherForecastSlotView.h */,
 				9D20C38A232EE8F7007FF9A3 /* WeatherForecastSlotView.m */,
 				9D20C38C232EE905007FF9A3 /* WeatherForecastSlotView.xib */,
+				9D2ED83423B2104300D0BB36 /* WeatherForecastListView.h */,
+				9D2ED83523B2104300D0BB36 /* WeatherForecastListView.m */,
+				9D2ED83223B20F4C00D0BB36 /* WeatherForecastListView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -488,6 +496,7 @@
 				9D50921621A71A47005A30AB /* LaunchScreen.storyboard in Resources */,
 				9DE4165E21B4673200B09DB0 /* WeatherHeaderView.xib in Resources */,
 				9DD95E6D21A8CFB0006CF255 /* WeatherDB.sql in Resources */,
+				9D2ED83323B20F4C00D0BB36 /* WeatherForecastListView.xib in Resources */,
 				9D50921321A71A47005A30AB /* Assets.xcassets in Resources */,
 				9D20C388232EE63F007FF9A3 /* WeatherForecastSlideView.xib in Resources */,
 				9DFDC4332322E64F00F1D09D /* WeatherAverageView.xib in Resources */,
@@ -617,6 +626,7 @@
 				9DF4AC1A21A9EE4E006A0BBF /* CurrentWeather.m in Sources */,
 				9DF46F2B2328F4080002553B /* NSValue+AnimBackgroundData.m in Sources */,
 				9DA5702821B5969100CF6FC3 /* WeatherBackgroundPresets.m in Sources */,
+				9D2ED83623B2104300D0BB36 /* WeatherForecastListView.m in Sources */,
 				9D50921921A71A47005A30AB /* main.m in Sources */,
 				9D50924521A71D9B005A30AB /* SQLManager.m in Sources */,
 				9D50920B21A71A45005A30AB /* AppDelegate.m in Sources */,
@@ -627,7 +637,7 @@
 				9D4F8D7D21B14838007254A5 /* AnimatedBackground.m in Sources */,
 				9D10BC4F21B91252001A2E7C /* WeatherAppModel.m in Sources */,
 				9DF4AC2021A9F471006A0BBF /* CityWeather.m in Sources */,
-				9DFDC4362322E91A00F1D09D /* WeatherAverageView.m in Sources */,
+				9DFDC4362322E91A00F1D09D /* WeatherItemView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
