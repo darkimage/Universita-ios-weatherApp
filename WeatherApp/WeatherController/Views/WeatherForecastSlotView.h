@@ -13,10 +13,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface WeatherForecastSlotView : WeatherView<WeatherViewProtocol>
-//@property (strong, nonatomic) IBOutlet UILabel *TimeFromNowLabel;
-//@property (strong, nonatomic) IBOutlet UILabel *TemperatureLabel;
-//@property (strong, nonatomic) IBOutlet UILabel *PrecipitationLabel;
-//@property (strong, nonatomic) IBOutlet UIImageView *WeatherIcon;
+-(void)setTimeIndex:(NSInteger)index;
 @end
 
 NS_ASSUME_NONNULL_END

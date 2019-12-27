@@ -27,11 +27,11 @@
         self.forecastUpdated = NO;
         NSArray* arrCity = [[[WeatherAppModel sharedModel] getDatabase] getCitybyId:city_id];
         if([arrCity count] > 0){
-            self.ID = city_id;
-            self.name = arrCity[0];
-            self.country = arrCity[1];
-            self.lon = arrCity[2];
-            self.lat = arrCity[3];
+            self.ID = arrCity[0];
+            self.name = arrCity[1];
+            self.country = arrCity[2];
+            self.lon = arrCity[3];
+            self.lat = arrCity[4];
             [self performUpdate];
         }else{
             [self.delegate onUpdateWeatherDataError:@"The selected city doesn't exist in the database"];

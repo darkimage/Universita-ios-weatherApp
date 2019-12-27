@@ -113,6 +113,7 @@
 - (WeatherViewController *)instantiateView:(NSInteger)index {
     WeatherViewController* weatherViewController = (WeatherViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"WeatherViewController"];
     weatherViewController.pageIndex = index;
+    [weatherViewController setCity:2172797];
     return weatherViewController;
 }
 

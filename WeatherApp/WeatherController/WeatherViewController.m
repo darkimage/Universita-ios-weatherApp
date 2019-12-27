@@ -20,26 +20,29 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIStackView* stackView;
 @property (strong, nonatomic) IBOutlet UIView *contentView;
-@property (strong, nonatomic) WeatherHeaderView* headerController;
-@property (strong, nonatomic) WeatherItemView* averageTempController;
-@property (strong, nonatomic) WeatherForecastSlideView* slideController;
-@property (strong, nonatomic) WeatherForecastListView* listController;
+@property (strong, nonatomic) NSMutableArray<WeatherView*>* controllers;
+@property (strong, nonatomic) CityWeather* cityWeather;
 @end
 
 @implementation WeatherViewController
 
+-(void) setCity:(NSInteger)cityID{
+    self.cityWeather = [[CityWeather alloc] initWithCityID:[NSNumber numberWithInteger:cityID]];
+    self.cityWeather.delegate = self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.headerController = [[WeatherHeaderView alloc] init];
-    self.averageTempController = [[WeatherItemView alloc] init];
-    self.slideController = [[WeatherForecastSlideView alloc] init];
-    self.listController = [[WeatherForecastListView alloc] init];
-    WeatherHeaderView* test = [[WeatherHeaderView alloc] init];
-    [self.stackView addArrangedSubview:self.headerController];
-    [self.stackView addArrangedSubview:self.averageTempController];
-    [self.stackView addArrangedSubview:self.slideController];
-    [self.stackView addArrangedSubview:self.listController];
-    [self.stackView addArrangedSubview:test];
+    self.controllers = [[NSMutableArray alloc] init];
+    [self.controllers addObject:[[WeatherHeaderView alloc] init]];
+    WeatherItemView* todayAverage = [[WeatherItemView alloc] init];
+    [todayAverage getFromCurrent:true];
+    [self.controllers addObject:todayAverage];
+    [self.controllers addObject:[[WeatherForecastSlideView alloc] init]];
+    [self.controllers addObject:[[WeatherForecastListView alloc] init]];
+    for (WeatherView* controller in self.controllers) {
+        [self.stackView addArrangedSubview:controller];
+    }
     [self.stackView layoutIfNeeded];
     
     self.scrollView.delegate = self;
@@ -54,8 +57,16 @@
     [self.delegate scrollViewDidScroll:scrollView];
 }
 
-- (void)populateView:(CityWeather *)weatherData {
-    [self.headerController updateView:weatherData];
+- (void) onUpdatedWeatherData:(NSObject*)currentData{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        for (WeatherView* controller in self.controllers) {
+            [controller updateView:self.cityWeather];
+        }
+    });
+}
+
+- (void) onUpdateWeatherDataError:(NSString*)message{
+    
 }
 
 @end

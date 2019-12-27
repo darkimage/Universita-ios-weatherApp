@@ -15,9 +15,18 @@
 @property (strong, nonatomic) IBOutlet UILabel *TemperatureLabel;
 @property (strong, nonatomic) IBOutlet UILabel *PrecipitationLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *WeatherIcon;
+@property NSInteger index;
 @end
 
 @implementation WeatherForecastSlotView
+
+-(id)init{
+    self = [super init];
+    if(self){
+        self.index = 0;
+    }
+    return self;
+}
 
 -(void)initView{
     [self initViewFromNib:@"WeatherForecastSlotView"];
@@ -26,8 +35,23 @@
     [self.widthAnchor constraintEqualToConstant:self.contentView.bounds.size.width].active = true;
 }
 
+-(void)setTimeIndex:(NSInteger)index{
+    self.index = index;
+}
+
 -(void) updateView:(CityWeather *)weather{
-    
+    CurrentWeather* currWeather = weather.forecast.forecastWeather[self.index];
+    if(self.index == 0){
+        self.TimeFromNowLabel.text = @"Now";
+    }else{
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"HH:mm"];
+        NSDate* date = currWeather.date;
+        self.TimeFromNowLabel.text = [formatter stringFromDate:date];
+    }
+    self.PrecipitationLabel.text = [NSString stringWithFormat:@"%.00f%%",[currWeather.mainHumidity floatValue]];
+    self.TemperatureLabel.text = [NSString stringWithFormat:@"%.00f°",[currWeather.mainTemp floatValue]];
+    self.WeatherIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"icon_%@", currWeather.weatherIcon]];
 }
 
 @end

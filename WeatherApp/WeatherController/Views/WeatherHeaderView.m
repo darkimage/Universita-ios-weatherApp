@@ -28,8 +28,11 @@
     [self.heightAnchor constraintEqualToConstant:self.content.bounds.size.height].active = true;
 }
 
--(void) updateView:(CityWeather *)weather{
-    
+-(void) updateView:(CityWeather *)cityWeather{
+    self.Temperature.text = [NSString stringWithFormat:@"%.00f",[cityWeather.current.mainTemp floatValue]];
+    self.TemperatureDesc.text = cityWeather.current.weatherDescription;
+    self.CityName.text = cityWeather.name;
+    self.WeatherIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"icon_%@", cityWeather.current.weatherIcon]];
 }
 
 @end

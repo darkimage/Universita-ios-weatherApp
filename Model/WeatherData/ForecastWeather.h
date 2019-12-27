@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ForecastWeather : NSObject
 
-@property (nonatomic,strong) NSMutableArray* forecastWeather;
+@property (nonatomic,strong) NSMutableArray<CurrentWeather*>* forecastWeather;
 
 -(instancetype) initWithDictionary:(NSDictionary*)dict;
 

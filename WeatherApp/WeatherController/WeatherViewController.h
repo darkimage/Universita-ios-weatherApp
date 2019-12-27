@@ -8,14 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "WeatherViewDelegate.h"
+#import "WeatherModelDelegate.h"
 #import "CityWeather.h"
 #import "AnimatedBackground.h"
 
-@interface WeatherViewController : UIViewController<UIScrollViewDelegate>
+@interface WeatherViewController : UIViewController<UIScrollViewDelegate,WeatherModelDelegate>
 
 @property NSInteger pageIndex;
 @property (strong, nonatomic) NSObject<WeatherViewDelegate>* delegate;
 
-- (void) populateView:(CityWeather*)weatherData;
+-(void) setCity:(NSInteger)cityID;
+
 @end
 

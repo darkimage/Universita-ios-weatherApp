@@ -18,8 +18,6 @@ int main(int argc, char * argv[]) {
     //[sql executeQuery:@"insert into peopleInfo values(null, 'Test', 'Test1', 23)"];
     //NSArray* query2 = [sql loadDataFromDB:@"select * from city_data where id=707860"];
     
-    CityWeather* city = [[CityWeather alloc] initWithCityID:[NSNumber numberWithInt:2172797]];
-    
     @autoreleasepool {
         return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
     }

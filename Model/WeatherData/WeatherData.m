@@ -35,6 +35,7 @@
     NSString* url_str = [[NSString alloc] initWithFormat:formatString arguments:args];
     NSString* api_str = [NSString stringWithFormat:@"&APPID=%@",self.api_key];
     [url appendString:url_str];
+    [url appendString:@"&units=metric"];
     [url appendString:api_str];
     va_end(args);
     
@@ -64,6 +65,5 @@
                  [self callCallback:selector ofObject:object withData:data];
              }] resume];
 }
-
 
 @end

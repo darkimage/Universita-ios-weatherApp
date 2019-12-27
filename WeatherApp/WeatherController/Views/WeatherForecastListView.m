@@ -14,32 +14,46 @@
 @property (strong, nonatomic) IBOutlet UIView *contentView;
 @property (strong, nonatomic) IBOutlet UIStackView *forecastList;
 @property (strong, nonatomic) NSArray<WeatherItemView*>* itemList;
+@property NSInteger count;
 @end
 
 @implementation WeatherForecastListView
 
 -(void) initView{
     [self initViewFromNib:@"WeatherForecastListView"];
+    self.count = 5;
     self.translatesAutoresizingMaskIntoConstraints = NO;
-    WeatherItemView* items[8];
-    for (int i=0; i<8; i++) {
-        items[i] = [[WeatherItemView alloc] init];
+    WeatherItemView* items[self.count];
+    for (int i=0; i<self.count; i++) {
+        WeatherItemView* itemView = [[WeatherItemView alloc] init];
+        items[i] = itemView;
         [self.forecastList addArrangedSubview:items[i]];
     }
-    self.itemList = [NSArray arrayWithObjects:items count:8];
+    self.itemList = [NSArray arrayWithObjects:items count:self.count];
     [self.forecastList layoutIfNeeded];
     [self.heightAnchor constraintEqualToConstant:self.forecastList.frame.size.height].active = true;
-//    [self.widthAnchor constraintEqualToConstant:self.forecastList.frame.size.width].active = true;
-//    [self.contentView setFrame:self.forecastList.frame];
-//    [self.contentView layoutIfNeeded];
-//    NSLog(@"%@", NSStringFromCGRect(self.contentView.frame));
-//    [self setFrame:self.forecastList.frame];
-//    [self layoutIfNeeded];
-//    NSLog(@"%@", NSStringFromCGRect(self.forecastList.frame));
+}
+
+- (NSDate *)addDays:(NSInteger)days toDate:(NSDate *)originalDate {
+    NSDateComponents *components= [[NSDateComponents alloc] init];
+    [components setDay:days];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    return [calendar dateByAddingComponents:components toDate:originalDate options:0];
 }
 
 -(void) updateView:(nonnull CityWeather*)weather{
-    
+    NSDate* date = [NSDate date];
+    for (int i = 0; i < self.count; i++) {
+        NSDateComponents *currDate = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:[self addDays:i toDate:date]];
+        for (int j =0; j < weather.forecast.forecastWeather.count; j++) {
+            CurrentWeather* currWeather = weather.forecast.forecastWeather[j];
+            NSDateComponents *weatherDate = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:currWeather.date];
+            if([currDate day] == [weatherDate day]){
+                [self.itemList[i] setTimeIndex:j];
+            }
+        }
+        [self.itemList[i] updateView:weather];
+    }
 }
 
 @end
