@@ -1,0 +1,13 @@
+CREATE TABLE IF NOT EXISTS city_data (
+	id INT PRIMARY KEY NOT NULL,
+	name VARCHAR(17) NULL,
+	country VARCHAR(2) NULL,
+	coord_lon INT NULL,
+	coord_lat INT NULL
+);
+
+
+CREATE TABLE IF NOT EXISTS added_city(
+	id INTEGER PRIMARY KEY NOT NULL,
+	FOREIGN KEY (id) REFERENCES city_data(id)
+);

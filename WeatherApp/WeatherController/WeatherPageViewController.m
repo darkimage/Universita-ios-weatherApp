@@ -14,6 +14,7 @@
 @interface WeatherPageViewController ()
 //PROPRIETA
 @property (nonatomic,strong) UIPageViewController* pageController;
+@property (strong, nonatomic) IBOutlet UINavigationItem *navigationBar;
 @property NSInteger currentIndex; //Index attuale settato solo dopo che la transizione e completa
 @property NSInteger nextIndex;    //Index verso il quai si sta facendo una transizione
 @property NSMutableArray<WeatherViewController*>* viewControllers;
@@ -22,9 +23,10 @@
 
 //METODI
 - (WeatherViewController*) viewAtIndex:(NSInteger)index;
-- (WeatherViewController*) instantiateView:(NSInteger)index;
+- (WeatherViewController*) instantiateView:(NSInteger)index withData:(NSMutableArray*)cities;
 - (void) updateViewAtIndex:(NSInteger)index;
 - (NSInteger) getCount; //Ritorna il numero di schermate presenti
+- (void) goToManage;
 @end
 
 @implementation WeatherPageViewController
@@ -36,9 +38,16 @@
     self.currentIndex = 0;
     self.nextIndex = 0;
     self.viewControllers = [[NSMutableArray<WeatherViewController*> alloc] init];
-    self.backgroundAnimation = [[[WeatherAppModel sharedModel] getWeatherBackgroundPreset] setWeatherBackgroundPreset:@"clear_sky" toView:self.view];
-    for (int i = 0; i <= 3; i++){
-        WeatherViewController* controller = [self instantiateView:i];
+
+    
+    //RETRIVE FAVORITE CITIES
+    NSMutableArray* favoriteCities = [[NSMutableArray alloc] initWithArray:[[[WeatherAppModel sharedModel] getDatabase] getFavoriteCities] copyItems:YES];
+    NSLog(@"%lu",(unsigned long)favoriteCities.count);
+    //Set navController Background and init View Controllers
+    UINavigationController *navController = (UINavigationController*)[[(AppDelegate*)[[UIApplication sharedApplication]delegate] window] rootViewController];
+    self.backgroundAnimation = [[[WeatherAppModel sharedModel] getWeatherBackgroundPreset] setWeatherBackgroundPreset:@"clear_sky" toView:navController.view];
+    for (int i = 0; i < favoriteCities.count; i++){
+        WeatherViewController* controller = [self instantiateView:i withData:favoriteCities];
         controller.delegate = self.backgroundAnimation;
         [self.viewControllers addObject:controller];
     }
@@ -54,6 +63,11 @@
     [self addChildViewController:self.pageController];
     [self.view addSubview:self.pageController.view];
     [self.pageController didMoveToParentViewController:self];
+    
+    //Set Right Button Bar image
+    UIBarButtonItem *manageButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(goToManage)];
+    [manageButton setTintColor:[UIColor whiteColor]];
+    self.navigationBar.rightBarButtonItem = manageButton;
 }
 
 //METODI DEI DELEGATI O DATASOURCE
@@ -93,8 +107,16 @@
 }
 
 - (void)pageViewController:(UIPageViewController *)pageViewController willTransitionToViewControllers:(NSArray<UIViewController *> *)pendingViewControllers NS_AVAILABLE_IOS(6_0){
-    self.nextIndex = ((WeatherViewController*)pendingViewControllers.firstObject).pageIndex;
+    WeatherViewController* controller = (WeatherViewController*)pendingViewControllers.firstObject;
+    self.nextIndex = controller.pageIndex;
 }
+
+- (NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController NS_AVAILABLE_IOS(6_0){
+    return self.viewControllers.count;
+} // The number of items reflected in the page indicator.
+- (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController NS_AVAILABLE_IOS(6_0){
+    return self.currentIndex;
+} // The selected item reflected in the page indicator.
 
 //METODI PRIVATI
 
@@ -103,17 +125,24 @@
 }
 
 - (WeatherViewController *)viewAtIndex:(NSInteger)index {
-    return [self.viewControllers objectAtIndex:index];
+    WeatherViewController* controller = [self.viewControllers objectAtIndex:index];
+//    [controller performUpdate];
+    return controller;
 }
 
 - (NSInteger)getCount {
     return self.viewControllers.count;
 }
 
-- (WeatherViewController *)instantiateView:(NSInteger)index {
+-(void) goToManage{
+    [self performSegueWithIdentifier:@"goToManage" sender:self];
+}
+
+- (WeatherViewController *)instantiateView:(NSInteger)index withData:(NSMutableArray*)cities {
     WeatherViewController* weatherViewController = (WeatherViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"WeatherViewController"];
     weatherViewController.pageIndex = index;
-    [weatherViewController setCity:2172797];
+    NSString* cityValue = cities[index][0];
+    [weatherViewController setCity:[cityValue integerValue]];
     return weatherViewController;
 }
 

@@ -28,6 +28,14 @@
     return self;
 }
 
+-(id)initWithTimeIndex:(NSInteger)index{
+    self = [self init];
+    if(self){
+        self.index = index;
+    }
+    return self;
+}
+
 -(void)initView{
     [self initViewFromNib:@"WeatherForecastSlotView"];
     self.translatesAutoresizingMaskIntoConstraints = NO;

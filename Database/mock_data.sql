@@ -1,0 +1,4 @@
+INSERT INTO added_city VALUES 
+("6540120"),
+("3169070"),
+("3166490");

@@ -33,7 +33,7 @@
 
 -(void)initProperties{
     self.city_table = @"city_data";
-    self.favorite_table = @"favorite_data";
+    self.favorite_table = @"added_city";
 }
 
 -(instancetype)init{

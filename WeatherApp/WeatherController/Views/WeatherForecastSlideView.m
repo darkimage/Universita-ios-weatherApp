@@ -33,8 +33,7 @@
     width.priority = UILayoutPriorityDefaultHigh;
     WeatherForecastSlotView* viewslots[self.count];
     for (int i = 0; i<self.count; i++) {
-        viewslots[i] = [[WeatherForecastSlotView alloc]init];
-        [viewslots[i] setTimeIndex:i];
+        viewslots[i] = [[WeatherForecastSlotView alloc] initWithTimeIndex:i];
         [self.stackView addArrangedSubview:viewslots[i]];
     }
     self.slots = [NSArray arrayWithObjects:viewslots count:self.count];

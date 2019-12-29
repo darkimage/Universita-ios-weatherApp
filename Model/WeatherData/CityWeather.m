@@ -82,6 +82,7 @@
         [self.delegate onUpdatedWeatherData:self];
         self.currentUpdated = NO;
         self.forecastUpdated = NO;
+        self.hasData = YES;
     }
 }
 

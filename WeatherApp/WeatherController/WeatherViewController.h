@@ -18,6 +18,7 @@
 @property (strong, nonatomic) NSObject<WeatherViewDelegate>* delegate;
 
 -(void) setCity:(NSInteger)cityID;
+-(void) performUpdate;
 
 @end
 

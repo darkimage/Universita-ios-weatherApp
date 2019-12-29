@@ -13,6 +13,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface WeatherItemView : WeatherView<WeatherViewProtocol>
+-(id) initWithTimeIndex:(NSInteger)index;
+-(id) initWithGetFromCurrent:(Boolean)value;
 -(void)setTimeIndex:(NSInteger)index;
 -(void)getFromCurrent:(Boolean)value;
 @end

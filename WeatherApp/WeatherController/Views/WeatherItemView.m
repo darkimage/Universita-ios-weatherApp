@@ -30,6 +30,22 @@
     return self;
 }
 
+-(id) initWithTimeIndex:(NSInteger)index{
+    self = [self init];
+    if(self){
+        self.index = index;
+    }
+    return self;
+}
+
+-(id) initWithGetFromCurrent:(Boolean)value{
+    self = [self init];
+    if(self){
+        self.fromCurrent = value;
+    }
+    return self;
+}
+
 -(void)initView{
     [self initViewFromNib:@"WeatherItemView"];
     self.translatesAutoresizingMaskIntoConstraints = NO;

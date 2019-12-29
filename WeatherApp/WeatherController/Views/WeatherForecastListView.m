@@ -25,8 +25,7 @@
     self.translatesAutoresizingMaskIntoConstraints = NO;
     WeatherItemView* items[self.count];
     for (int i=0; i<self.count; i++) {
-        WeatherItemView* itemView = [[WeatherItemView alloc] init];
-        items[i] = itemView;
+        items[i] = [[WeatherItemView alloc] init];
         [self.forecastList addArrangedSubview:items[i]];
     }
     self.itemList = [NSArray arrayWithObjects:items count:self.count];

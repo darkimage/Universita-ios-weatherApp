@@ -15,6 +15,7 @@
 #import "WeatherForecastSlideView.h"
 #import "WeatherForecastListView.h"
 #import "NSValue+AnimBackgroundData.h"
+#import "WeatherAppModel.h"
 
 @interface WeatherViewController()
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -33,11 +34,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    //INIT THE MAIN VIEW
     self.controllers = [[NSMutableArray alloc] init];
-    [self.controllers addObject:[[WeatherHeaderView alloc] init]];
-    WeatherItemView* todayAverage = [[WeatherItemView alloc] init];
-    [todayAverage getFromCurrent:true];
-    [self.controllers addObject:todayAverage];
+    [self.controllers addObject:[[WeatherHeaderView alloc] initWithSegueIdentifier:@"goToHistory" ofController:self]];
+    [self.controllers addObject:[[WeatherItemView alloc] initWithGetFromCurrent:true]];
     [self.controllers addObject:[[WeatherForecastSlideView alloc] init]];
     [self.controllers addObject:[[WeatherForecastListView alloc] init]];
     for (WeatherView* controller in self.controllers) {
@@ -46,6 +47,13 @@
     [self.stackView layoutIfNeeded];
     
     self.scrollView.delegate = self;
+    
+    //ADD PULL TO REFRESH
+    self.scrollView.refreshControl = [[UIRefreshControl alloc] init];
+    [self.scrollView.refreshControl addTarget:self action:@selector(performUpdate) forControlEvents:UIControlEventValueChanged];
+    if(self.cityWeather.hasData){
+        [self onUpdatedWeatherData:[[NSObject alloc] init]];
+    }
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -62,11 +70,16 @@
         for (WeatherView* controller in self.controllers) {
             [controller updateView:self.cityWeather];
         }
+        [self.scrollView.refreshControl endRefreshing];
     });
 }
 
 - (void) onUpdateWeatherDataError:(NSString*)message{
     
+}
+
+-(void) performUpdate{
+    [self.cityWeather performUpdate];
 }
 
 @end

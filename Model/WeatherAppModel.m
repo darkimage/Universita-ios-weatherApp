@@ -47,12 +47,6 @@
     return self.WeatherData;
 }
 
-- (nonnull CAShapeLayer *)getPlaceHolderShapeLayerStyled { 
-    CAShapeLayer *placeHolderLayer = [CAShapeLayer layer];
-    placeHolderLayer.fillColor = [UIColor colorWithRed:.9 green:.9 blue:.9 alpha:0.8].CGColor;
-    return placeHolderLayer;
-}
-
 - (nonnull WeatherBackgroundPresets *)getWeatherBackgroundPreset { 
     return self.WeatherBackgroundData;
 }

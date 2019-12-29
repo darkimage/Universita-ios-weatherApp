@@ -23,7 +23,6 @@ NS_ASSUME_NONNULL_BEGIN
 -(WeatherData*) getWeatherData;
 -(AppDelegate*) getAppDelegate;
 -(WeatherBackgroundPresets*) getWeatherBackgroundPreset;
--(CAShapeLayer*) getPlaceHolderShapeLayerStyled;
 
 @end
 

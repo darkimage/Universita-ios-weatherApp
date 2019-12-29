@@ -22,13 +22,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,strong)NSNumber* lon;
 @property (nonatomic,strong)NSNumber* lat;
 @property (nonatomic,strong)NSDate* last_updated;
+@property Boolean hasData;
 @property (nonatomic,strong)CurrentWeather* current;
 @property (nonatomic,strong)ForecastWeather* forecast;
 
 @property NSObject<WeatherModelDelegate>* delegate;
 
 -(instancetype) initWithCityID:(NSNumber*)city_id;
-
 -(void) performUpdate;
 
 @end
