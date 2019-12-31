@@ -7,81 +7,92 @@
 //
 
 #import "WeatherManageController.h"
+#import "WeatherAppModel.h"
+#import "WeatherManageCell.h"
+#import "WeatherAppModel.h"
 
 @interface WeatherManageController ()
 @property (strong, nonatomic) IBOutlet UINavigationItem *navigationBar;
+
+@property (strong, nonatomic) NSMutableArray* favoriteCities;
+@property (strong, nonatomic) NSMutableArray<CityWeather*>* citiesWeather;
+
 -(void) goToSearch;
+-(Boolean) deleteFavoriteCityWithId:(NSInteger)index;
 @end
 
 @implementation WeatherManageController
 
+#pragma mark - Controller Life Cycles
 - (void)viewDidLoad{
     [super viewDidLoad];
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    UIBarButtonItem* addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(goToSearch)];
-    [addButton setTintColor:[UIColor whiteColor]];
-    self.navigationBar.rightBarButtonItem = addButton;
-    self.tableView.delegate = self;
+    if(self.delegate){
+        self.favoriteCities = [[NSMutableArray alloc] initWithArray:[self.delegate getCities]];
+        self.citiesWeather = [[NSMutableArray<CityWeather*> alloc] initWithArray:[self.delegate getCitiesWeather]];
+        UIBarButtonItem* addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(goToSearch)];
+        [addButton setTintColor:[UIColor whiteColor]];
+        self.navigationBar.rightBarButtonItem = addButton;
+        self.tableView.delegate = self;
+    }
 }
 
+#pragma mark - Private Methods
 -(void) goToSearch{
     [self performSegueWithIdentifier:@"goToSearch" sender:self];
 }
 
+-(Boolean) deleteFavoriteCityWithId:(NSInteger)index{
+    NSInteger city_id = [self.favoriteCities[index][0] integerValue];
+    if([[[WeatherAppModel sharedModel] getDatabase] deleteFavoriteCitybyId:city_id]){
+        [self.favoriteCities removeObjectAtIndex:index];
+        [self.delegate onDeleteCityAtIndex:index];
+        return YES;
+    }
+    return NO;
+}
+
+#pragma mark - TableView Interfaces
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 1;
+    return self.favoriteCities.count;
 }
 
  - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+     WeatherManageCell *cell = (WeatherManageCell*)[tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+     CityWeather* weather = self.citiesWeather[indexPath.row];
+     [cell initCellWithData:weather];
+     // TODO: backgroud della cella che rispecchia la condizione metereologica
      cell.selectionStyle = UITableViewCellSelectionStyleNone;
      return cell;
  }
 
-/*
- // Override to support conditional editing of the table view.
+ // Supporto per edit condizionale
  - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
- // Return NO if you do not want the specified item to be editable.
- return YES;
+     // Se abbiamo una sola citta non possiamo cancellarla
+     if(self.favoriteCities.count == 1){
+         return NO;
+     }
+     return YES;
  }
- */
 
-/*
- // Override to support editing the table view.
+
+ // Support editing the table view.
  - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
- if (editingStyle == UITableViewCellEditingStyleDelete) {
- // Delete the row from the data source
- [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
- } else if (editingStyle == UITableViewCellEditingStyleInsert) {
- // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+     if (editingStyle == UITableViewCellEditingStyleDelete) {
+         // Delete the row from the data source
+         //RIMUOVI IL VALORE DALL'ARRAY self.favoriteCities AGGIORNANDO IL DATABASE E POI RIMUOVI LA RIGA
+         if([self deleteFavoriteCityWithId:indexPath.row]){
+             [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+         }else{
+             // TODO: implementare messagio che dice che non e possibile rimuovere la citta;
+         }
+     }
  }
- }
- */
 
-/*
- // Override to support rearranging the table view.
- - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
- }
- */
-
-/*
- // Override to support conditional rearranging of the table view.
- - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
- // Return NO if you do not want the item to be re-orderable.
- return YES;
- }
- */
-
-/*
  #pragma mark - Navigation
- 
  // In a storyboard-based application, you will often want to do a little preparation before navigation
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
+     // Get the new view controller using [segue destinationViewController].
+     // Pass the selected object to the new view controller.
  }
- */
 
 @end

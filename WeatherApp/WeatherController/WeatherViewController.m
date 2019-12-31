@@ -27,11 +27,7 @@
 
 @implementation WeatherViewController
 
--(void) setCity:(NSInteger)cityID{
-    self.cityWeather = [[CityWeather alloc] initWithCityID:[NSNumber numberWithInteger:cityID]];
-    self.cityWeather.delegate = self;
-}
-
+#pragma mark - Controller Life Cycles
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -61,10 +57,13 @@
     [self.scrollView setContentSize:self.stackView.frame.size];
 }
 
+#pragma mark - UIScrollViewDelegate
 - (void) scrollViewDidScroll:(UIScrollView *) scrollView{
     [self.delegate scrollViewDidScroll:scrollView];
 }
 
+
+#pragma mark - WeatherModelDelegate
 - (void) onUpdatedWeatherData:(NSObject*)currentData{
     dispatch_async(dispatch_get_main_queue(), ^{
         for (WeatherView* controller in self.controllers) {
@@ -78,8 +77,19 @@
     
 }
 
+#pragma mark - Public Methods
 -(void) performUpdate{
     [self.cityWeather performUpdate];
+}
+
+-(CityWeather*) getWeatherData{
+    return self.cityWeather;
+}
+
+
+-(void) setCity:(NSInteger)cityID{
+    self.cityWeather = [[CityWeather alloc] initWithCityID:[NSNumber numberWithInteger:cityID]];
+    self.cityWeather.delegate = self;
 }
 
 @end

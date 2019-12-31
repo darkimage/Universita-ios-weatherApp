@@ -15,7 +15,7 @@
 
 @property (nonatomic,strong) NSString *documentsDirectory;
 @property (nonatomic,strong) NSString *databaseFilename;
-@property (nonatomic,strong) NSMutableArray* resultArray;
+@property (atomic,strong) NSMutableArray* resultArray;
 @property (nonatomic,strong) NSString* city_table;
 @property (nonatomic,strong) NSString* favorite_table;
 
@@ -103,7 +103,7 @@
     BOOL openDatabaseRes = sqlite3_open_v2([databasePath UTF8String], &sqlite3db, SQLITE_OPEN_READWRITE, "unix");
     if(openDatabaseRes == SQLITE_OK){
         sqlite3_stmt *compiledStatement;
-        //carica i dati dal database in memeoria
+        //carica i dati dal database in memoria
         BOOL prepareStatementResult = sqlite3_prepare_v2(sqlite3db, query, -1, &compiledStatement, NULL);
         if(prepareStatementResult == SQLITE_OK) {
             
@@ -157,9 +157,8 @@
 }
 
 -(NSArray*)loadDataFromDB:(NSString *)query{
-    
     [self runQuery:[query UTF8String] isQueryExecutable:NO];
-    return (NSArray *)self.resultArray; //nota il risultato viene castato in un tipo NON MODIFICABILE!!
+    return self.resultArray; //nota il risultato viene castato in un tipo NON MODIFICABILE!!
 }
 
 -(void)executeQuery:(NSString *)query{
@@ -168,6 +167,12 @@
 
 -(NSArray*)getCitiesbyPartialName:(NSString *)partialname{
     NSString* query = [NSString stringWithFormat:@"select * from %@ where name like '%@%%'",self.city_table,partialname];
+    return [self loadDataFromDB:query];
+}
+
+
+-(NSArray*)getCitiesbyPartialName:(NSString*)partialname ofCountry:(NSString*)country{
+    NSString* query = [NSString stringWithFormat:@"select * from %@ where name like '%@%%' and country like'%@%%'",self.city_table,partialname,country];
     return [self loadDataFromDB:query];
 }
 
@@ -184,6 +189,15 @@
 -(void) addFavoriteCity:(NSNumber*)city_id{
     NSString *query = [NSString stringWithFormat:@"insert into %@ (id) values(%@)",self.favorite_table,city_id];
     [self executeQuery:query];
+}
+
+-(Boolean)deleteFavoriteCitybyId:(NSInteger)city_id{
+    NSString *query = [NSString stringWithFormat:@"delete from %@ where id = %lu",self.favorite_table,city_id];
+    [self executeQuery:query];
+    if(self.affectedRows != 0){
+        return YES;
+    }
+    return NO;
 }
 
 @end

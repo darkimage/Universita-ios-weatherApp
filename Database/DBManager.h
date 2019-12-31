@@ -14,13 +14,18 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DBManager : NSObject
 
-//"VIRTUAL" METHODS
-
--(NSArray*)getCitiesbyPartialName:(NSString *)partialname;
+//"VIRTUAL" METHODS (CRUD INTERFACE)
+//GET METHODS
+-(NSArray*)getCitiesbyPartialName:(NSString*)partialname;
+-(NSArray*)getCitiesbyPartialName:(NSString*)partialname ofCountry:(NSString*)country;
 -(NSArray*)getCitybyId:(NSNumber*)city_id;
 -(NSArray*)getFavoriteCities;
+
+//ADD METHODS
 -(void)addFavoriteCity:(NSNumber*)city_id;
 
+//DELETE METHODS
+-(Boolean)deleteFavoriteCitybyId:(NSInteger)city_id;
 @end
 
 NS_ASSUME_NONNULL_END

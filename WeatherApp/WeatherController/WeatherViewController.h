@@ -19,6 +19,7 @@
 
 -(void) setCity:(NSInteger)cityID;
 -(void) performUpdate;
+-(CityWeather*) getWeatherData;
 
 @end
 

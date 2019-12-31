@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WeatherSearchDelegate.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface WeatherSearchController : UIViewController<UISearchBarDelegate, UISearchControllerDelegate, UISearchResultsUpdating>
-
+@interface WeatherSearchController : UIViewController<UISearchResultsUpdating>
+@property (weak, nonatomic) NSObject<WeatherSearchDelegate>* delegate;
 @end
 
 NS_ASSUME_NONNULL_END

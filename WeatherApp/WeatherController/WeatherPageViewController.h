@@ -8,14 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "WeatherViewController.h"
+#import "WeatherManageDelegate.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 //Questo controller si assicura di presentare in forma scrollabile orizzontale
 //i WeatherViewController ed e'anche responsabile di tenerli aggiornati
-@interface WeatherPageViewController : UIViewController<UIPageViewControllerDataSource, UIPageViewControllerDelegate>
-//AGGIUNGERE METODI PER SALVARE I DATI ETC
-
+@interface WeatherPageViewController : UIViewController<UIPageViewControllerDataSource, UIPageViewControllerDelegate, WeatherManageDelegate>
 - (NSArray<WeatherViewController*>*) getControllers;
 - (WeatherViewController*) getCurrentController;
 

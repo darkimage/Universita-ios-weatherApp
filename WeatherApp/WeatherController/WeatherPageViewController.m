@@ -10,18 +10,20 @@
 #import "WeatherViewController.h"
 #import "AnimatedBackground.h"
 #import "WeatherAppModel.h"
+#import "WeatherManageController.h"
 
 @interface WeatherPageViewController ()
 //PROPRIETA
 @property (nonatomic,strong) UIPageViewController* pageController;
 @property (strong, nonatomic) IBOutlet UINavigationItem *navigationBar;
+@property (strong,nonatomic) NSMutableArray<WeatherViewController*>* viewControllers;
+@property (strong,nonatomic) WeatherViewController* currentController;
+@property (strong,nonatomic) AnimatedBackground* backgroundAnimation;
+@property (strong,nonatomic) NSMutableArray* favoriteCities;
 @property NSInteger currentIndex; //Index attuale settato solo dopo che la transizione e completa
 @property NSInteger nextIndex;    //Index verso il quai si sta facendo una transizione
-@property NSMutableArray<WeatherViewController*>* viewControllers;
-@property WeatherViewController* currentController;
-@property AnimatedBackground* backgroundAnimation;
 
-//METODI
+//METODI PRIVATI
 - (WeatherViewController*) viewAtIndex:(NSInteger)index;
 - (WeatherViewController*) instantiateView:(NSInteger)index withData:(NSMutableArray*)cities;
 - (void) updateViewAtIndex:(NSInteger)index;
@@ -31,7 +33,7 @@
 
 @implementation WeatherPageViewController
 
-//INITIALIZZAZIONE
+#pragma mark - Controller Life Cycles
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -41,13 +43,12 @@
 
     
     //RETRIVE FAVORITE CITIES
-    NSMutableArray* favoriteCities = [[NSMutableArray alloc] initWithArray:[[[WeatherAppModel sharedModel] getDatabase] getFavoriteCities] copyItems:YES];
-    NSLog(@"%lu",(unsigned long)favoriteCities.count);
+    self.favoriteCities = [[NSMutableArray alloc] initWithArray:[[[WeatherAppModel sharedModel] getDatabase] getFavoriteCities] copyItems:YES];
     //Set navController Background and init View Controllers
     UINavigationController *navController = (UINavigationController*)[[(AppDelegate*)[[UIApplication sharedApplication]delegate] window] rootViewController];
     self.backgroundAnimation = [[[WeatherAppModel sharedModel] getWeatherBackgroundPreset] setWeatherBackgroundPreset:@"clear_sky" toView:navController.view];
-    for (int i = 0; i < favoriteCities.count; i++){
-        WeatherViewController* controller = [self instantiateView:i withData:favoriteCities];
+    for (int i = 0; i < self.favoriteCities.count; i++){
+        WeatherViewController* controller = [self instantiateView:i withData:self.favoriteCities];
         controller.delegate = self.backgroundAnimation;
         [self.viewControllers addObject:controller];
     }
@@ -70,7 +71,16 @@
     self.navigationBar.rightBarButtonItem = manageButton;
 }
 
-//METODI DEI DELEGATI O DATASOURCE
+-(void) viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    NSArray* firstview = [[NSArray alloc]initWithObjects:[self viewAtIndex:self.currentIndex],nil];
+    [self.pageController setViewControllers:firstview direction:UIPageViewControllerNavigationDirectionForward animated:true completion:nil];
+}
+
+#pragma mark - UIPageViewController Interface
+/*
+ * UIPageViewControllerDataSource, UIPageViewControllerDelegate Interface
+ */
 //transizione in avanti
 - (nullable UIViewController *)pageViewController:(nonnull UIPageViewController *)pageViewController viewControllerBeforeViewController:(nonnull UIViewController *)viewController { 
     WeatherViewController* weatherView = (WeatherViewController*)viewController;
@@ -118,7 +128,40 @@
     return self.currentIndex;
 } // The selected item reflected in the page indicator.
 
-//METODI PRIVATI
+#pragma mark - WeatherManageDelegate Protocol
+/*
+ * Weather Manage Protocol Interface
+ */
+-(void) onDeleteCityAtIndex:(NSInteger)index{
+    [self.favoriteCities removeObjectAtIndex:index];
+    [self.viewControllers removeObjectAtIndex:index];
+    self.currentIndex = 0;
+    self.nextIndex = 0;
+    for (int i = 0 ; i < self.viewControllers.count; i++) {
+        self.viewControllers[i].pageIndex = i;
+    }
+}
+
+-(void) onAddCity:(CityWeather*)data{
+    // TODO: aggiungi citta;
+}
+
+-(NSArray*) getCities{
+    return (NSArray*)self.favoriteCities;
+}
+
+-(NSArray<CityWeather*>*) getCitiesWeather{
+    NSMutableArray<CityWeather*>* citiesWeather = [[NSMutableArray alloc] init];
+    for (int i =0; i<self.viewControllers.count; i++) {
+        [citiesWeather addObject:[self.viewControllers[i] getWeatherData]];
+    }
+    return (NSArray<CityWeather*>*)citiesWeather;
+}
+
+#pragma mark - Private Methods
+/*
+ * METODI PRIVATI
+ */
 
 - (void)updateViewAtIndex:(NSInteger)index {
     //update view
@@ -135,6 +178,18 @@
 }
 
 -(void) goToManage{
+    for (int i = 0; i<self.favoriteCities.count; i++) {
+        if(![self.viewControllers[i] getWeatherData].hasData){
+            // TODO: messaggio per l'utente di caricamento dati
+            return;
+        }
+        if(i == self.favoriteCities.count-1){
+            [self goToManageInternal];
+        }
+    }
+}
+
+-(void) goToManageInternal{
     [self performSegueWithIdentifier:@"goToManage" sender:self];
 }
 
@@ -146,12 +201,28 @@
     return weatherViewController;
 }
 
-- (nonnull WeatherViewController *)getCurrentController { 
+#pragma mark - Public Methods
+/*
+ * METODI PUBBLICI
+ */
+- (nonnull WeatherViewController *)getCurrentController {
     return self.currentController;
 }
 
-- (nonnull NSArray<WeatherViewController *> *)getControllers { 
+- (nonnull NSArray<WeatherViewController *> *)getControllers {
     return (NSArray*)self.viewControllers;
+}
+
+
+/*
+ * METODI per la Navigatione
+ */
+#pragma mark - Navigation
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if([[segue identifier] isEqualToString:@"goToManage"]){
+        WeatherManageController* manageController = (WeatherManageController*)[segue destinationViewController];
+        manageController.delegate = self;
+    }
 }
 
 @end
