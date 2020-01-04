@@ -18,7 +18,7 @@
 
 @implementation WeatherAppModel
 
-//Singleton Pattern
+#pragma mark - SINGLETON INIT
 +(instancetype) sharedModel{
     static WeatherAppModel* sharedAppModel = nil;
     static dispatch_once_t onceToken;
@@ -39,6 +39,7 @@
     return self;
 }
 
+#pragma mark - SINGLETON INSTANCE METHODS
 -(DBManager*) getDatabase{
     return self.DBData;
 }
@@ -53,6 +54,19 @@
 
 - (nonnull AppDelegate *)getAppDelegate { 
     return (AppDelegate *)[UIApplication sharedApplication].delegate;
+}
+
+#pragma mark STATIC METHODS
++(void) displayToastWithMessage:(NSString*)message andDuration:(CGFloat)duration from:(UIViewController*)view {
+    UIAlertController* toast = [UIAlertController alertControllerWithTitle:nil message:message preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * action) {
+        [toast dismissViewControllerAnimated:YES completion:nil];
+    }];
+    [toast addAction:defaultAction];
+    [view presentViewController:toast animated:YES completion:nil];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(duration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [toast dismissViewControllerAnimated:YES completion:nil];
+    });
 }
 
 @end

@@ -120,59 +120,62 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="resultcell" id="Fbl-2T-BNQ" customClass="WeatherManageCell">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="resultcell" rowHeight="80" id="S4w-es-fd3" customClass="WeatherResultCell">
+                                <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Fbl-2T-BNQ" id="jyk-wN-ybl">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="S4w-es-fd3" id="iEx-e6-35k">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3nx-By-6UJ" userLabel="CityName">
-                                            <rect key="frame" x="16" y="6" width="254" height="32"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LqC-L8-QlR" userLabel="cityName">
+                                            <rect key="frame" x="16" y="0.0" width="226" height="79.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="226" id="1Cr-hm-v8s"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                             <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.25" colorSpace="custom" customColorSpace="sRGB"/>
                                             <size key="shadowOffset" width="2" height="2"/>
                                         </label>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="JVX-RP-wg8">
-                                            <rect key="frame" x="270" y="0.0" width="89" height="38.5"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Khp-0H-dIf">
+                                            <rect key="frame" x="296.5" y="0.0" width="62.5" height="73.5"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yrJ-Pg-ThI" userLabel="Temperature">
-                                                    <rect key="frame" x="0.0" y="0.0" width="89" height="17"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="42"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Country" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AV9-fD-oD9">
+                                                    <rect key="frame" x="0.0" y="0.0" width="62.5" height="51"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.9231298575129534" green="0.9231298575129534" blue="0.9231298575129534" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.25" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <size key="shadowOffset" width="1" height="1"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g1x-8l-W1F" userLabel="cityCountry">
+                                                    <rect key="frame" x="0.0" y="51" width="62.5" height="22.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
-                                                    <color key="shadowColor" white="0.0" alpha="0.25" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.25" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <size key="shadowOffset" width="2" height="2"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aZq-cT-hh8" userLabel="Description">
-                                                    <rect key="frame" x="0.0" y="17" width="89" height="21.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                    <color key="shadowColor" white="0.0" alpha="0.25" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <size key="shadowOffset" width="1" height="1"/>
                                                 </label>
                                             </subviews>
                                         </stackView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="JVX-RP-wg8" secondAttribute="trailing" constant="16" id="C0X-9I-M0t"/>
-                                        <constraint firstAttribute="bottom" secondItem="JVX-RP-wg8" secondAttribute="bottom" constant="5" id="WCl-6f-MZa"/>
-                                        <constraint firstItem="JVX-RP-wg8" firstAttribute="top" secondItem="jyk-wN-ybl" secondAttribute="top" id="YUk-CK-Yb6"/>
-                                        <constraint firstItem="3nx-By-6UJ" firstAttribute="leading" secondItem="jyk-wN-ybl" secondAttribute="leading" constant="16" id="Yrv-MF-HlX"/>
-                                        <constraint firstItem="3nx-By-6UJ" firstAttribute="centerY" secondItem="jyk-wN-ybl" secondAttribute="centerY" id="ZTI-fG-aCG"/>
-                                        <constraint firstItem="JVX-RP-wg8" firstAttribute="leading" secondItem="3nx-By-6UJ" secondAttribute="trailing" id="hen-AW-sNE"/>
+                                        <constraint firstAttribute="bottom" secondItem="LqC-L8-QlR" secondAttribute="bottom" id="25l-kz-ZQL"/>
+                                        <constraint firstAttribute="trailing" secondItem="Khp-0H-dIf" secondAttribute="trailing" constant="16" id="50b-ew-mES"/>
+                                        <constraint firstItem="Khp-0H-dIf" firstAttribute="bottom" secondItem="iEx-e6-35k" secondAttribute="bottom" constant="-6" id="5MI-mj-bnH"/>
+                                        <constraint firstItem="Khp-0H-dIf" firstAttribute="top" secondItem="iEx-e6-35k" secondAttribute="top" id="N58-WA-aJK"/>
+                                        <constraint firstItem="Khp-0H-dIf" firstAttribute="leading" secondItem="LqC-L8-QlR" secondAttribute="trailing" constant="54.5" id="UeT-Sn-17c"/>
+                                        <constraint firstItem="LqC-L8-QlR" firstAttribute="leading" secondItem="iEx-e6-35k" secondAttribute="leading" constant="16" id="c6W-X7-oOX"/>
+                                        <constraint firstItem="LqC-L8-QlR" firstAttribute="top" secondItem="iEx-e6-35k" secondAttribute="top" id="j6a-30-WaR"/>
+                                        <constraint firstItem="Khp-0H-dIf" firstAttribute="top" secondItem="iEx-e6-35k" secondAttribute="top" id="y1Z-3z-C3s"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
-                                    <outlet property="cityName" destination="3nx-By-6UJ" id="gC9-H3-oeC"/>
-                                    <outlet property="cityTemperature" destination="yrJ-Pg-ThI" id="no6-xe-Tcj"/>
-                                    <outlet property="weatherDescription" destination="aZq-cT-hh8" id="736-cN-WmS"/>
+                                    <outlet property="cityCountry" destination="g1x-8l-W1F" id="vqV-1G-SJy"/>
+                                    <outlet property="cityName" destination="LqC-L8-QlR" id="LS1-5L-8nM"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -245,20 +248,24 @@
         <scene sceneID="iL6-cf-h8P">
             <objects>
                 <tableViewController storyboardIdentifier="WeatherTableController" id="ZP4-VE-3ti" customClass="WeatherManageController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="KoR-FX-Mma">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="KoR-FX-Mma">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="hFx-t8-e6r" customClass="WeatherManageCell">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="90" id="hFx-t8-e6r" customClass="WeatherManageCell">
+                                <rect key="frame" x="0.0" y="28" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hFx-t8-e6r" id="qDo-as-Ssz">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bdb-BL-qL8" userLabel="CityName">
-                                            <rect key="frame" x="16" y="6" width="254" height="32"/>
+                                            <rect key="frame" x="16" y="29" width="254" height="32"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="32" id="eCt-2H-oLc"/>
+                                                <constraint firstAttribute="width" constant="254" id="yK8-d2-6TW"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
@@ -266,10 +273,14 @@
                                             <size key="shadowOffset" width="2" height="2"/>
                                         </label>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="XTh-wH-vft">
-                                            <rect key="frame" x="270" y="0.0" width="89" height="38.5"/>
+                                            <rect key="frame" x="270" y="0.0" width="89" height="85"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uNd-ea-Lzr" userLabel="Temperature">
-                                                    <rect key="frame" x="0.0" y="0.0" width="89" height="17"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="89" height="55"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="55" id="fF7-Gh-R4n"/>
+                                                        <constraint firstAttribute="width" constant="89" id="uLe-wT-hoQ"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="42"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -277,7 +288,11 @@
                                                     <size key="shadowOffset" width="2" height="2"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7H1-MS-Xsw" userLabel="Description">
-                                                    <rect key="frame" x="0.0" y="17" width="89" height="21.5"/>
+                                                    <rect key="frame" x="0.0" y="55" width="89" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="89" id="825-r1-YU1"/>
+                                                        <constraint firstAttribute="height" constant="30" id="IiE-at-gdw"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -302,6 +317,7 @@
                                 <connections>
                                     <outlet property="cityName" destination="Bdb-BL-qL8" id="USP-bu-qnT"/>
                                     <outlet property="cityTemperature" destination="uNd-ea-Lzr" id="HB2-44-Scj"/>
+                                    <outlet property="stackView" destination="XTh-wH-vft" id="pYW-Ve-rgV"/>
                                     <outlet property="weatherDescription" destination="7H1-MS-Xsw" id="ZK7-vu-KiV"/>
                                 </connections>
                             </tableViewCell>

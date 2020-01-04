@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WeatherSearchDelegate.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface WeatherSearchResultController : UITableViewController
-
+@property (strong, nonatomic) NSObject<WeatherSearchDelegate>* delegate;
+@property (strong, atomic) NSMutableArray* data;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "CityWeather.h"
 #import "WeatherManageDelegate.h"
+#import "WeatherSearchDelegate.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface WeatherManageController : UITableViewController
+@interface WeatherManageController : UITableViewController<WeatherSearchDelegate>
 @property (weak, nonatomic) NSObject<WeatherManageDelegate>* delegate;
 @end
 

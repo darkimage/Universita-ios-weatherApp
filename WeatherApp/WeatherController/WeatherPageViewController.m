@@ -43,7 +43,7 @@
 
     
     //RETRIVE FAVORITE CITIES
-    self.favoriteCities = [[NSMutableArray alloc] initWithArray:[[[WeatherAppModel sharedModel] getDatabase] getFavoriteCities] copyItems:YES];
+    self.favoriteCities = [[NSMutableArray alloc] initWithArray:[[[WeatherAppModel sharedModel] getDatabase] getAddedCities] copyItems:YES];
     //Set navController Background and init View Controllers
     UINavigationController *navController = (UINavigationController*)[[(AppDelegate*)[[UIApplication sharedApplication]delegate] window] rootViewController];
     self.backgroundAnimation = [[[WeatherAppModel sharedModel] getWeatherBackgroundPreset] setWeatherBackgroundPreset:@"clear_sky" toView:navController.view];
@@ -143,7 +143,12 @@
 }
 
 -(void) onAddCity:(CityWeather*)data{
-    // TODO: aggiungi citta;
+    self.currentIndex = 0;
+    self.nextIndex = 0;
+    self.favoriteCities = [[NSMutableArray alloc] initWithArray:[[[WeatherAppModel sharedModel] getDatabase] getAddedCities] copyItems:YES];
+    WeatherViewController* controller = [self instantiateView:(self.favoriteCities.count-1) withData:self.favoriteCities];
+    controller.delegate = self.backgroundAnimation;
+    [self.viewControllers addObject:controller];
 }
 
 -(NSArray*) getCities{
@@ -178,18 +183,6 @@
 }
 
 -(void) goToManage{
-    for (int i = 0; i<self.favoriteCities.count; i++) {
-        if(![self.viewControllers[i] getWeatherData].hasData){
-            // TODO: messaggio per l'utente di caricamento dati
-            return;
-        }
-        if(i == self.favoriteCities.count-1){
-            [self goToManageInternal];
-        }
-    }
-}
-
--(void) goToManageInternal{
     [self performSegueWithIdentifier:@"goToManage" sender:self];
 }
 

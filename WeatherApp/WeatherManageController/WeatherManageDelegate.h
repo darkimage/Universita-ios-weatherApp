@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol WeatherManageDelegate <NSObject>
 
 -(void) onDeleteCityAtIndex:(NSInteger)index;
--(void) onAddCity:(CityWeather*)datal;
+-(void) onAddCity:(CityWeather*)data;
 -(NSArray*) getCities;
 -(NSArray<CityWeather*>*) getCitiesWeather;
 @end

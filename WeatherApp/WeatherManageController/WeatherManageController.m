@@ -10,6 +10,7 @@
 #import "WeatherAppModel.h"
 #import "WeatherManageCell.h"
 #import "WeatherAppModel.h"
+#import "WeatherSearchController.h"
 
 @interface WeatherManageController ()
 @property (strong, nonatomic) IBOutlet UINavigationItem *navigationBar;
@@ -19,6 +20,7 @@
 
 -(void) goToSearch;
 -(Boolean) deleteFavoriteCityWithId:(NSInteger)index;
+-(void) saveCities;
 @end
 
 @implementation WeatherManageController
@@ -31,8 +33,24 @@
         self.citiesWeather = [[NSMutableArray<CityWeather*> alloc] initWithArray:[self.delegate getCitiesWeather]];
         UIBarButtonItem* addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(goToSearch)];
         [addButton setTintColor:[UIColor whiteColor]];
-        self.navigationBar.rightBarButtonItem = addButton;
+        UIBarButtonItem* save = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_save"] style:UIBarButtonItemStylePlain target:self action:@selector(saveCities)];
+        [save setTintColor:[UIColor whiteColor]];
+        self.navigationBar.rightBarButtonItems = @[save, addButton];
         self.tableView.delegate = self;
+    }
+}
+
+#pragma mark - WeatherSearchDelegate
+-(void) onSelectedCityFromSearch:(NSInteger)city_id{
+    if([[[WeatherAppModel sharedModel] getDatabase] addFavoriteCity:[NSNumber numberWithInteger:city_id]]){
+        NSNumber* cityID = [NSNumber numberWithInteger:city_id];
+        [self.favoriteCities addObject:@[cityID]];
+        CityWeather* weather = [[CityWeather alloc] initWithCityID:cityID];
+        [self.citiesWeather addObject:weather];
+        [self.tableView reloadData];
+        [self.delegate onAddCity:weather];
+    }else{
+        [WeatherAppModel displayToastWithMessage:@"Can't add city! \n please try again later." andDuration:10 from:self];
     }
 }
 
@@ -51,6 +69,25 @@
     return NO;
 }
 
+-(void) saveCities{
+    NSMutableString* csv = [[NSMutableString alloc] init];
+    NSArray* cities = [[[WeatherAppModel sharedModel] getDatabase] getFavoriteCities];
+    if(cities.count != 0){
+        for (int i = 0; i < cities.count; i++) {
+            if(i+1 <= cities.count){
+                [csv appendString:cities[i][0]];
+            }
+            if(i+1 != cities.count){
+                [csv appendString:@","];
+            }
+        }
+        UIActivityViewController*  saveController = [[UIActivityViewController alloc] initWithActivityItems:@[csv] applicationActivities:nil];
+        [self presentViewController:saveController animated:YES completion:nil];
+    }else{
+        [WeatherAppModel displayToastWithMessage:@"No favorites cities to export!" andDuration:2.0 from:self];
+    }
+}
+
 #pragma mark - TableView Interfaces
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.favoriteCities.count;
@@ -60,6 +97,7 @@
      WeatherManageCell *cell = (WeatherManageCell*)[tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
      CityWeather* weather = self.citiesWeather[indexPath.row];
      [cell initCellWithData:weather];
+//     [[[WeatherAppModel sharedModel] getWeatherBackgroundPreset] setWeatherBackgroundPreset:@"clear_sky" toView:cell.contentView];
      // TODO: backgroud della cella che rispecchia la condizione metereologica
      cell.selectionStyle = UITableViewCellSelectionStyleNone;
      return cell;
@@ -83,16 +121,15 @@
          if([self deleteFavoriteCityWithId:indexPath.row]){
              [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
          }else{
-             // TODO: implementare messagio che dice che non e possibile rimuovere la citta;
+             [WeatherAppModel displayToastWithMessage:@"Can't remove city! \n please try again later." andDuration:10 from:self];
          }
      }
  }
 
  #pragma mark - Navigation
- // In a storyboard-based application, you will often want to do a little preparation before navigation
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-     // Get the new view controller using [segue destinationViewController].
-     // Pass the selected object to the new view controller.
+     WeatherSearchController* searchController = (WeatherSearchController*)[segue destinationViewController];
+     searchController.delegate = self;
  }
 
 @end

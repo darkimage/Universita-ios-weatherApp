@@ -13,6 +13,7 @@
 @property BOOL currentUpdated;
 @property BOOL forecastUpdated;
 
+-(void) internalInitWithCityID:(NSNumber*)city_id withUpdate:(Boolean)update;
 -(void) onCurrentData:(NSData*)data;
 -(void) onForecastData:(NSData*)data;
 -(void) afterUpdate;
@@ -20,26 +21,39 @@
 
 @implementation CityWeather
 
--(instancetype)initWithCityID:(NSNumber*)city_id{
+-(id)initWithCityID:(NSNumber*)city_id{
     self = [super init];
     if (self) {
-        self.currentUpdated = NO;
-        self.forecastUpdated = NO;
-        NSArray* arrCity = [[[WeatherAppModel sharedModel] getDatabase] getCitybyId:city_id];
-        if([arrCity count] > 0){
-            self.ID = arrCity[0];
-            self.name = arrCity[1];
-            self.country = arrCity[2];
-            self.lon = arrCity[3];
-            self.lat = arrCity[4];
-            [self performUpdate];
-        }else{
-            [self.delegate onUpdateWeatherDataError:@"The selected city doesn't exist in the database"];
-            NSLog(@"The city doesn't exist");
-            return nil;
-        }
+        [self internalInitWithCityID:city_id withUpdate:true];
     }
     return self;
+}
+
+-(id)initWithCityID:(NSNumber*)city_id update:(Boolean)update{
+    self = [super init];
+    if (self) {
+        [self internalInitWithCityID:city_id withUpdate:update];
+    }
+    return self;
+}
+
+-(void) internalInitWithCityID:(NSNumber*)city_id withUpdate:(Boolean)update{
+    self.currentUpdated = NO;
+    self.forecastUpdated = NO;
+    NSArray* arrCity = [[[WeatherAppModel sharedModel] getDatabase] getCitybyId:city_id];
+    if([arrCity count] > 0){
+        self.ID = arrCity[0];
+        self.name = arrCity[1];
+        self.country = arrCity[2];
+        self.lon = arrCity[3];
+        self.lat = arrCity[4];
+        if(update){
+            [self performUpdate];
+        }
+    }else{
+        [self.delegate onUpdateWeatherDataError:@"The selected city doesn't exist in the database"];
+        NSLog(@"The city doesn't exist");
+    }
 }
 
 - (void)performUpdate {

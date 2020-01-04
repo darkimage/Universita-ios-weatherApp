@@ -25,13 +25,19 @@
     return [[NSArray alloc]init];
 }
 
+-(NSArray*)getAddedCities{
+    NSAssert(NO, @"Subclasses need to overwrite this method");
+    return [[NSArray alloc]init];
+}
+
 -(NSArray*)getFavoriteCities{
     NSAssert(NO, @"Subclasses need to overwrite this method");
     return [[NSArray alloc]init];
 }
 
--(void) addFavoriteCity:(NSNumber*)city_id{
+-(Boolean) addFavoriteCity:(NSNumber*)city_id{
     NSAssert(NO, @"Subclasses need to overwrite this method");
+    return NO;
 }
 
 -(Boolean)deleteFavoriteCitybyId:(NSInteger)city_id{

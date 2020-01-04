@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "CityWeather.h"
+#import "WeatherModelDelegate.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
-@interface WeatherManageCell : UITableViewCell
+@interface WeatherManageCell : UITableViewCell<WeatherModelDelegate>
 -(void) initCellWithData:(CityWeather*)data;
 @end
 

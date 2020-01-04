@@ -87,7 +87,7 @@
     //inizializiamo le proprieta, e cancelliamo la memoria nel caso qualcosia sia ancora referenziato
     NSString *databasePath = [self.documentsDirectory stringByAppendingPathComponent:self.databaseFilename];
     if(self.resultArray != nil){
-        [self.resultArray removeAllObjects];
+        self.resultArray = [[NSMutableArray alloc] init];
         self.resultArray = nil;
     }
     self.resultArray = [[NSMutableArray alloc]init];
@@ -158,7 +158,7 @@
 
 -(NSArray*)loadDataFromDB:(NSString *)query{
     [self runQuery:[query UTF8String] isQueryExecutable:NO];
-    return self.resultArray; //nota il risultato viene castato in un tipo NON MODIFICABILE!!
+    return (NSArray*)self.resultArray; //nota il risultato viene castato in un tipo NON MODIFICABILE!!
 }
 
 -(void)executeQuery:(NSString *)query{
@@ -181,14 +181,23 @@
     return [self loadDataFromDB:query][0];
 }
 
--(NSArray*)getFavoriteCities{
+-(NSArray*)getAddedCities{
     NSString *query = [NSString stringWithFormat:@"select id from %@",self.favorite_table];
     return [self loadDataFromDB:query];
 }
 
--(void) addFavoriteCity:(NSNumber*)city_id{
+-(NSArray*)getFavoriteCities{
+    NSString *query = [NSString stringWithFormat:@"select id from %@ where favorite=1",self.favorite_table];
+    return [self loadDataFromDB:query];
+}
+
+-(Boolean) addFavoriteCity:(NSNumber*)city_id{
     NSString *query = [NSString stringWithFormat:@"insert into %@ (id) values(%@)",self.favorite_table,city_id];
     [self executeQuery:query];
+    if(self.affectedRows != 0){
+        return YES;
+    }
+    return NO;
 }
 
 -(Boolean)deleteFavoriteCitybyId:(NSInteger)city_id{

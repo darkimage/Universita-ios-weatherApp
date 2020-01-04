@@ -9,5 +9,6 @@ CREATE TABLE IF NOT EXISTS city_data (
 
 CREATE TABLE IF NOT EXISTS added_city(
 	id INTEGER PRIMARY KEY NOT NULL,
+	favorite BOOLEAN,
 	FOREIGN KEY (id) REFERENCES city_data(id)
 );

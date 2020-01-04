@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface WeatherSearchController : UIViewController<UISearchResultsUpdating>
+@interface WeatherSearchController : UIViewController<UISearchResultsUpdating,WeatherSearchDelegate>
 @property (weak, nonatomic) NSObject<WeatherSearchDelegate>* delegate;
 @end
 

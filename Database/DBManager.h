@@ -19,10 +19,11 @@ NS_ASSUME_NONNULL_BEGIN
 -(NSArray*)getCitiesbyPartialName:(NSString*)partialname;
 -(NSArray*)getCitiesbyPartialName:(NSString*)partialname ofCountry:(NSString*)country;
 -(NSArray*)getCitybyId:(NSNumber*)city_id;
+-(NSArray*)getAddedCities;
 -(NSArray*)getFavoriteCities;
 
 //ADD METHODS
--(void)addFavoriteCity:(NSNumber*)city_id;
+-(Boolean)addFavoriteCity:(NSNumber*)city_id;
 
 //DELETE METHODS
 -(Boolean)deleteFavoriteCitybyId:(NSInteger)city_id;
