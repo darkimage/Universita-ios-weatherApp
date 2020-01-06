@@ -12,3 +12,15 @@ CREATE TABLE IF NOT EXISTS added_city(
 	favorite BOOLEAN,
 	FOREIGN KEY (id) REFERENCES city_data(id)
 );
+
+CREATE TABLE IF NOT EXISTS city_history(
+	id INTEGER NOT NULL,
+	currTime  DOUBLE NOT NULL,
+	mainTemp FLOAT NOT NULL,
+	minTemp FLOAT NOT NULL,
+	maxTemp FLOAT NOT NULL,
+	description TEXT,
+	icon TEXT,
+	PRIMARY KEY (id,currTime),
+	FOREIGN KEY (id) REFERENCES added_city(id) ON DELETE CASCADE
+);

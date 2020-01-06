@@ -13,7 +13,7 @@
 @property (nonatomic, strong) DBManager* DBData;
 @property (nonatomic, strong) WeatherData* WeatherData;
 @property (nonatomic, strong) WeatherBackgroundPresets* WeatherBackgroundData;
-
+@property (nonatomic, strong) AnimatedBackground* background;
 @end
 
 @implementation WeatherAppModel
@@ -54,6 +54,14 @@
 
 - (nonnull AppDelegate *)getAppDelegate { 
     return (AppDelegate *)[UIApplication sharedApplication].delegate;
+}
+
+-(void) setAnimatedBackground:(AnimatedBackground*)background{
+    self.background = background;
+}
+
+-(AnimatedBackground*) getCurrentAnimatedBackground{
+    return self.background;
 }
 
 #pragma mark STATIC METHODS

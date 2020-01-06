@@ -61,7 +61,7 @@
 
 -(Boolean) deleteFavoriteCityWithId:(NSInteger)index{
     NSInteger city_id = [self.favoriteCities[index][0] integerValue];
-    if([[[WeatherAppModel sharedModel] getDatabase] deleteFavoriteCitybyId:city_id]){
+    if([[[WeatherAppModel sharedModel] getDatabase] deleteAddedCitybyId:[NSNumber numberWithInteger:city_id]]){
         [self.favoriteCities removeObjectAtIndex:index];
         [self.delegate onDeleteCityAtIndex:index];
         return YES;

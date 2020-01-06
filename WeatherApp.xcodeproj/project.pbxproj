@@ -33,11 +33,14 @@
 		9D50924521A71D9B005A30AB /* SQLManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D50924421A71D9B005A30AB /* SQLManager.m */; };
 		9D50924A21A72601005A30AB /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D50924921A72601005A30AB /* DBManager.m */; };
 		9D7ACE3D21B18DF4005EA339 /* BackgroundLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D7ACE3C21B18DF4005EA339 /* BackgroundLayer.m */; };
+		9D80BC1523C14B9A00A3F196 /* WeatherHistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D80BC1423C14B9A00A3F196 /* WeatherHistoryCell.m */; };
+		9D80BC1823C14D9900A3F196 /* WeatherHistoryEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D80BC1723C14D9900A3F196 /* WeatherHistoryEntry.m */; };
 		9D82DE2823B9FA5B000982D5 /* WeatherManageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D82DE2723B9FA5B000982D5 /* WeatherManageCell.m */; };
 		9D8A845123B163D700456394 /* UIView+WeatherViewCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D8A845023B163D700456394 /* UIView+WeatherViewCategory.m */; };
 		9D8A845423B1661500456394 /* WeatherView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D8A845323B1661500456394 /* WeatherView.m */; };
 		9D8ECF0A23BE7B180092C44F /* SkeletonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D8ECF0923BE7B180092C44F /* SkeletonView.m */; };
 		9D8ECF0D23BE81D40092C44F /* CASkeletonGradient.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D8ECF0C23BE81D40092C44F /* CASkeletonGradient.m */; };
+		9D91B81D23C11410001ECACC /* WeatherHistoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D91B81C23C11410001ECACC /* WeatherHistoryController.m */; };
 		9DA5702821B5969100CF6FC3 /* WeatherBackgroundPresets.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DA5702721B5969100CF6FC3 /* WeatherBackgroundPresets.m */; };
 		9DC191D123BAB53600B2E431 /* WeatherSearchResultController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DC191D023BAB53600B2E431 /* WeatherSearchResultController.m */; };
 		9DC5B86B23B8C8B400003304 /* WeatherSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DC5B86A23B8C8B400003304 /* WeatherSearchController.m */; };
@@ -125,6 +128,10 @@
 		9D6E8AFA23B8F32100600E5E /* WeatherManageController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeatherManageController.h; sourceTree = "<group>"; };
 		9D6E8AFB23B8F32100600E5E /* WeatherManageController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeatherManageController.m; sourceTree = "<group>"; };
 		9D7ACE3C21B18DF4005EA339 /* BackgroundLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BackgroundLayer.m; sourceTree = "<group>"; };
+		9D80BC1323C14B9A00A3F196 /* WeatherHistoryCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeatherHistoryCell.h; sourceTree = "<group>"; };
+		9D80BC1423C14B9A00A3F196 /* WeatherHistoryCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeatherHistoryCell.m; sourceTree = "<group>"; };
+		9D80BC1623C14D9900A3F196 /* WeatherHistoryEntry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeatherHistoryEntry.h; sourceTree = "<group>"; };
+		9D80BC1723C14D9900A3F196 /* WeatherHistoryEntry.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeatherHistoryEntry.m; sourceTree = "<group>"; };
 		9D82DE2623B9FA5B000982D5 /* WeatherManageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeatherManageCell.h; sourceTree = "<group>"; };
 		9D82DE2723B9FA5B000982D5 /* WeatherManageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeatherManageCell.m; sourceTree = "<group>"; };
 		9D8A844F23B163D700456394 /* UIView+WeatherViewCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+WeatherViewCategory.h"; sourceTree = "<group>"; };
@@ -136,6 +143,8 @@
 		9D8ECF0923BE7B180092C44F /* SkeletonView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SkeletonView.m; sourceTree = "<group>"; };
 		9D8ECF0B23BE81D40092C44F /* CASkeletonGradient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CASkeletonGradient.h; sourceTree = "<group>"; };
 		9D8ECF0C23BE81D40092C44F /* CASkeletonGradient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CASkeletonGradient.m; sourceTree = "<group>"; };
+		9D91B81B23C11410001ECACC /* WeatherHistoryController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeatherHistoryController.h; sourceTree = "<group>"; };
+		9D91B81C23C11410001ECACC /* WeatherHistoryController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeatherHistoryController.m; sourceTree = "<group>"; };
 		9DA5702621B5969100CF6FC3 /* WeatherBackgroundPresets.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeatherBackgroundPresets.h; sourceTree = "<group>"; };
 		9DA5702721B5969100CF6FC3 /* WeatherBackgroundPresets.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeatherBackgroundPresets.m; sourceTree = "<group>"; };
 		9DBC5DF123BA21D300CF1845 /* WeatherSearchDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeatherSearchDelegate.h; sourceTree = "<group>"; };
@@ -289,12 +298,13 @@
 		9D50920821A71A45005A30AB /* WeatherApp */ = {
 			isa = PBXGroup;
 			children = (
-				9D6E8AF923B8F2EA00600E5E /* WeatherManageController */,
 				9D8A844823B1621100456394 /* BaseClasses */,
 				9D4F8D7A21B14809007254A5 /* Graphics */,
 				9D7ACE3E21B1C88A005EA339 /* Appdelegate */,
 				9D4F8D7F21B14D52007254A5 /* WeatherController */,
 				9DC5B86823B8C86B00003304 /* WeatherSearchController */,
+				9D6E8AF923B8F2EA00600E5E /* WeatherManageController */,
+				9D91B81A23C113B7001ECACC /* WeatherHistoryController */,
 				9D50920F21A71A45005A30AB /* Main.storyboard */,
 				9D50921221A71A47005A30AB /* Assets.xcassets */,
 				9D50921421A71A47005A30AB /* LaunchScreen.storyboard */,
@@ -388,6 +398,17 @@
 			path = BaseClasses;
 			sourceTree = "<group>";
 		};
+		9D91B81A23C113B7001ECACC /* WeatherHistoryController */ = {
+			isa = PBXGroup;
+			children = (
+				9D91B81B23C11410001ECACC /* WeatherHistoryController.h */,
+				9D91B81C23C11410001ECACC /* WeatherHistoryController.m */,
+				9D80BC1323C14B9A00A3F196 /* WeatherHistoryCell.h */,
+				9D80BC1423C14B9A00A3F196 /* WeatherHistoryCell.m */,
+			);
+			path = WeatherHistoryController;
+			sourceTree = "<group>";
+		};
 		9DC5B86823B8C86B00003304 /* WeatherSearchController */ = {
 			isa = PBXGroup;
 			children = (
@@ -414,6 +435,8 @@
 				9DF4AC1921A9EE4E006A0BBF /* CurrentWeather.m */,
 				9DF4AC2421AA23AE006A0BBF /* ForecastWeather.h */,
 				9DF4AC2521AA23AE006A0BBF /* ForecastWeather.m */,
+				9D80BC1623C14D9900A3F196 /* WeatherHistoryEntry.h */,
+				9D80BC1723C14D9900A3F196 /* WeatherHistoryEntry.m */,
 			);
 			path = WeatherData;
 			sourceTree = "<group>";
@@ -674,6 +697,8 @@
 				9D20C386232EE62B007FF9A3 /* WeatherForecastSlideView.m in Sources */,
 				9D7ACE3D21B18DF4005EA339 /* BackgroundLayer.m in Sources */,
 				9DF4AC2621AA23AE006A0BBF /* ForecastWeather.m in Sources */,
+				9D91B81D23C11410001ECACC /* WeatherHistoryController.m in Sources */,
+				9D80BC1823C14D9900A3F196 /* WeatherHistoryEntry.m in Sources */,
 				9DC191D123BAB53600B2E431 /* WeatherSearchResultController.m in Sources */,
 				9DC5B86B23B8C8B400003304 /* WeatherSearchController.m in Sources */,
 				9D20C38B232EE8F7007FF9A3 /* WeatherForecastSlotView.m in Sources */,
@@ -688,6 +713,7 @@
 				9D2ED83623B2104300D0BB36 /* WeatherForecastListView.m in Sources */,
 				9D8ECF0D23BE81D40092C44F /* CASkeletonGradient.m in Sources */,
 				9D50921921A71A47005A30AB /* main.m in Sources */,
+				9D80BC1523C14B9A00A3F196 /* WeatherHistoryCell.m in Sources */,
 				9D50924521A71D9B005A30AB /* SQLManager.m in Sources */,
 				9D8ECF0A23BE7B180092C44F /* SkeletonView.m in Sources */,
 				9D50920B21A71A45005A30AB /* AppDelegate.m in Sources */,

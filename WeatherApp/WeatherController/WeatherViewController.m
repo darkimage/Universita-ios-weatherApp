@@ -16,6 +16,7 @@
 #import "WeatherForecastListView.h"
 #import "NSValue+AnimBackgroundData.h"
 #import "WeatherAppModel.h"
+#import "WeatherHistoryController.h"
 
 @interface WeatherViewController()
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -23,6 +24,9 @@
 @property (strong, nonatomic) IBOutlet UIView *contentView;
 @property (strong, nonatomic) NSMutableArray<WeatherView*>* controllers;
 @property (strong, nonatomic) CityWeather* cityWeather;
+@property BOOL updateIsFromUser;
+
+-(void) performUpdateFromUser;
 @end
 
 @implementation WeatherViewController
@@ -30,7 +34,7 @@
 #pragma mark - Controller Life Cycles
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.updateIsFromUser = false;
     //INIT THE MAIN VIEW
     self.controllers = [[NSMutableArray alloc] init];
     [self.controllers addObject:[[WeatherHeaderView alloc] initWithSegueIdentifier:@"goToHistory" ofController:self]];
@@ -46,7 +50,7 @@
     
     //ADD PULL TO REFRESH
     self.scrollView.refreshControl = [[UIRefreshControl alloc] init];
-    [self.scrollView.refreshControl addTarget:self action:@selector(performUpdate) forControlEvents:UIControlEventValueChanged];
+    [self.scrollView.refreshControl addTarget:self action:@selector(performUpdateFromUser) forControlEvents:UIControlEventValueChanged];
     if(self.cityWeather.hasData){
         [self onUpdatedWeatherData:[[NSObject alloc] init]];
     }
@@ -66,6 +70,14 @@
 #pragma mark - WeatherModelDelegate
 - (void) onUpdatedWeatherData:(NSObject*)currentData{
     dispatch_async(dispatch_get_main_queue(), ^{
+        CurrentWeather* current = self.cityWeather.current;
+        if([[[WeatherAppModel sharedModel] getDatabase] getIsFavoriteCity:self.cityWeather.ID] && self.updateIsFromUser){
+            self.updateIsFromUser = NO;
+            [[[WeatherAppModel sharedModel] getDatabase]
+                 addHistoryEntryForCity:@[self.cityWeather.ID, [NSDate date], current.mainTemp, current.mainMin_Temp, current.mainMax_Temp]
+                 withDescription:current.weatherDescription
+                 andNamedIcon:[NSString stringWithFormat:@"icon_%@" ,current.weatherIcon]];
+        }
         for (WeatherView* controller in self.controllers) {
             [controller updateView:self.cityWeather];
         }
@@ -75,6 +87,12 @@
 
 - (void) onUpdateWeatherDataError:(NSString*)message{
     
+}
+
+#pragma mark - Private Methods
+-(void) performUpdateFromUser{
+    self.updateIsFromUser = YES;
+    [self.cityWeather performUpdate];
 }
 
 #pragma mark - Public Methods
@@ -90,6 +108,14 @@
 -(void) setCity:(NSInteger)cityID{
     self.cityWeather = [[CityWeather alloc] initWithCityID:[NSNumber numberWithInteger:cityID]];
     self.cityWeather.delegate = self;
+}
+
+#pragma mark - Navigation
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if([[segue identifier] isEqualToString:@"goToHistory"]){
+        WeatherHistoryController* controller = (WeatherHistoryController*)[segue destinationViewController];
+        controller.data = self.cityWeather;
+    }
 }
 
 @end

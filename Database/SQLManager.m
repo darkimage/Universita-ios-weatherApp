@@ -18,6 +18,7 @@
 @property (atomic,strong) NSMutableArray* resultArray;
 @property (nonatomic,strong) NSString* city_table;
 @property (nonatomic,strong) NSString* favorite_table;
+@property (nonatomic,strong) NSString* history_table;
 
 -(NSArray *)loadDataFromDB:(NSString *)query; //esegue una query di tipo not executable e ritorna i risultati
 -(void)executeQuery:(NSString *)query; //esegue una query di tipo executable non ce ritorno di risultati perche sono accedibi tramite le proprieties (affectedRows,lastInsertedRowID)
@@ -34,6 +35,7 @@
 -(void)initProperties{
     self.city_table = @"city_data";
     self.favorite_table = @"added_city";
+    self.history_table = @"city_history";
 }
 
 -(instancetype)init{
@@ -62,6 +64,8 @@
     }
     return self;
 }
+
+#pragma mark - PRIVATE METHODS
 
 -(void) copyDatabaseToDocuments{
     NSString* destPath = [self.documentsDirectory stringByAppendingPathComponent:self.databaseFilename];
@@ -156,6 +160,8 @@
     
 }
 
+#pragma mark - DBMANAGER OVERRIDES
+
 -(NSArray*)loadDataFromDB:(NSString *)query{
     [self runQuery:[query UTF8String] isQueryExecutable:NO];
     return (NSArray*)self.resultArray; //nota il risultato viene castato in un tipo NON MODIFICABILE!!
@@ -191,8 +197,19 @@
     return [self loadDataFromDB:query];
 }
 
--(Boolean) addFavoriteCity:(NSNumber*)city_id{
-    NSString *query = [NSString stringWithFormat:@"insert into %@ (id) values(%@)",self.favorite_table,city_id];
+-(BOOL)getIsFavoriteCity:(NSNumber*)city_id{
+    NSString *query = [NSString stringWithFormat:@"select favorite from %@ where id=%@",self.favorite_table,city_id];
+    NSArray* result = [self loadDataFromDB:query][0];
+    return [result[0] boolValue];
+}
+
+-(NSArray*)getHistoryOfCity:(NSNumber*)city_id{
+    NSString *query = [NSString stringWithFormat:@"select * from %@ where id=%@",self.history_table,city_id];
+    return [self loadDataFromDB:query];
+}
+
+-(BOOL) addFavoriteCity:(NSNumber*)city_id{
+    NSString *query = [NSString stringWithFormat:@"update %@ set favorite=TRUE WHERE id=%@",self.favorite_table,city_id];
     [self executeQuery:query];
     if(self.affectedRows != 0){
         return YES;
@@ -200,8 +217,30 @@
     return NO;
 }
 
--(Boolean)deleteFavoriteCitybyId:(NSInteger)city_id{
-    NSString *query = [NSString stringWithFormat:@"delete from %@ where id = %lu",self.favorite_table,city_id];
+- (BOOL)addHistoryEntryForCity:(NSArray*)city_weather withDescription:(NSString*)description andNamedIcon:(NSString*)icon {
+    if(city_weather.count != 5){
+        return NO;
+    }
+    NSDate* date = (NSDate*)(city_weather[1]);
+    NSString *query = [NSString stringWithFormat:@"insert into %@ values('%@','%f','%@','%@','%@','%@','%@')",self.history_table, city_weather[0], date.timeIntervalSince1970, city_weather[2], city_weather[3], city_weather[4], description, icon];
+    [self executeQuery:query];
+    if(self.affectedRows != 0){
+        return YES;
+    }
+    return NO;
+}
+
+-(BOOL)deleteFavoriteCitybyId:(NSNumber*)city_id{
+    NSString *query = [NSString stringWithFormat:@"update %@ set favorite=FALSE WHERE id=%@",self.favorite_table,city_id];
+    [self executeQuery:query];
+    if(self.affectedRows != 0){
+        return YES;
+    }
+    return NO;
+}
+
+-(BOOL)deleteAddedCitybyId:(NSNumber*)city_id{
+    NSString *query = [NSString stringWithFormat:@"delete from %@ where id = %@",self.favorite_table,city_id];
     [self executeQuery:query];
     if(self.affectedRows != 0){
         return YES;

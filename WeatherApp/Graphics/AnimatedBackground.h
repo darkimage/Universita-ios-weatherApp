@@ -31,6 +31,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(void) applyToView:(nullable UIView*)view;
 
+-(void) animate;
+
 @end
 
 NS_ASSUME_NONNULL_END

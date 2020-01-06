@@ -130,7 +130,13 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
+    [self animate];
+}
+
+-(void) animate{
     for (BackgroundLayer* slot in self.bgArray) {
+        NSLog(@"old %f",slot.image1.center.x);
+        NSLog(@"new %f", slot.image1.bounds.size.width+self.view.bounds.size.width/2);
         RZViewAction* moveimage1 = [RZViewAction action:^{
             slot.image1.center = CGPointMake(slot.image1.bounds.size.width+self.view.bounds.size.width/2, slot.image1.center.y);
         } withOptions:UIViewAnimationOptionRepeat|UIViewAnimationOptionCurveLinear duration:[slot.bgData animDataValue].duration];

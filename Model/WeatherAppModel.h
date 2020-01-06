@@ -23,6 +23,8 @@ NS_ASSUME_NONNULL_BEGIN
 -(WeatherData*) getWeatherData;
 -(AppDelegate*) getAppDelegate;
 -(WeatherBackgroundPresets*) getWeatherBackgroundPreset;
+-(void) setAnimatedBackground:(AnimatedBackground*)background;
+-(AnimatedBackground*) getCurrentAnimatedBackground;
 +(void) displayToastWithMessage:(NSString*)message andDuration:(CGFloat)duration from:(UIViewController*)view;
 @end
 

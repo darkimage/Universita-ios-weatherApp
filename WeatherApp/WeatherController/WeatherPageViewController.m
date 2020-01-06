@@ -20,13 +20,15 @@
 @property (strong,nonatomic) WeatherViewController* currentController;
 @property (strong,nonatomic) AnimatedBackground* backgroundAnimation;
 @property (strong,nonatomic) NSMutableArray* favoriteCities;
+@property (strong,nonatomic) UIBarButtonItem* favoriteButton;
 @property NSInteger currentIndex; //Index attuale settato solo dopo che la transizione e completa
 @property NSInteger nextIndex;    //Index verso il quai si sta facendo una transizione
 
 //METODI PRIVATI
 - (WeatherViewController*) viewAtIndex:(NSInteger)index;
 - (WeatherViewController*) instantiateView:(NSInteger)index withData:(NSMutableArray*)cities;
-- (void) updateViewAtIndex:(NSInteger)index;
+- (void) setUpFavoriteBadgeForCity:(NSInteger)city_id;
+- (void) favoriteCurrentCity;
 - (NSInteger) getCount; //Ritorna il numero di schermate presenti
 - (void) goToManage;
 @end
@@ -47,6 +49,7 @@
     //Set navController Background and init View Controllers
     UINavigationController *navController = (UINavigationController*)[[(AppDelegate*)[[UIApplication sharedApplication]delegate] window] rootViewController];
     self.backgroundAnimation = [[[WeatherAppModel sharedModel] getWeatherBackgroundPreset] setWeatherBackgroundPreset:@"clear_sky" toView:navController.view];
+    [[WeatherAppModel sharedModel] setAnimatedBackground:self.backgroundAnimation];
     for (int i = 0; i < self.favoriteCities.count; i++){
         WeatherViewController* controller = [self instantiateView:i withData:self.favoriteCities];
         controller.delegate = self.backgroundAnimation;
@@ -66,14 +69,18 @@
     [self.pageController didMoveToParentViewController:self];
     
     //Set Right Button Bar image
-    UIBarButtonItem *manageButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(goToManage)];
+    UIBarButtonItem* manageButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(goToManage)];
     [manageButton setTintColor:[UIColor whiteColor]];
-    self.navigationBar.rightBarButtonItem = manageButton;
+    self.favoriteButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"no_fav"] style:UIBarButtonItemStylePlain target:self action:@selector(favoriteCurrentCity)];
+    [self.favoriteButton setTintColor:[UIColor whiteColor]];
+    self.navigationBar.rightBarButtonItems = @[self.favoriteButton, manageButton];
 }
 
 -(void) viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    NSArray* firstview = [[NSArray alloc]initWithObjects:[self viewAtIndex:self.currentIndex],nil];
+    WeatherViewController* firstController = [self viewAtIndex:self.currentIndex];
+    NSArray* firstview = [[NSArray alloc]initWithObjects:firstController,nil];
+    [self setUpFavoriteBadgeForCity:[[firstController getWeatherData].ID integerValue]];
     [self.pageController setViewControllers:firstview direction:UIPageViewControllerNavigationDirectionForward animated:true completion:nil];
 }
 
@@ -119,6 +126,7 @@
 - (void)pageViewController:(UIPageViewController *)pageViewController willTransitionToViewControllers:(NSArray<UIViewController *> *)pendingViewControllers NS_AVAILABLE_IOS(6_0){
     WeatherViewController* controller = (WeatherViewController*)pendingViewControllers.firstObject;
     self.nextIndex = controller.pageIndex;
+    [self setUpFavoriteBadgeForCity:[[controller getWeatherData].ID integerValue]];
 }
 
 - (NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController NS_AVAILABLE_IOS(6_0){
@@ -168,13 +176,8 @@
  * METODI PRIVATI
  */
 
-- (void)updateViewAtIndex:(NSInteger)index {
-    //update view
-}
-
 - (WeatherViewController *)viewAtIndex:(NSInteger)index {
     WeatherViewController* controller = [self.viewControllers objectAtIndex:index];
-//    [controller performUpdate];
     return controller;
 }
 
@@ -184,6 +187,39 @@
 
 -(void) goToManage{
     [self performSegueWithIdentifier:@"goToManage" sender:self];
+}
+
+- (void) setUpFavoriteBadgeForCity:(NSInteger)city_id{
+    BOOL isFav = [[[WeatherAppModel sharedModel] getDatabase] getIsFavoriteCity:[NSNumber numberWithInteger:city_id]];
+    UIImage* favimage;
+    if(isFav){
+        favimage = [UIImage imageNamed:@"fav"];
+        favimage = [favimage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    }else{
+        favimage = [UIImage imageNamed:@"no_fav"];
+        favimage = [favimage imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    }
+    self.favoriteButton.image = favimage;
+}
+
+- (void) favoriteCurrentCity{
+    CityWeather* currWeather = [self getCitiesWeather][self.currentIndex];
+    BOOL isAlreadFav = [[[WeatherAppModel sharedModel] getDatabase] getIsFavoriteCity:currWeather.ID];
+    if(!isAlreadFav){
+        BOOL fav = [[[WeatherAppModel sharedModel] getDatabase] addFavoriteCity:currWeather.ID];
+        if(fav){
+            [self setUpFavoriteBadgeForCity:[currWeather.ID integerValue]];
+        }else{
+            [WeatherAppModel displayToastWithMessage:@"Cannot favorite city!\nPlease try again later." andDuration:2 from:self];
+        }
+    }else{
+        BOOL unfav = [[[WeatherAppModel sharedModel] getDatabase] deleteFavoriteCitybyId:currWeather.ID];
+        if(unfav){
+            [self setUpFavoriteBadgeForCity:[currWeather.ID integerValue]];
+        }else{
+            [WeatherAppModel displayToastWithMessage:@"Cannot unfavorite city!\nPlease try again later." andDuration:2 from:self];
+        }
+    }
 }
 
 - (WeatherViewController *)instantiateView:(NSInteger)index withData:(NSMutableArray*)cities {

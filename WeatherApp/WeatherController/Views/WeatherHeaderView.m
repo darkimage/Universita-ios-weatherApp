@@ -19,6 +19,7 @@
 @property (strong, nonatomic) IBOutlet UIImageView *WeatherIcon;
 @property (strong, nonatomic) IBOutlet UILabel *CityName;
 @property (strong, nonatomic) NSString* segueIdentifier;
+@property (strong, nonatomic) NSNumber* city_ID;
 @property (weak, nonatomic) UIViewController* segueController;
 @end
 
@@ -57,12 +58,14 @@
     self.TemperatureDesc.text = cityWeather.current.weatherDescription;
     self.CityName.text = cityWeather.name;
     self.WeatherIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"icon_%@", cityWeather.current.weatherIcon]];
+    self.city_ID = cityWeather.ID;
 }
 
 -(void)handleTap:(UITapGestureRecognizer *)sender
 {
     if (sender.state == UIGestureRecognizerStateEnded) {
-        if(self.segueController){
+        BOOL isFav = [[[WeatherAppModel sharedModel] getDatabase] getIsFavoriteCity:self.city_ID];
+        if(self.segueController && isFav){
             [self.segueController performSegueWithIdentifier:self.segueIdentifier sender:self];
         }
     }

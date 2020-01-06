@@ -10,6 +10,7 @@
 
 @implementation DBManager
 
+#pragma mark - GET
 -(NSArray*) getCitiesbyPartialName:(NSString *)partialname{
      NSAssert(NO, @"Subclasses need to overwrite this method");
     return [[NSArray alloc]init];
@@ -35,12 +36,41 @@
     return [[NSArray alloc]init];
 }
 
--(Boolean) addFavoriteCity:(NSNumber*)city_id{
+-(BOOL)getIsFavoriteCity:(NSNumber*)city_id{
     NSAssert(NO, @"Subclasses need to overwrite this method");
     return NO;
 }
 
--(Boolean)deleteFavoriteCitybyId:(NSInteger)city_id{
+- (nonnull NSArray *)getHistoryOfCity:(nonnull NSNumber *)city_id {
+    NSAssert(NO, @"Subclasses need to overwrite this method");
+    return [[NSArray alloc]init];
+}
+
+#pragma mark - ADD UPDATE
+
+-(BOOL) addFavoriteCity:(NSNumber*)city_id{
+    NSAssert(NO, @"Subclasses need to overwrite this method");
+    return NO;
+}
+
+-(BOOL)addHistoryEntryForCity:(NSArray*)city_weather withDescription:(NSString*)description andNamedIcon:(NSString*)icon {
+    NSAssert(NO, @"Subclasses need to overwrite this method");
+    return NO;
+}
+
+
+#pragma mark - DELETE
+-(BOOL)deleteFavoriteCitybyId:(NSNumber*)city_id{
+    NSAssert(NO, @"Subclasses need to overwrite this method");
+    return NO;
+}
+
+-(BOOL)deleteAddedCitybyId:(NSNumber*)city_id{
+    NSAssert(NO, @"Subclasses need to overwrite this method");
+    return NO;
+}
+
+-(BOOL)deleteHistoryEntryForCity:(NSNumber*)city_id{
     NSAssert(NO, @"Subclasses need to overwrite this method");
     return NO;
 }

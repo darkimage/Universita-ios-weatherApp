@@ -17,7 +17,6 @@ NS_ASSUME_NONNULL_BEGIN
 @interface WeatherPageViewController : UIViewController<UIPageViewControllerDataSource, UIPageViewControllerDelegate, WeatherManageDelegate>
 - (NSArray<WeatherViewController*>*) getControllers;
 - (WeatherViewController*) getCurrentController;
-
 @end
 
 NS_ASSUME_NONNULL_END

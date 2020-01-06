@@ -21,12 +21,19 @@ NS_ASSUME_NONNULL_BEGIN
 -(NSArray*)getCitybyId:(NSNumber*)city_id;
 -(NSArray*)getAddedCities;
 -(NSArray*)getFavoriteCities;
+-(BOOL)getIsFavoriteCity:(NSNumber*)city_id;
+-(NSArray*)getHistoryOfCity:(NSNumber*)city_id;
 
 //ADD METHODS
--(Boolean)addFavoriteCity:(NSNumber*)city_id;
+-(BOOL)addFavoriteCity:(NSNumber*)city_id;
+-(BOOL)addHistoryEntryForCity:(NSArray*)city_weather withDescription:(NSString*)description andNamedIcon:(NSString*)icon;
 
 //DELETE METHODS
--(Boolean)deleteFavoriteCitybyId:(NSInteger)city_id;
+-(BOOL)deleteFavoriteCitybyId:(NSNumber*)city_id;
+-(BOOL)deleteAddedCitybyId:(NSNumber*)city_id;
+-(BOOL)deleteHistoryEntryForCity:(NSNumber*)city_id;
 @end
+
+
 
 NS_ASSUME_NONNULL_END

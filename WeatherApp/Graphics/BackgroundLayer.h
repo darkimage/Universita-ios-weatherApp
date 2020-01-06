@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property CGPoint image2Start;
 
 -(instancetype) initWithData:(NSValue*)animData andSize:(CGRect)rect;
-
+-(void) restoreState;
 @end
 
 NS_ASSUME_NONNULL_END
