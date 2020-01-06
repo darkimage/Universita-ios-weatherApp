@@ -204,7 +204,7 @@
 }
 
 -(NSArray*)getHistoryOfCity:(NSNumber*)city_id{
-    NSString *query = [NSString stringWithFormat:@"select * from %@ where id=%@",self.history_table,city_id];
+    NSString *query = [NSString stringWithFormat:@"select * from %@ where id=%@ order by currTime desc",self.history_table,city_id];
     return [self loadDataFromDB:query];
 }
 

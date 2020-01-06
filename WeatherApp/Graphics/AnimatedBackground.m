@@ -151,10 +151,6 @@
 
 - (void)saveState{
     for (BackgroundLayer* slot in self.bgArray) {
-//        [slot.image1.layer removeAllAnimations];
-//        [slot.image2.layer removeAllAnimations];
-//        slot.image1.layer.transform = CATransform3DIdentity ;
-//        slot.image2.layer.transform = CATransform3DIdentity ;
         [slot saveState];
     }
 }
