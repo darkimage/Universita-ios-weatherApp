@@ -8,12 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "WeatherViewDelegate.h"
+#import "AnimatedBackgroundDelegate.h"
 #import "BackgroundLayer.h"
 #import "NSValue+AnimBackgroundData.h"
+#import "StateBoundDelegate.h"
 
 NS_ASSUME_NONNULL_BEGIN
-@interface AnimatedBackground : NSObject<WeatherViewDelegate>
+@interface AnimatedBackground : NSObject<AnimatedBackgroundDelegate,StateBoundDelegate>
 @property (nonatomic,strong) NSNumber* parallaxMaxOffset;
 @property (nonatomic,strong) NSNumber* parallaxMultiplier;
 
@@ -32,7 +33,6 @@ NS_ASSUME_NONNULL_BEGIN
 -(void) applyToView:(nullable UIView*)view;
 
 -(void) animate;
-
 @end
 
 NS_ASSUME_NONNULL_END

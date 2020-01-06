@@ -9,16 +9,13 @@
 // applicazione con un effetto di parallax (layers)
 
 #import "AnimatedBackground.h"
-#import <RZViewActions/UIView+RZViewActions.h>
 #import "NSValue+AnimBackgroundData.h"
 
 @interface AnimatedBackground()
 //PRIVATE PROPRIETIES
 @property (nonatomic,strong) NSMutableArray* bgArray;
 @property (nonatomic, strong) NSArray<NSValue*>* layers;
-@property (nonatomic,weak)   UIView*view;
-@property CGPoint image1Start;
-@property CGPoint image2Start;
+@property (nonatomic,weak) UIView*view;
 @property UIColor* color;
 @property BOOL hasGradient;
 @property CAGradientLayer* gradientLayer;
@@ -39,6 +36,8 @@
 
 @implementation AnimatedBackground
 
+
+#pragma mark - INIT METHODS
 - (void)initInternal:(UIView*)view{
     self.view = view;
     self.parallaxMaxOffset = [NSNumber numberWithFloat:200.0];
@@ -108,7 +107,8 @@
     return self;
 }
 
-- (void)scrollViewDidScroll:(nonnull UIScrollView *)scrollView {
+#pragma mark - WeatherViewDelegate
+- (void)onScrollViewDidScroll:(nonnull UIScrollView *)scrollView {
     NSInteger index = 0;
     CGFloat deltaScroll = self.lastScrolledPos - scrollView.contentOffset.y;
     for (BackgroundLayer* slot in self.bgArray) {
@@ -129,26 +129,37 @@
     self.lastScrolledPos = scrollView.contentOffset.y;
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [self animate];
-}
-
--(void) animate{
+- (void)animate {
+    int i = 0;
     for (BackgroundLayer* slot in self.bgArray) {
-        NSLog(@"old %f",slot.image1.center.x);
-        NSLog(@"new %f", slot.image1.bounds.size.width+self.view.bounds.size.width/2);
-        RZViewAction* moveimage1 = [RZViewAction action:^{
-            slot.image1.center = CGPointMake(slot.image1.bounds.size.width+self.view.bounds.size.width/2, slot.image1.center.y);
-        } withOptions:UIViewAnimationOptionRepeat|UIViewAnimationOptionCurveLinear duration:[slot.bgData animDataValue].duration];
-        RZViewAction* movecimage2 = [RZViewAction action:^{
-            slot.image2.center =CGPointMake(self.view.bounds.size.width/2, slot.image2.center.y);
-        } withOptions:UIViewAnimationOptionRepeat|UIViewAnimationOptionCurveLinear duration:[slot.bgData animDataValue].duration];
-        
-        RZViewAction *group = [RZViewAction group:@[moveimage1, movecimage2]];
-        [UIView rz_runAction:group];
+        [UIView animateWithDuration:[slot.bgData animDataValue].duration delay:0 options:UIViewAnimationOptionRepeat|UIViewAnimationOptionCurveLinear animations:^{
+            slot.image1.center = CGPointMake(slot.image1.center.x + slot.image1.frame.size.width, slot.image1.center.y);
+            slot.image2.center = CGPointMake(slot.image2.center.x + slot.image1.frame.size.width, slot.image2.center.y);
+        } completion:nil];
+        i++;
     }
 }
 
+#pragma mark - StateBoundDelegate
+- (void)restoreState{
+    [UIView setAnimationsEnabled:YES];
+    for (BackgroundLayer* slot in self.bgArray) {
+        [slot restoreState];
+    }
+    [self animate];
+}
+
+- (void)saveState{
+    for (BackgroundLayer* slot in self.bgArray) {
+//        [slot.image1.layer removeAllAnimations];
+//        [slot.image2.layer removeAllAnimations];
+//        slot.image1.layer.transform = CATransform3DIdentity ;
+//        slot.image2.layer.transform = CATransform3DIdentity ;
+        [slot saveState];
+    }
+}
+
+#pragma mark - PUBLIC METHODS
 -(void) addBackgroundToFront:(NSValue*)bgData{
     BackgroundLayer* nslot = [self createSlotAndAddtoView:bgData];
     [self.bgArray insertObject:nslot atIndex:0];
@@ -161,6 +172,19 @@
     [self sortSubViews];
 }
 
+- (void)applyToView:(nullable UIView *)view {
+    if(self.view){
+        for (NSValue* layer in self.layers) {
+            NSLog(@"TEST");
+            [self addBackgroundToBack:layer];
+        }
+        if(self.hasGradient){
+            [self.view sendSubviewToBack:self.gradientView];
+        }
+    }
+}
+
+#pragma mark - PRIVATE METHODS
 -(void) addBackground:(NSValue*)bgData atPosition:(NSInteger)index{
     BackgroundLayer* nslot = [self createSlotAndAddtoView:bgData];
     [self.bgArray insertObject:nslot atIndex:index];
@@ -169,15 +193,13 @@
 
 -(void) sortSubViews{
     for (BackgroundLayer* slot in self.bgArray) {
-        [self.view sendSubviewToBack:slot.image1];
-        [self.view sendSubviewToBack:slot.image2];
+        [self.view sendSubviewToBack:slot.viewLayer];
     }
 }
 
 -(BackgroundLayer*) createSlotAndAddtoView:(NSValue*)bgData{
     BackgroundLayer* slot = [[BackgroundLayer alloc]initWithData:bgData andSize:self.view.bounds];
-    [self.view addSubview:slot.image1];
-    [self.view addSubview:slot.image2];
+    [self.view addSubview:slot.viewLayer];
     return slot;
 }
 
@@ -191,17 +213,6 @@
 
 - (CGPoint) subtractPoint:(CGPoint) p1 toPoint:(CGPoint) p2{
     return CGPointMake(p1.x - p2.x, p1.y - p2.y);
-}
-
-- (void)applyToView:(nullable UIView *)view {
-    if(self.view){
-        for (NSValue* layer in self.layers) {
-            [self addBackgroundToBack:layer];
-        }
-        if(self.hasGradient){
-            [self.view sendSubviewToBack:self.gradientView];
-        }
-    }
 }
 
 @end

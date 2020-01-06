@@ -7,17 +7,20 @@
 //
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "StateBoundDelegate.h"
 
 NS_ASSUME_NONNULL_BEGIN
-@interface BackgroundLayer : NSObject
+@interface BackgroundLayer : NSObject<StateBoundDelegate>
 @property NSValue* bgData;
-@property (nonatomic,strong)UIImageView* image1;
-@property (nonatomic,strong)UIImageView* image2;
+@property (nonatomic,strong) UIImageView* image1;
+@property (nonatomic,strong) UIImageView* image2;
+@property (nonatomic,strong) UIView* viewLayer;
 @property CGPoint image1Start;
 @property CGPoint image2Start;
 
+
 -(instancetype) initWithData:(NSValue*)animData andSize:(CGRect)rect;
--(void) restoreState;
+
 @end
 
 NS_ASSUME_NONNULL_END

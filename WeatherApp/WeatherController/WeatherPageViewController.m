@@ -49,7 +49,9 @@
     //Set navController Background and init View Controllers
     UINavigationController *navController = (UINavigationController*)[[(AppDelegate*)[[UIApplication sharedApplication]delegate] window] rootViewController];
     self.backgroundAnimation = [[[WeatherAppModel sharedModel] getWeatherBackgroundPreset] setWeatherBackgroundPreset:@"clear_sky" toView:navController.view];
+    [self.backgroundAnimation animate];
     [[WeatherAppModel sharedModel] setAnimatedBackground:self.backgroundAnimation];
+    
     for (int i = 0; i < self.favoriteCities.count; i++){
         WeatherViewController* controller = [self instantiateView:i withData:self.favoriteCities];
         controller.delegate = self.backgroundAnimation;

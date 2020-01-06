@@ -88,6 +88,7 @@
 		9D10BC4D21B91252001A2E7C /* WeatherAppModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherAppModel.m; sourceTree = "<group>"; };
 		9D10BC5021B91269001A2E7C /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Main.strings; sourceTree = "<group>"; };
 		9D10BC5121B91269001A2E7C /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		9D1D9CF623C37776000B4176 /* StateBoundDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StateBoundDelegate.h; sourceTree = "<group>"; };
 		9D20C383232EE467007FF9A3 /* WeatherViewProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeatherViewProtocol.h; sourceTree = "<group>"; };
 		9D20C384232EE62B007FF9A3 /* WeatherForecastSlideView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeatherForecastSlideView.h; sourceTree = "<group>"; };
 		9D20C385232EE62B007FF9A3 /* WeatherForecastSlideView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeatherForecastSlideView.m; sourceTree = "<group>"; };
@@ -100,7 +101,7 @@
 		9D2ED83523B2104300D0BB36 /* WeatherForecastListView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeatherForecastListView.m; sourceTree = "<group>"; };
 		9D4F8D7B21B14838007254A5 /* AnimatedBackground.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AnimatedBackground.h; sourceTree = "<group>"; };
 		9D4F8D7C21B14838007254A5 /* AnimatedBackground.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AnimatedBackground.m; sourceTree = "<group>"; };
-		9D4F8D8121B14D7C007254A5 /* WeatherViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeatherViewDelegate.h; sourceTree = "<group>"; };
+		9D4F8D8121B14D7C007254A5 /* AnimatedBackgroundDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AnimatedBackgroundDelegate.h; sourceTree = "<group>"; };
 		9D503A4B232295E600954139 /* WeatherPageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeatherPageViewController.h; sourceTree = "<group>"; };
 		9D503A4C232295E600954139 /* WeatherPageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeatherPageViewController.m; sourceTree = "<group>"; };
 		9D50920621A71A45005A30AB /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -234,7 +235,7 @@
 		9D492BFA23291E0D0006F83C /* Delegates */ = {
 			isa = PBXGroup;
 			children = (
-				9D4F8D8121B14D7C007254A5 /* WeatherViewDelegate.h */,
+				9D4F8D8121B14D7C007254A5 /* AnimatedBackgroundDelegate.h */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
@@ -394,6 +395,7 @@
 				9D8A845023B163D700456394 /* UIView+WeatherViewCategory.m */,
 				9D8A845223B1661500456394 /* WeatherView.h */,
 				9D8A845323B1661500456394 /* WeatherView.m */,
+				9D1D9CF623C37776000B4176 /* StateBoundDelegate.h */,
 			);
 			path = BaseClasses;
 			sourceTree = "<group>";

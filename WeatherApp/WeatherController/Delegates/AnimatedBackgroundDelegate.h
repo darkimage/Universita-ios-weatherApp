@@ -10,10 +10,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@protocol WeatherViewDelegate <NSObject>
+@protocol AnimatedBackgroundDelegate <NSObject>
 
-- (void) scrollViewDidScroll:(UIScrollView *) scrollView;
-- (void) viewDidAppear:(BOOL)animated;
+- (void) onScrollViewDidScroll:(UIScrollView *) scrollView;
 
 @end
 

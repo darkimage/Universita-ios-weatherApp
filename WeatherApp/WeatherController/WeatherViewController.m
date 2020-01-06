@@ -57,13 +57,12 @@
 }
 
 -(void)viewDidAppear:(BOOL)animated{
-    [self.delegate viewDidAppear:animated];
     [self.scrollView setContentSize:self.stackView.frame.size];
 }
 
 #pragma mark - UIScrollViewDelegate
 - (void) scrollViewDidScroll:(UIScrollView *) scrollView{
-    [self.delegate scrollViewDidScroll:scrollView];
+    [self.delegate onScrollViewDidScroll:scrollView];
 }
 
 
