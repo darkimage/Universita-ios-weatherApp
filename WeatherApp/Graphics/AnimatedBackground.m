@@ -133,8 +133,7 @@
     int i = 0;
     for (BackgroundLayer* slot in self.bgArray) {
         [UIView animateWithDuration:[slot.bgData animDataValue].duration delay:0 options:UIViewAnimationOptionRepeat|UIViewAnimationOptionCurveLinear animations:^{
-            slot.image1.center = CGPointMake(slot.image1.center.x + slot.image1.frame.size.width, slot.image1.center.y);
-            slot.image2.center = CGPointMake(slot.image2.center.x + slot.image1.frame.size.width, slot.image2.center.y);
+            [slot.bgData animDataValue].animation(slot.image1,slot.image2);
         } completion:nil];
         i++;
     }

@@ -11,12 +11,14 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef void (^animBlock) (UIImageView*,UIImageView*);
 struct _animBackgroundData {
     NSString* imagename;
     CGFloat duration;
     CGFloat offset_y;
     CGRect frame;
     CGFloat alpha;
+    animBlock animation;
 };
 typedef struct _animBackgroundData AnimBackgroundData;
 
@@ -25,6 +27,7 @@ typedef struct _animBackgroundData AnimBackgroundData;
 +(id) valueWithAnimData:(AnimBackgroundData)data;
 +(id) valueWithDefaultAnimData;
 +(id) valueWithImage:(NSString*)imagename withDuration:(CGFloat)duration withOffset:(CGFloat)offset_y withSize:(CGRect)frame andOpacity:(CGFloat)alpha;
++(id) valueWithImage:(NSString*)imagename withDuration:(CGFloat)duration withOffset:(CGFloat)offset_y withSize:(CGRect)frame withOpacity:(CGFloat)alpha andAnimation:(animBlock) animation;
 -(AnimBackgroundData) animDataValue;
 
 @end

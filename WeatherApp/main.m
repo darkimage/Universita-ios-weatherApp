@@ -14,10 +14,6 @@
 #import "ForecastWeather.h"
 
 int main(int argc, char * argv[]) {
-    //SQLManager* sql = [[SQLManager alloc]initWithDatabaseName:@"WeatherDB.sql"];
-    //[sql executeQuery:@"insert into peopleInfo values(null, 'Test', 'Test1', 23)"];
-    //NSArray* query2 = [sql loadDataFromDB:@"select * from city_data where id=707860"];
-    
     @autoreleasepool {
         return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
     }
