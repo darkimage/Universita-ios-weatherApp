@@ -22,6 +22,7 @@
          Only really measured or calculated data is displayed in API response.*/
         
         self.weatherMain = [[dict objectForKey:@"weather"][0] objectForKey:@"main"];
+        self.weatherId = [[dict objectForKey:@"weather"][0] objectForKey:@"id"];
         self.weatherDescription = [[dict objectForKey:@"weather"][0] objectForKey:@"description"];
         self.weatherIcon = [[dict objectForKey:@"weather"][0] objectForKey:@"icon"];
         self.mainTemp = [[dict objectForKey:@"main"] objectForKey:@"temp"];

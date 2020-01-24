@@ -48,7 +48,7 @@
     self.favoriteCities = [[NSMutableArray alloc] initWithArray:[[[WeatherAppModel sharedModel] getDatabase] getAddedCities] copyItems:YES];
     //Set navController Background and init View Controllers
     UINavigationController *navController = (UINavigationController*)[[(AppDelegate*)[[UIApplication sharedApplication]delegate] window] rootViewController];
-    self.backgroundAnimation = [[[WeatherAppModel sharedModel] getWeatherBackgroundPreset] setWeatherBackgroundPreset:@"clear_sky" toView:navController.view];
+    self.backgroundAnimation = [[[WeatherAppModel sharedModel] getWeatherBackgroundPreset] setWeatherBackgroundPreset:[NSNumber numberWithInteger:800] toView:navController.view];
     [self.backgroundAnimation animate];
     [[WeatherAppModel sharedModel] setAnimatedBackground:self.backgroundAnimation];
     
@@ -93,6 +93,7 @@
 //transizione in avanti
 - (nullable UIViewController *)pageViewController:(nonnull UIPageViewController *)pageViewController viewControllerBeforeViewController:(nonnull UIViewController *)viewController { 
     WeatherViewController* weatherView = (WeatherViewController*)viewController;
+    [weatherView performUpdate];
     NSInteger index = weatherView.pageIndex;
     if(index == 0 || index == NSNotFound){
         return nil;
@@ -105,6 +106,7 @@
 //transizione all'indietro
 - (nullable UIViewController *)pageViewController:(nonnull UIPageViewController *)pageViewController viewControllerAfterViewController:(nonnull UIViewController *)viewController { 
     WeatherViewController* weatherView = (WeatherViewController*)viewController;
+    [weatherView performUpdate];
     NSInteger index = weatherView.pageIndex;
     if(index == NSNotFound){
         return nil;

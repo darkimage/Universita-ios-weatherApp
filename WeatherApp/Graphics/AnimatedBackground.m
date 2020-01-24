@@ -96,7 +96,7 @@
     return self;
 }
 
--(instancetype) initWithStructData:(NSValue*)bgData withGradient:(CAGradientLayer*)gradient addTo:(nullable UIView*)view{
+-(instancetype) initWithStructData:(nullable NSValue*)bgData withGradient:(CAGradientLayer*)gradient addTo:(nullable UIView*)view{
     self = [super init];
     if (self) {
         [self initInternal:view];
@@ -112,12 +112,14 @@
     NSInteger index = 0;
     CGFloat deltaScroll = self.lastScrolledPos - scrollView.contentOffset.y;
     for (BackgroundLayer* slot in self.bgArray) {
-        float parallaxlayer = (float)[self.bgArray count] - (float)index; //Layer attuale nell array (inverso rispetto ad ordine nell'array)
-        float percent = parallaxlayer*1./[self.bgArray count];            //percentuale dell'attuale layer
-        float offset = [self remapto01f:0.0 high1:200.0 value:[self minF:scrollView.contentOffset.y b:200.0]]*percent; //offset del parallax
-        //- scrollView.contentOffset.y
-        slot.image1.center = CGPointMake(slot.image1.center.x,slot.image1Start.y - scrollView.contentOffset.y - self.parallaxMaxOffset.floatValue*offset*self.parallaxMultiplier.floatValue);
-        slot.image2.center = CGPointMake(slot.image2.center.x,slot.image2Start.y - scrollView.contentOffset.y - self.parallaxMaxOffset.floatValue*offset*self.parallaxMultiplier.floatValue);
+        if([slot.bgData animDataValue].allowScroll){
+            float parallaxlayer = (float)[self.bgArray count] - (float)index; //Layer attuale nell array (inverso rispetto ad ordine nell'array)
+            float percent = parallaxlayer*1./[self.bgArray count];            //percentuale dell'attuale layer
+            float offset = [self remapto01f:0.0 high1:200.0 value:[self minF:scrollView.contentOffset.y b:200.0]]*percent; //offset del parallax
+            //- scrollView.contentOffset.y
+            slot.image1.center = CGPointMake(slot.image1.center.x,slot.image1Start.y - scrollView.contentOffset.y - self.parallaxMaxOffset.floatValue*offset*self.parallaxMultiplier.floatValue);
+            slot.image2.center = CGPointMake(slot.image2.center.x,slot.image2Start.y - scrollView.contentOffset.y - self.parallaxMaxOffset.floatValue*offset*self.parallaxMultiplier.floatValue);
+        }
         index++;
     }
     if(self.hasGradient){
@@ -133,11 +135,15 @@
     int i = 0;
     for (BackgroundLayer* slot in self.bgArray) {
         [UIView animateWithDuration:[slot.bgData animDataValue].duration delay:0 options:UIViewAnimationOptionRepeat|UIViewAnimationOptionCurveLinear animations:^{
-            [slot.bgData animDataValue].animation(slot.image1,slot.image2);
+            if([slot.bgData animDataValue].animation != NULL){
+                [slot.bgData animDataValue].animation(slot.image1,slot.image2);
+            }
         } completion:nil];
         i++;
     }
 }
+
+
 
 #pragma mark - StateBoundDelegate
 - (void)restoreState{
@@ -170,13 +176,45 @@
 - (void)applyToView:(nullable UIView *)view {
     if(self.view){
         for (NSValue* layer in self.layers) {
-            NSLog(@"TEST");
             [self addBackgroundToBack:layer];
         }
         if(self.hasGradient){
             [self.view sendSubviewToBack:self.gradientView];
         }
     }
+}
+
+-(void) transitionTo:(AnimatedBackground*)newBackground{
+    [UIView animateWithDuration:3.0f delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
+        for (BackgroundLayer* slot in self.bgArray) {
+            slot.viewLayer.alpha = 1.0f;
+        }
+    } completion:^(BOOL complete){
+        for (BackgroundLayer* slot in self.bgArray) {
+            [slot.viewLayer performSelectorOnMainThread:@selector(removeFromSuperview) withObject:nil waitUntilDone:NO];
+        }
+        self.layers = [newBackground getLayerData];
+        self.bgArray = [[NSMutableArray alloc]init];
+        [self applyToView:self.view];
+        for (BackgroundLayer* slot in self.bgArray) {
+            slot.viewLayer.alpha = 0.0f;
+        }
+     [self animate];
+        [UIView animateWithDuration:3.0f delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
+            self.gradientLayer.colors = [newBackground getGradient].colors;
+            for (BackgroundLayer* slot in self.bgArray) {
+                slot.viewLayer.alpha = 1.0f;
+            }
+        } completion:NULL];
+    }];
+}
+
+-(CAGradientLayer*) getGradient{
+    return self.gradientLayer;
+}
+
+-(NSArray<NSValue*>*) getLayerData{
+    return self.layers;
 }
 
 #pragma mark - PRIVATE METHODS

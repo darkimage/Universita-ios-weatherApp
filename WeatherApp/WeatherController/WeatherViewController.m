@@ -80,6 +80,7 @@
         for (WeatherView* controller in self.controllers) {
             [controller updateView:self.cityWeather];
         }
+        [[[WeatherAppModel sharedModel] getCurrentAnimatedBackground] transitionTo:[[[WeatherAppModel sharedModel] getWeatherBackgroundPreset] setWeatherBackgroundPreset:self.cityWeather.current.weatherId toView:NULL]];
         [self.scrollView.refreshControl endRefreshing];
     });
 }

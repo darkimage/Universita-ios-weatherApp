@@ -18,6 +18,10 @@ struct _animBackgroundData {
     CGFloat offset_y;
     CGRect frame;
     CGFloat alpha;
+    Boolean stackWidth;
+    Boolean allowScroll;
+    UIViewContentMode contentMode;
+    Boolean singleImage;
     animBlock animation;
 };
 typedef struct _animBackgroundData AnimBackgroundData;
@@ -27,7 +31,8 @@ typedef struct _animBackgroundData AnimBackgroundData;
 +(id) valueWithAnimData:(AnimBackgroundData)data;
 +(id) valueWithDefaultAnimData;
 +(id) valueWithImage:(NSString*)imagename withDuration:(CGFloat)duration withOffset:(CGFloat)offset_y withSize:(CGRect)frame andOpacity:(CGFloat)alpha;
-+(id) valueWithImage:(NSString*)imagename withDuration:(CGFloat)duration withOffset:(CGFloat)offset_y withSize:(CGRect)frame withOpacity:(CGFloat)alpha andAnimation:(animBlock) animation;
++(id) valueWithImage:(NSString*)imagename withDuration:(CGFloat)duration withOffset:(CGFloat)offset_y withSize:(CGRect)frame withOpacity:(CGFloat)alpha withAnimation:(nullable animBlock) animation withStackWidth:(Boolean)stack withAllowScroll:(Boolean)allow andContentMode:(UIViewContentMode)contentMode;
++(id) valueWithImage:(NSString*)imagename withDuration:(CGFloat)duration withOffset:(CGFloat)offset_y withSize:(CGRect)frame withOpacity:(CGFloat)alpha withAnimation:(nullable animBlock) animation andSingleImage:(Boolean)single;
 -(AnimBackgroundData) animDataValue;
 
 @end

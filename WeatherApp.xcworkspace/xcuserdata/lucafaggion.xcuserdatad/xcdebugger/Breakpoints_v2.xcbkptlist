@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WeatherApp/Appdelegate/AppDelegate.m"
-            timestampString = "600018988.9938411"
+            timestampString = "601589496.946112"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "21"
@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WeatherApp/WeatherController/WeatherPageViewController.m"
-            timestampString = "600018988.994586"
+            timestampString = "601589496.9462121"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "196"
-            endingLineNumber = "196"
+            startingLineNumber = "198"
+            endingLineNumber = "198"
             landmarkName = "-setUpFavoriteBadgeForCity:"
             landmarkType = "7">
          </BreakpointContent>
@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WeatherApp/WeatherController/WeatherPageViewController.m"
-            timestampString = "600018988.994761"
+            timestampString = "601589496.946256"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "131"
-            endingLineNumber = "131"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
             landmarkName = "WeatherPageViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -186,7 +186,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WeatherApp/WeatherController/WeatherViewController.m"
-            timestampString = "600018988.995042"
+            timestampString = "601589496.946323"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "75"
@@ -233,24 +233,8 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "WeatherApp/Graphics/WeatherBackgroundPresets.m"
-            timestampString = "600018988.99547"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
-            landmarkName = "-setWeatherBackgroundPreset:toView:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "WeatherApp/Graphics/NSValue+AnimBackgroundData.m"
-            timestampString = "600283971.61501"
+            timestampString = "601589496.946386"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "14"
@@ -266,7 +250,7 @@
                   moduleName = "WeatherApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lucafaggion/Desktop/MobDev/WeatherApp/WeatherApp/WeatherApp/Graphics/NSValue+AnimBackgroundData.m"
-                  timestampString = "600011200.210134"
+                  timestampString = "601578767.002317"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "14"
@@ -277,11 +261,11 @@
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "__default_constructor_8_s0"
+                  symbolName = "__default_constructor_8_s0_sb64"
                   moduleName = "WeatherApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lucafaggion/Desktop/MobDev/WeatherApp/WeatherApp/WeatherApp/Graphics/NSValue+AnimBackgroundData.m"
-                  timestampString = "600011200.216859"
+                  timestampString = "601578767.009128"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "14"
@@ -298,7 +282,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WeatherApp/Graphics/NSValue+AnimBackgroundData.m"
-            timestampString = "600283971.615118"
+            timestampString = "601589496.94643"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "13"
@@ -314,7 +298,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WeatherApp/Graphics/BackgroundLayer.m"
-            timestampString = "600018988.996521"
+            timestampString = "601589496.946472"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "29"
@@ -330,7 +314,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WeatherApp/Graphics/AnimatedBackground.m"
-            timestampString = "600283971.615191"
+            timestampString = "601589496.9465131"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "114"
@@ -378,11 +362,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WeatherApp/Graphics/AnimatedBackground.m"
-            timestampString = "600283971.617126"
+            timestampString = "601589496.947313"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "180"
-            endingLineNumber = "180"
+            startingLineNumber = "185"
+            endingLineNumber = "185"
             landmarkName = "-applyToView:"
             landmarkType = "7">
          </BreakpointContent>
@@ -394,11 +378,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WeatherApp/Graphics/AnimatedBackground.m"
-            timestampString = "600283971.617437"
+            timestampString = "601589496.947857"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "165"
-            endingLineNumber = "165"
+            startingLineNumber = "171"
+            endingLineNumber = "171"
             landmarkName = "-addBackgroundToBack:"
             landmarkType = "7">
          </BreakpointContent>
@@ -410,23 +394,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WeatherApp/Graphics/AnimatedBackground.m"
-            timestampString = "600283971.617728"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "171"
-            endingLineNumber = "171"
-            landmarkName = "-applyToView:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WeatherApp/Graphics/AnimatedBackground.m"
-            timestampString = "600283971.6185991"
+            timestampString = "601589496.9480979"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "177"
@@ -441,8 +409,24 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
+            filePath = "WeatherApp/Graphics/AnimatedBackground.m"
+            timestampString = "601589496.948332"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "182"
+            endingLineNumber = "182"
+            landmarkName = "-applyToView:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
             filePath = "WeatherApp/Appdelegate/AppDelegate.m"
-            timestampString = "600018988.997352"
+            timestampString = "601589496.948562"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "32"
@@ -458,11 +442,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WeatherApp/Appdelegate/AppDelegate.m"
-            timestampString = "600018988.9974149"
+            timestampString = "601589496.948597"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
             landmarkName = "-applicationDidBecomeActive:"
             landmarkType = "7">
          </BreakpointContent>
@@ -474,11 +458,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WeatherApp/Graphics/AnimatedBackground.m"
-            timestampString = "600283971.618982"
+            timestampString = "601589496.94863"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "134"
-            endingLineNumber = "134"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
             landmarkName = "-animate"
             landmarkType = "7">
             <Locations>
@@ -522,7 +506,70 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WeatherApp/Graphics/AnimatedBackground.m"
-            timestampString = "600283971.6192679"
+            timestampString = "601589496.948858"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
+            landmarkName = "-animate"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[AnimatedBackground animate]"
+                  moduleName = "WeatherApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lucafaggion/Desktop/MobDev/WeatherApp/WeatherApp/WeatherApp/Graphics/AnimatedBackground.m"
+                  timestampString = "601578756.579519"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "135"
+                  endingLineNumber = "135"
+                  offsetFromSymbolStart = "330">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__29-[AnimatedBackground animate]_block_invoke"
+                  moduleName = "WeatherApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lucafaggion/Desktop/MobDev/WeatherApp/WeatherApp/WeatherApp/Graphics/AnimatedBackground.m"
+                  timestampString = "601578756.586104"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "135"
+                  endingLineNumber = "135"
+                  offsetFromSymbolStart = "15">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__destroy_helper_block_"
+                  moduleName = "WeatherApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lucafaggion/Desktop/MobDev/WeatherApp/WeatherApp/WeatherApp/Graphics/AnimatedBackground.m"
+                  timestampString = "601578756.59155"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "135"
+                  endingLineNumber = "135"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WeatherApp/Graphics/AnimatedBackground.m"
+            timestampString = "601589496.949086"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "135"
@@ -538,12 +585,156 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WeatherApp/Graphics/AnimatedBackground.m"
-            timestampString = "600283971.619537"
+            timestampString = "601589496.949316"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "133"
-            endingLineNumber = "133"
-            landmarkName = "-animate"
+            startingLineNumber = "193"
+            endingLineNumber = "193"
+            landmarkName = "-transitionTo:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__35-[AnimatedBackground transitionTo:]_block_invoke.142"
+                  moduleName = "WeatherApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lucafaggion/Desktop/MobDev/WeatherApp/WeatherApp/WeatherApp/Graphics/AnimatedBackground.m"
+                  timestampString = "601587441.993494"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "193"
+                  endingLineNumber = "193"
+                  offsetFromSymbolStart = "69">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__35-[AnimatedBackground transitionTo:]_block_invoke.142"
+                  moduleName = "WeatherApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lucafaggion/Desktop/MobDev/WeatherApp/WeatherApp/WeatherApp/Graphics/AnimatedBackground.m"
+                  timestampString = "601587442.006428"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "193"
+                  endingLineNumber = "193"
+                  offsetFromSymbolStart = "91">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WeatherApp/Graphics/AnimatedBackground.m"
+            timestampString = "601589496.949523"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "-initWithGradient:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WeatherApp/Graphics/AnimatedBackground.m"
+            timestampString = "601589496.9497271"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "-initInternal:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WeatherApp/Graphics/AnimatedBackground.m"
+            timestampString = "601589496.949929"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "198"
+            endingLineNumber = "198"
+            landmarkName = "-transitionTo:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WeatherApp/WeatherController/WeatherViewController.m"
+            timestampString = "601589496.951893"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "-onUpdatedWeatherData:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WeatherApp/WeatherController/WeatherViewController.m"
+            timestampString = "601589496.951932"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
+            landmarkName = "-onUpdatedWeatherData:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WeatherApp/WeatherController/WeatherPageViewController.m"
+            timestampString = "601589496.95197"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
+            landmarkName = "-pageViewController:viewControllerBeforeViewController:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WeatherApp/WeatherController/WeatherPageViewController.m"
+            timestampString = "601589496.952006"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
+            landmarkName = "-pageViewController:viewControllerAfterViewController:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

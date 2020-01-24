@@ -23,8 +23,8 @@
         self.viewLayer = [[UIView alloc] init];
         self.image1 = [[UIImageView alloc]initWithImage:[UIImage imageNamed:[self.bgData animDataValue].imagename]];
         self.image2 = [[UIImageView alloc]initWithImage:[UIImage imageNamed:[self.bgData animDataValue].imagename]];
-        [self.viewLayer addSubview:self.image1];
-        [self.viewLayer addSubview:self.image2];
+        //[self.viewLayer addSubview:self.image1];
+        //[self.viewLayer addSubview:self.image2];
         [self internalInit];
     }
     return self;
@@ -35,17 +35,23 @@
     self.image1.center = CGPointMake(self.rect.size.width/2,self.rect.size.height/2+[self.bgData animDataValue].offset_y);
     self.image1Start = self.image1.center;
     self.image1.backgroundColor = [UIColor clearColor];
-    self.image1.contentMode = UIViewContentModeScaleAspectFit;
+    self.image1.contentMode = [self.bgData animDataValue].contentMode;
     self.image1.alpha = [self.bgData animDataValue].alpha;
-    
-    self.image2.frame = [self.bgData animDataValue].frame;
-    self.image2.center = CGPointMake(self.rect.size.width/2-self.image2.bounds.size.width,self.rect.size.height/2+[self.bgData animDataValue].offset_y);
-    self.image2Start = self.image2.center;
-    self.image2.backgroundColor = [UIColor clearColor];
-    self.image2.contentMode = UIViewContentModeScaleAspectFit;
-    self.image2.alpha = [self.bgData animDataValue].alpha;
     [self.viewLayer addSubview:self.image1];
-    [self.viewLayer addSubview:self.image2];
+    
+    if(![self.bgData animDataValue].singleImage){
+        self.image2.frame = [self.bgData animDataValue].frame;
+        if([self.bgData animDataValue].stackWidth){
+            self.image2.center = CGPointMake(self.rect.size.width/2-self.image2.bounds.size.width,self.rect.size.height/2+[self.bgData animDataValue].offset_y);
+        }else{
+            self.image2.center = CGPointMake(self.rect.size.width/2,self.rect.size.height/2+[self.bgData animDataValue].offset_y-self.image2.bounds.size.height);
+        }
+        self.image2Start = self.image2.center;
+        self.image2.backgroundColor = [UIColor clearColor];
+        self.image2.contentMode = [self.bgData animDataValue].contentMode;
+        self.image2.alpha = [self.bgData animDataValue].alpha;
+        [self.viewLayer addSubview:self.image2];
+    }
 }
 
 #pragma mark - StateBoundDelegate

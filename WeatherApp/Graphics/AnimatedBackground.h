@@ -24,7 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(instancetype) initWithStructData:(NSValue*)bgData withColor:(UIColor*)backgroundColor addTo:(nullable UIView*)view;
 
--(instancetype) initWithStructData:(NSValue*)bgData withGradient:(CAGradientLayer*)gradient addTo:(nullable UIView*)view;
+-(instancetype) initWithStructData:(nullable NSValue*)bgData withGradient:(CAGradientLayer*)gradient addTo:(nullable UIView*)view;
 
 -(void) addBackgroundToBack:(NSValue*)bgData;
 
@@ -32,7 +32,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(void) applyToView:(nullable UIView*)view;
 
+-(void) transitionTo:(AnimatedBackground*)newBackground;
+
 -(void) animate;
+
+-(CAGradientLayer*) getGradient;
+
+-(NSArray<NSValue*>*) getLayerData;
 @end
 
 NS_ASSUME_NONNULL_END
