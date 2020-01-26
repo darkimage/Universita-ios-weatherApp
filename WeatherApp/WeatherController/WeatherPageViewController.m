@@ -79,6 +79,8 @@
 }
 
 -(void) viewDidAppear:(BOOL)animated{
+    self.currentIndex = 0;
+    self.nextIndex = 0;
     [super viewDidAppear:animated];
     WeatherViewController* firstController = [self viewAtIndex:self.currentIndex];
     NSArray* firstview = [[NSArray alloc]initWithObjects:firstController,nil];
@@ -158,9 +160,12 @@
     self.currentIndex = 0;
     self.nextIndex = 0;
     self.favoriteCities = [[NSMutableArray alloc] initWithArray:[[[WeatherAppModel sharedModel] getDatabase] getAddedCities] copyItems:YES];
-    WeatherViewController* controller = [self instantiateView:(self.favoriteCities.count-1) withData:self.favoriteCities];
-    controller.delegate = self.backgroundAnimation;
-    [self.viewControllers addObject:controller];
+    self.viewControllers = [[NSMutableArray<WeatherViewController*> alloc] init];
+    for (int i = 0; i < self.favoriteCities.count; i++){
+        WeatherViewController* controller = [self instantiateView:i withData:self.favoriteCities];
+        controller.delegate = self.backgroundAnimation;
+        [self.viewControllers addObject:controller];
+    }
 }
 
 -(NSArray*) getCities{
@@ -210,7 +215,7 @@
     CityWeather* currWeather = [self getCitiesWeather][self.currentIndex];
     BOOL isAlreadFav = [[[WeatherAppModel sharedModel] getDatabase] getIsFavoriteCity:currWeather.ID];
     if(!isAlreadFav){
-        BOOL fav = [[[WeatherAppModel sharedModel] getDatabase] addFavoriteCity:currWeather.ID];
+        BOOL fav = [[[WeatherAppModel sharedModel] getDatabase] setFavoriteCity:currWeather.ID];
         if(fav){
             [self setUpFavoriteBadgeForCity:[currWeather.ID integerValue]];
         }else{

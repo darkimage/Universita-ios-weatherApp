@@ -21,25 +21,25 @@
          phenomena are just not happened for the time of measurement for the city or location chosen.
          Only really measured or calculated data is displayed in API response.*/
         
-        self.weatherMain = [[dict objectForKey:@"weather"][0] objectForKey:@"main"];
-        self.weatherId = [[dict objectForKey:@"weather"][0] objectForKey:@"id"];
-        self.weatherDescription = [[dict objectForKey:@"weather"][0] objectForKey:@"description"];
-        self.weatherIcon = [[dict objectForKey:@"weather"][0] objectForKey:@"icon"];
-        self.mainTemp = [[dict objectForKey:@"main"] objectForKey:@"temp"];
-        self.mainPressure = [[dict objectForKey:@"main"] objectForKey:@"pressure"];
-        self.mainHumidity = [[dict objectForKey:@"main"] objectForKey:@"humidity"];
-        self.mainMin_Temp = [[dict objectForKey:@"main"] objectForKey:@"temp_min"];
-        self.mainMax_Temp = [[dict objectForKey:@"main"] objectForKey:@"temp_max"];
-        self.mainSea_Level = [[dict objectForKey:@"main"] objectForKey:@"sea_level"];
-        self.mainGround_Level = [[dict objectForKey:@"main"] objectForKey:@"grnd_level"];
-        self.windSpeed = [[dict objectForKey:@"wind"] objectForKey:@"speed"];
-        self.windDeg = [[dict objectForKey:@"wind"] objectForKey:@"deg"];
-        self.cloudiness = [[dict objectForKey:@"clouds"] objectForKey:@"all"];
-        self.rainVol_1h = [[dict objectForKey:@"rain"] objectForKey:@"1h"];
-        self.rainVol_3h = [[dict objectForKey:@"rain"] objectForKey:@"3h"];
-        self.snowVol_1h = [[dict objectForKey:@"snow"] objectForKey:@"1h"];
-        self.snowVol_3h = [[dict objectForKey:@"snow"] objectForKey:@"3h"];
-        self.date = [NSDate dateWithTimeIntervalSince1970:[dict[@"dt"]doubleValue]];
+        _weatherMain = [[dict objectForKey:@"weather"][0] objectForKey:@"main"];
+        _weatherId = [[dict objectForKey:@"weather"][0] objectForKey:@"id"];
+        _weatherDescription = [[dict objectForKey:@"weather"][0] objectForKey:@"description"];
+        _weatherIcon = [[dict objectForKey:@"weather"][0] objectForKey:@"icon"];
+        _mainTemp = [[dict objectForKey:@"main"] objectForKey:@"temp"];
+        _mainPressure = [[dict objectForKey:@"main"] objectForKey:@"pressure"];
+        _mainHumidity = [[dict objectForKey:@"main"] objectForKey:@"humidity"];
+        _mainMin_Temp = [[dict objectForKey:@"main"] objectForKey:@"temp_min"];
+        _mainMax_Temp = [[dict objectForKey:@"main"] objectForKey:@"temp_max"];
+        _mainSea_Level = [[dict objectForKey:@"main"] objectForKey:@"sea_level"];
+        _mainGround_Level = [[dict objectForKey:@"main"] objectForKey:@"grnd_level"];
+        _windSpeed = [[dict objectForKey:@"wind"] objectForKey:@"speed"];
+        _windDeg = [[dict objectForKey:@"wind"] objectForKey:@"deg"];
+        _cloudiness = [[dict objectForKey:@"clouds"] objectForKey:@"all"];
+        _rainVol_1h = [[dict objectForKey:@"rain"] objectForKey:@"1h"];
+        _rainVol_3h = [[dict objectForKey:@"rain"] objectForKey:@"3h"];
+        _snowVol_1h = [[dict objectForKey:@"snow"] objectForKey:@"1h"];
+        _snowVol_3h = [[dict objectForKey:@"snow"] objectForKey:@"3h"];
+        _date = [NSDate dateWithTimeIntervalSince1970:[dict[@"dt"]doubleValue]];
     }
     return self;
 }

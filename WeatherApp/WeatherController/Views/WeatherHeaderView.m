@@ -25,20 +25,20 @@
 
 @implementation WeatherHeaderView
 
--(id) init{
+-(instancetype) init{
     self = [super init];
     if(self){
-        self.segueIdentifier = @"";
-        self.segueController = nil;
+        _segueIdentifier = @"";
+        _segueController = nil;
     }
     return self;
 }
 
--(id) initWithSegueIdentifier:(NSString*)segueIdentifier ofController:(UIViewController*)controller{
+-(instancetype) initWithSegueIdentifier:(NSString*)segueIdentifier ofController:(UIViewController*)controller{
     self = [super init];
     if(self){
-        self.segueIdentifier = segueIdentifier;
-        self.segueController = controller;
+        _segueIdentifier = segueIdentifier;
+        _segueController = controller;
     }
     return self;
 }

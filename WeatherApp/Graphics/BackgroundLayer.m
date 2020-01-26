@@ -18,11 +18,11 @@
 - (instancetype)initWithData:(nonnull NSValue *)animData andSize:(CGRect)rect {
     self = [super init];
     if (self) {
-        self.bgData = animData;
-        self.rect = rect;
-        self.viewLayer = [[UIView alloc] init];
-        self.image1 = [[UIImageView alloc]initWithImage:[UIImage imageNamed:[self.bgData animDataValue].imagename]];
-        self.image2 = [[UIImageView alloc]initWithImage:[UIImage imageNamed:[self.bgData animDataValue].imagename]];
+        _bgData = animData;
+        _rect = rect;
+        _viewLayer = [[UIView alloc] init];
+        _image1 = [[UIImageView alloc]initWithImage:[UIImage imageNamed:[_bgData animDataValue].imagename]];
+        _image2 = [[UIImageView alloc]initWithImage:[UIImage imageNamed:[_bgData animDataValue].imagename]];
         //[self.viewLayer addSubview:self.image1];
         //[self.viewLayer addSubview:self.image2];
         [self internalInit];
@@ -31,26 +31,26 @@
 }
 
 -(void) internalInit{
-    self.image1.frame = [self.bgData animDataValue].frame;
-    self.image1.center = CGPointMake(self.rect.size.width/2,self.rect.size.height/2+[self.bgData animDataValue].offset_y);
-    self.image1Start = self.image1.center;
-    self.image1.backgroundColor = [UIColor clearColor];
-    self.image1.contentMode = [self.bgData animDataValue].contentMode;
-    self.image1.alpha = [self.bgData animDataValue].alpha;
-    [self.viewLayer addSubview:self.image1];
+    _image1.frame = [_bgData animDataValue].frame;
+    _image1.center = CGPointMake(_rect.size.width/2,_rect.size.height/2+[_bgData animDataValue].offset_y);
+    _image1Start = _image1.center;
+    _image1.backgroundColor = [UIColor clearColor];
+    _image1.contentMode = [_bgData animDataValue].contentMode;
+    _image1.alpha = [_bgData animDataValue].alpha;
+    [_viewLayer addSubview:_image1];
     
-    if(![self.bgData animDataValue].singleImage){
-        self.image2.frame = [self.bgData animDataValue].frame;
-        if([self.bgData animDataValue].stackWidth){
-            self.image2.center = CGPointMake(self.rect.size.width/2-self.image2.bounds.size.width,self.rect.size.height/2+[self.bgData animDataValue].offset_y);
+    if(![_bgData animDataValue].singleImage){
+        _image2.frame = [_bgData animDataValue].frame;
+        if([_bgData animDataValue].stackWidth){
+            _image2.center = CGPointMake(_rect.size.width/2-_image2.bounds.size.width,_rect.size.height/2+[_bgData animDataValue].offset_y);
         }else{
-            self.image2.center = CGPointMake(self.rect.size.width/2,self.rect.size.height/2+[self.bgData animDataValue].offset_y-self.image2.bounds.size.height);
+            _image2.center = CGPointMake(_rect.size.width/2,_rect.size.height/2+[_bgData animDataValue].offset_y-_image2.bounds.size.height);
         }
-        self.image2Start = self.image2.center;
-        self.image2.backgroundColor = [UIColor clearColor];
-        self.image2.contentMode = [self.bgData animDataValue].contentMode;
-        self.image2.alpha = [self.bgData animDataValue].alpha;
-        [self.viewLayer addSubview:self.image2];
+        _image2Start = _image2.center;
+        _image2.backgroundColor = [UIColor clearColor];
+        _image2.contentMode = [_bgData animDataValue].contentMode;
+        _image2.alpha = [_bgData animDataValue].alpha;
+        [_viewLayer addSubview:_image2];
     }
 }
 

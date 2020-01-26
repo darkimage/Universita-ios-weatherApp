@@ -28,11 +28,11 @@ typedef struct _animBackgroundData AnimBackgroundData;
 
 @interface NSValue (AnimBackgroundData)
 
-+(id) valueWithAnimData:(AnimBackgroundData)data;
-+(id) valueWithDefaultAnimData;
-+(id) valueWithImage:(NSString*)imagename withDuration:(CGFloat)duration withOffset:(CGFloat)offset_y withSize:(CGRect)frame andOpacity:(CGFloat)alpha;
-+(id) valueWithImage:(NSString*)imagename withDuration:(CGFloat)duration withOffset:(CGFloat)offset_y withSize:(CGRect)frame withOpacity:(CGFloat)alpha withAnimation:(nullable animBlock) animation withStackWidth:(Boolean)stack withAllowScroll:(Boolean)allow andContentMode:(UIViewContentMode)contentMode;
-+(id) valueWithImage:(NSString*)imagename withDuration:(CGFloat)duration withOffset:(CGFloat)offset_y withSize:(CGRect)frame withOpacity:(CGFloat)alpha withAnimation:(nullable animBlock) animation andSingleImage:(Boolean)single;
++(instancetype) valueWithAnimData:(AnimBackgroundData)data;
++(instancetype) valueWithDefaultAnimData;
++(instancetype) valueWithImage:(NSString*)imagename withDuration:(CGFloat)duration withOffset:(CGFloat)offset_y withSize:(CGRect)frame andOpacity:(CGFloat)alpha;
++(instancetype) valueWithImage:(NSString*)imagename withDuration:(CGFloat)duration withOffset:(CGFloat)offset_y withSize:(CGRect)frame withOpacity:(CGFloat)alpha withAnimation:(nullable animBlock) animation withStackWidth:(Boolean)stack withAllowScroll:(Boolean)allow andContentMode:(UIViewContentMode)contentMode;
++(instancetype) valueWithImage:(NSString*)imagename withDuration:(CGFloat)duration withOffset:(CGFloat)offset_y withSize:(CGRect)frame withOpacity:(CGFloat)alpha withAnimation:(nullable animBlock) animation andSingleImage:(Boolean)single;
 -(AnimBackgroundData) animDataValue;
 
 @end

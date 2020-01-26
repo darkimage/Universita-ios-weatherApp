@@ -39,28 +39,28 @@
 
 #pragma mark - INIT METHODS
 - (void)initInternal:(UIView*)view{
-    self.view = view;
-    self.parallaxMaxOffset = [NSNumber numberWithFloat:200.0];
-    self.parallaxMultiplier = [NSNumber numberWithFloat:1.0];
-    self.bgArray = [[NSMutableArray alloc]init];
+    _view = view;
+    _parallaxMaxOffset = [NSNumber numberWithFloat:200.0];
+    _parallaxMultiplier = [NSNumber numberWithFloat:1.0];
+    _bgArray = [[NSMutableArray alloc]init];
 }
 
 -(void) initWithGradient:(CAGradientLayer*)gradient{
-    self.hasGradient = YES;
-    self.gradientLayer = [CAGradientLayer layer];
-    self.gradientLayer.startPoint = CGPointMake(0, 0);
-    self.gradientLayer.endPoint = CGPointMake(0, 1);
-    self.gradientLayer.colors = gradient.colors;
-    self.gradientLayer.frame = self.view.bounds;
-    self.gradientView = [[UIView alloc] initWithFrame:self.view.bounds];
-    [self.gradientView.layer insertSublayer:self.gradientLayer atIndex:0];
-    self.gradientView.center = CGPointMake(self.view.bounds.size.width/2,self.view.bounds.size.height/2);
-    [self.view addSubview: self.gradientView];
+    _hasGradient = YES;
+    _gradientLayer = [CAGradientLayer layer];
+    _gradientLayer.startPoint = CGPointMake(0, 0);
+    _gradientLayer.endPoint = CGPointMake(0, 1);
+    _gradientLayer.colors = gradient.colors;
+    _gradientLayer.frame = self.view.bounds;
+    _gradientView = [[UIView alloc] initWithFrame:_view.bounds];
+    [_gradientView.layer insertSublayer:_gradientLayer atIndex:0];
+    _gradientView.center = CGPointMake(_view.bounds.size.width/2,_view.bounds.size.height/2);
+    [_view addSubview: self.gradientView];
 }
 
 - (void)initWithColor:(UIColor *)color {
-    self.color = color;
-    self.view.backgroundColor = self.color;
+    _color = color;
+    _view.backgroundColor = self.color;
 }
 
 - (instancetype)initWithStructDataArray:(NSArray<NSValue*>*)bgDataArray withColor:(nonnull UIColor *)backgroundColor addTo:(nullable UIView *)view {
@@ -68,8 +68,8 @@
     if (self) {
         [self initInternal:view];
         [self initWithColor:backgroundColor];
-        self.layers = bgDataArray;
-        [self applyToView:self.view];
+        _layers = bgDataArray;
+        [self applyToView:_view];
     }
     return self;
 }
@@ -79,8 +79,8 @@
     if (self) {
         [self initInternal:view];
         [self initWithGradient:gradient];
-        self.layers = bgDataArray;
-        [self applyToView:self.view];
+        _layers = bgDataArray;
+        [self applyToView:_view];
     }
     return self;
 }
@@ -90,8 +90,8 @@
     if (self) {
         [self initInternal:view];
         [self initWithColor:backgroundColor];
-        self.layers = [[NSArray<NSValue*> alloc] initWithObjects:bgData, nil];
-        [self applyToView:self.view];
+        _layers = [[NSArray<NSValue*> alloc] initWithObjects:bgData, nil];
+        [self applyToView:_view];
     }
     return self;
 }
@@ -101,8 +101,8 @@
     if (self) {
         [self initInternal:view];
         [self initWithGradient:gradient];
-        self.layers = [[NSArray<NSValue*> alloc] initWithObjects:bgData, nil];
-        [self applyToView:self.view];
+        _layers = [[NSArray<NSValue*> alloc] initWithObjects:bgData, nil];
+        [self applyToView:_view];
     }
     return self;
 }
@@ -174,12 +174,12 @@
 }
 
 - (void)applyToView:(nullable UIView *)view {
-    if(self.view){
-        for (NSValue* layer in self.layers) {
+    if(_view){
+        for (NSValue* layer in _layers) {
             [self addBackgroundToBack:layer];
         }
-        if(self.hasGradient){
-            [self.view sendSubviewToBack:self.gradientView];
+        if(_hasGradient){
+            [_view sendSubviewToBack:_gradientView];
         }
     }
 }

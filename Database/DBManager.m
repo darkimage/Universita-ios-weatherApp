@@ -46,9 +46,9 @@
     return [[NSArray alloc]init];
 }
 
-#pragma mark - ADD UPDATE
+#pragma mark - ADD
 
--(BOOL) addFavoriteCity:(NSNumber*)city_id{
+-(BOOL)addCity:(NSNumber*)city_id{
     NSAssert(NO, @"Subclasses need to overwrite this method");
     return NO;
 }
@@ -70,7 +70,13 @@
     return NO;
 }
 
--(BOOL)deleteHistoryEntryForCity:(NSNumber*)city_id{
+-(BOOL)deleteHistoryEntryForCity:(NSNumber*)city_id ofTime:(NSDate*)time{
+    NSAssert(NO, @"Subclasses need to overwrite this method");
+    return NO;
+}
+
+#pragma mark - UPDATE
+-(BOOL)setFavoriteCity:(NSNumber*)city_id{
     NSAssert(NO, @"Subclasses need to overwrite this method");
     return NO;
 }

@@ -21,7 +21,7 @@
 
 @implementation CityWeather
 
--(id)initWithCityID:(NSNumber*)city_id{
+-(instancetype)initWithCityID:(NSNumber*)city_id{
     self = [super init];
     if (self) {
         [self internalInitWithCityID:city_id withUpdate:true];
@@ -29,7 +29,7 @@
     return self;
 }
 
--(id)initWithCityID:(NSNumber*)city_id update:(Boolean)update{
+-(instancetype)initWithCityID:(NSNumber*)city_id update:(Boolean)update{
     self = [super init];
     if (self) {
         [self internalInitWithCityID:city_id withUpdate:update];
@@ -38,15 +38,15 @@
 }
 
 -(void) internalInitWithCityID:(NSNumber*)city_id withUpdate:(Boolean)update{
-    self.currentUpdated = NO;
-    self.forecastUpdated = NO;
+    _currentUpdated = NO;
+    _forecastUpdated = NO;
     NSArray* arrCity = [[[WeatherAppModel sharedModel] getDatabase] getCitybyId:city_id];
     if([arrCity count] > 0){
-        self.ID = arrCity[0];
-        self.name = arrCity[1];
-        self.country = arrCity[2];
-        self.lon = arrCity[3];
-        self.lat = arrCity[4];
+        _ID = arrCity[0];
+        _name = arrCity[1];
+        _country = arrCity[2];
+        _lon = arrCity[3];
+        _lat = arrCity[4];
         if(update){
             [self performUpdate];
         }

@@ -16,7 +16,7 @@
     return data;
 }
 
-+ (nonnull id)valueWithImage:(nonnull NSString *)imagename withDuration:(CGFloat)duration withOffset:(CGFloat)offset_y withSize:(CGRect)frame andOpacity:(CGFloat)alpha { 
++ (instancetype)valueWithImage:(nonnull NSString *)imagename withDuration:(CGFloat)duration withOffset:(CGFloat)offset_y withSize:(CGRect)frame andOpacity:(CGFloat)alpha {
     AnimBackgroundData data;
     data.imagename = imagename;
     data.duration = duration;
@@ -34,7 +34,7 @@
     return [NSValue value:&data withObjCType:@encode(AnimBackgroundData)];
 }
 
-+ (nonnull id)valueWithImage:(nonnull NSString *)imagename withDuration:(CGFloat)duration withOffset:(CGFloat)offset_y withSize:(CGRect)frame withOpacity:(CGFloat)alpha withAnimation:(nullable animBlock)animation withStackWidth:(Boolean)stack withAllowScroll:(Boolean)allow andContentMode:(UIViewContentMode)contentMode{
++ (instancetype)valueWithImage:(nonnull NSString *)imagename withDuration:(CGFloat)duration withOffset:(CGFloat)offset_y withSize:(CGRect)frame withOpacity:(CGFloat)alpha withAnimation:(nullable animBlock)animation withStackWidth:(Boolean)stack withAllowScroll:(Boolean)allow andContentMode:(UIViewContentMode)contentMode{
     AnimBackgroundData data;
     data.imagename = imagename;
     data.duration = duration;
@@ -49,7 +49,7 @@
     return [NSValue value:&data withObjCType:@encode(AnimBackgroundData)];
 }
 
-+(id) valueWithImage:(NSString*)imagename withDuration:(CGFloat)duration withOffset:(CGFloat)offset_y withSize:(CGRect)frame withOpacity:(CGFloat)alpha withAnimation:(nullable animBlock) animation andSingleImage:(Boolean)single{
++(instancetype) valueWithImage:(NSString*)imagename withDuration:(CGFloat)duration withOffset:(CGFloat)offset_y withSize:(CGRect)frame withOpacity:(CGFloat)alpha withAnimation:(nullable animBlock) animation andSingleImage:(Boolean)single{
     AnimBackgroundData data;
     data.imagename = imagename;
     data.duration = duration;
@@ -64,7 +64,7 @@
     return [NSValue value:&data withObjCType:@encode(AnimBackgroundData)];
 }
 
-+ (nonnull id)valueWithDefaultAnimData { 
++ (instancetype)valueWithDefaultAnimData {
 AnimBackgroundData data;
     data.imagename = @"noimage";
     data.duration = 1.0f;
@@ -79,7 +79,7 @@ AnimBackgroundData data;
     return [NSValue value:&data withObjCType:@encode(AnimBackgroundData)];
 }
 
-+ (nonnull id)valueWithAnimData:(AnimBackgroundData)data {
++ (instancetype)valueWithAnimData:(AnimBackgroundData)data {
     return [NSValue value:&data withObjCType:@encode(AnimBackgroundData)];
 }
 

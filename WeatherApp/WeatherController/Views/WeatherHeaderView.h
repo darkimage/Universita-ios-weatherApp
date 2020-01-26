@@ -13,7 +13,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface WeatherHeaderView : WeatherView<WeatherViewProtocol>
--(id) initWithSegueIdentifier:(NSString*)segueIdentifier ofController:(UIViewController*)controller;
+-(instancetype) initWithSegueIdentifier:(NSString*)segueIdentifier ofController:(UIViewController*)controller;
 @end
 
 NS_ASSUME_NONNULL_END

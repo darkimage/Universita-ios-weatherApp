@@ -42,7 +42,7 @@
 
 #pragma mark - WeatherSearchDelegate
 -(void) onSelectedCityFromSearch:(NSInteger)city_id{
-    if([[[WeatherAppModel sharedModel] getDatabase] addFavoriteCity:[NSNumber numberWithInteger:city_id]]){
+    if([[[WeatherAppModel sharedModel] getDatabase] addCity:[NSNumber numberWithInteger:city_id]]){
         NSNumber* cityID = [NSNumber numberWithInteger:city_id];
         [self.favoriteCities addObject:@[cityID]];
         CityWeather* weather = [[CityWeather alloc] initWithCityID:cityID];

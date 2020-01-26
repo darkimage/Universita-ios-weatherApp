@@ -33,18 +33,18 @@
 @implementation SQLManager
 
 -(void)initProperties{
-    self.city_table = @"city_data";
-    self.favorite_table = @"added_city";
-    self.history_table = @"city_history";
+    _city_table = @"city_data";
+    _favorite_table = @"added_city";
+    _history_table = @"city_history";
 }
 
 -(instancetype)init{
     self = [super init];
     if (self) {
         //setta la path documenti nella proprieta -documentsDirectory
-        self.documentsDirectory = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+        _documentsDirectory = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
         
-        self.databaseFilename = @"WeatherDB.sql";
+        _databaseFilename = @"WeatherDB.sql";
         //Copiamo il database nella cartella documenti se necessario (siccome il database risiede nell
         //App boundle non e cosigliato modificarlo)
         [self copyDatabaseToDocuments];
@@ -57,8 +57,8 @@
 -(instancetype) initWithDatabaseName:(NSString *)name{
     self = [super init];
     if (self) {
-        self.documentsDirectory = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
-        self.databaseFilename = name;
+        _documentsDirectory = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+        _databaseFilename = name;
         [self copyDatabaseToDocuments];
         [self initProperties];
     }
@@ -68,11 +68,11 @@
 #pragma mark - PRIVATE METHODS
 
 -(void) copyDatabaseToDocuments{
-    NSString* destPath = [self.documentsDirectory stringByAppendingPathComponent:self.databaseFilename];
+    NSString* destPath = [_documentsDirectory stringByAppendingPathComponent:_databaseFilename];
     //il database esiste gia? se no, lo copiamo
     BOOL fileexist =[[NSFileManager defaultManager] fileExistsAtPath:destPath];
     if(!fileexist){
-        NSString* sourceStr = [[[NSBundle mainBundle]resourcePath]stringByAppendingPathComponent:self.databaseFilename];
+        NSString* sourceStr = [[[NSBundle mainBundle]resourcePath]stringByAppendingPathComponent:_databaseFilename];
         NSError *error;
         [[NSFileManager defaultManager] copyItemAtPath:sourceStr toPath:destPath error:&error];
         
@@ -119,12 +119,25 @@
                     int totalColumns = sqlite3_column_count(compiledStatement); //numero di colonne
                     
                     for (int i=0; i<totalColumns; i++){ //loop per ogni colonna
-                        char *dbDataAsChars = (char *)sqlite3_column_text(compiledStatement, i); //fetch data
-                        if (dbDataAsChars != NULL) { //se ci sono dati gli aggiungiamo all' array
-                            [arrDataRow addObject:[NSString  stringWithUTF8String:dbDataAsChars]];
+                        sqlite3_value* column_value = sqlite3_column_value(compiledStatement, i); //data (puo essere di qualsiasi tipo)
+                        int datatype = sqlite3_column_type(compiledStatement, i); //tipo della colonna
+                        //char *dbDataAsChars = (char*)sqlite3_column_text(compiledStatement, i);
+                        if (column_value != NULL) { //se ci sono dati gli aggiungiamo all' array
+                            //in base al tipo della colonna
+                            switch (datatype) {
+                                case SQLITE_FLOAT:{
+                                    [arrDataRow addObject:[NSString stringWithFormat:@"%f",sqlite3_value_double(column_value)]];
+                                    break;
+                                }
+                                default:{
+                                    char *dbDataAsChars = (char*)sqlite3_column_text(compiledStatement, i);
+                                    [arrDataRow addObject:[NSString  stringWithUTF8String:dbDataAsChars]];
+                                    break;
+                                }
+                            }
                         }
                         if (self.arrColumnNames.count != totalColumns) { //salva il nome della colonna
-                            dbDataAsChars = (char *)sqlite3_column_name(compiledStatement, i);
+                            char* dbDataAsChars = (char *)sqlite3_column_name(compiledStatement, i);
                             [self.arrColumnNames addObject:[NSString stringWithUTF8String:dbDataAsChars]];
                         }
                     }
@@ -208,7 +221,16 @@
     return [self loadDataFromDB:query];
 }
 
--(BOOL) addFavoriteCity:(NSNumber*)city_id{
+-(BOOL) addCity:(NSNumber*)city_id{
+    NSString *query = [NSString stringWithFormat:@"insert into %@ values(%@,FALSE)",self.favorite_table,city_id];
+    [self executeQuery:query];
+    if(self.affectedRows != 0){
+        return YES;
+    }
+    return NO;
+}
+
+-(BOOL) setFavoriteCity:(NSNumber*)city_id{
     NSString *query = [NSString stringWithFormat:@"update %@ set favorite=TRUE WHERE id=%@",self.favorite_table,city_id];
     [self executeQuery:query];
     if(self.affectedRows != 0){
@@ -222,7 +244,7 @@
         return NO;
     }
     NSDate* date = (NSDate*)(city_weather[1]);
-    NSString *query = [NSString stringWithFormat:@"insert into %@ values('%@','%f','%@','%@','%@','%@','%@')",self.history_table, city_weather[0], date.timeIntervalSince1970, city_weather[2], city_weather[3], city_weather[4], description, icon];
+    NSString *query = [NSString stringWithFormat:@"insert into %@ values('%@','%@','%@','%@','%@','%@','%@')",self.history_table, city_weather[0], [NSNumber numberWithDouble:date.timeIntervalSince1970], city_weather[2], city_weather[3], city_weather[4], description, icon];
     [self executeQuery:query];
     if(self.affectedRows != 0){
         return YES;
@@ -241,6 +263,15 @@
 
 -(BOOL)deleteAddedCitybyId:(NSNumber*)city_id{
     NSString *query = [NSString stringWithFormat:@"delete from %@ where id = %@",self.favorite_table,city_id];
+    [self executeQuery:query];
+    if(self.affectedRows != 0){
+        return YES;
+    }
+    return NO;
+}
+
+-(BOOL)deleteHistoryEntryForCity:(NSNumber*)city_id ofTime:(NSDate*)time{
+    NSString *query = [NSString stringWithFormat:@"delete from %@ where id = '%@' and currTime='%@'",self.history_table,city_id,[NSNumber numberWithDouble:time.timeIntervalSince1970]];
     [self executeQuery:query];
     if(self.affectedRows != 0){
         return YES;

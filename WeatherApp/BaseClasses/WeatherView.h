@@ -12,8 +12,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface WeatherView : UIView<WeatherViewProtocol>
--(id) initWithCoder:(NSCoder *)aDecoder;
--(id) initWithFrame:(CGRect)frame;
+-(instancetype) initWithCoder:(NSCoder *)aDecoder;
+-(instancetype) initWithFrame:(CGRect)frame;
 -(void) updateView:(nonnull CityWeather*)weather;
 @end
 

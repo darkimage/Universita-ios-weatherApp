@@ -19,8 +19,8 @@
 
 -(id) init{
     if(self =[super init]){
-        self.api_key = @"fb6025022345275ec6dc7e5905b5afc9";
-        self.api_url = @"http://api.openweathermap.org/data/2.5/";
+        _api_key = @"fb6025022345275ec6dc7e5905b5afc9";
+        _api_url = @"http://api.openweathermap.org/data/2.5/";
     }
     return self;
 }

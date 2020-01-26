@@ -21,27 +21,27 @@
 
 @implementation WeatherItemView
 
--(id)init{
+-(instancetype)init{
     self = [super init];
     if(self){
-        self.index = 0;
-        self.fromCurrent = false;
+        _index = 0;
+        _fromCurrent = false;
     }
     return self;
 }
 
--(id) initWithTimeIndex:(NSInteger)index{
+-(instancetype) initWithTimeIndex:(NSInteger)index{
     self = [self init];
     if(self){
-        self.index = index;
+        _index = index;
     }
     return self;
 }
 
--(id) initWithGetFromCurrent:(Boolean)value{
+-(instancetype) initWithGetFromCurrent:(Boolean)value{
     self = [self init];
     if(self){
-        self.fromCurrent = value;
+        _fromCurrent = value;
     }
     return self;
 }

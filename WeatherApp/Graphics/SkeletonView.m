@@ -21,11 +21,11 @@
 
 @implementation SkeletonView
 
--(id)init{
+-(instancetype)init{
     self = [super init];
     if(self){
-        self.views = [[NSMutableArray alloc] init];
-        self.skeletonSubViews = [[NSMutableArray alloc] init];
+        _views = [[NSMutableArray alloc] init];
+        _skeletonSubViews = [[NSMutableArray alloc] init];
     }
     return self;
 }

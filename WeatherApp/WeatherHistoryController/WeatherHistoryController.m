@@ -43,9 +43,9 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
-        if([[[WeatherAppModel sharedModel] getDatabase] deleteHistoryEntryForCity:self.weatherHistory[indexPath.row].ID]){
-            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        if([[[WeatherAppModel sharedModel] getDatabase] deleteHistoryEntryForCity:self.weatherHistory[indexPath.row].ID ofTime:self.weatherHistory[indexPath.row].time]){
             [self.weatherHistory removeObjectAtIndex:indexPath.row];
+            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
         }
     }
 }

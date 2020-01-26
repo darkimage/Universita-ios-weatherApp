@@ -10,7 +10,7 @@
 
 @implementation WeatherView
 
--(id) initWithCoder:(NSCoder *)aDecoder{
+-(instancetype) initWithCoder:(NSCoder *)aDecoder{
     self = [super initWithCoder:aDecoder];
     if (self) {
         [self initView];
@@ -18,7 +18,7 @@
     return self;
 }
 
--(id) initWithFrame:(CGRect)frame{
+-(instancetype) initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
         [self initView];

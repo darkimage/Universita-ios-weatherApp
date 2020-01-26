@@ -28,8 +28,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property NSObject<WeatherModelDelegate>* delegate;
 
--(id) initWithCityID:(NSNumber*)city_id;
--(id) initWithCityID:(NSNumber*)city_id update:(Boolean)update;
+-(instancetype) initWithCityID:(NSNumber*)city_id;
+-(instancetype) initWithCityID:(NSNumber*)city_id update:(Boolean)update;
 -(void) performUpdate;
 
 @end

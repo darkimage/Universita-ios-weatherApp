@@ -20,18 +20,18 @@
 
 @implementation WeatherForecastSlotView
 
--(id)init{
+-(instancetype)init{
     self = [super init];
     if(self){
-        self.index = 0;
+        _index = 0;
     }
     return self;
 }
 
--(id)initWithTimeIndex:(NSInteger)index{
+-(instancetype)initWithTimeIndex:(NSInteger)index{
     self = [self init];
     if(self){
-        self.index = index;
+        _index = index;
     }
     return self;
 }

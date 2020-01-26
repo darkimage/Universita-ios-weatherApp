@@ -13,9 +13,9 @@
 -(instancetype)initWithDictionary:(NSDictionary *)dict{
     self = [super init];
     if (self) {
-        self.forecastWeather = [[NSMutableArray alloc]init];
+        _forecastWeather = [[NSMutableArray alloc]init];
         for (int i = 0; i < [dict[@"list"] count]; i++) {
-            [self.forecastWeather addObject:[[CurrentWeather alloc]initWithDictionary:dict[@"list"][i]]];
+            [_forecastWeather addObject:[[CurrentWeather alloc]initWithDictionary:dict[@"list"][i]]];
         }
     }
     return self;

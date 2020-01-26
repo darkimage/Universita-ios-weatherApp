@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSString* weatherDescription;
 @property (strong, nonatomic) NSString* icon;
 
--(id) initFromData:(NSArray*)historyEntry;
+-(instancetype) initFromData:(NSArray*)historyEntry;
 @end
 
 NS_ASSUME_NONNULL_END

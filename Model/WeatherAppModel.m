@@ -32,9 +32,9 @@
 {
     self = [super init];
     if (self) {
-        self.DBData = [[SQLManager alloc] init];
-        self.WeatherData = [[WeatherData alloc]init];
-        self.WeatherBackgroundData = [[WeatherBackgroundPresets alloc] init];
+        _DBData = [[SQLManager alloc] init];
+        _WeatherData = [[WeatherData alloc]init];
+        _WeatherBackgroundData = [[WeatherBackgroundPresets alloc] init];
     }
     return self;
 }

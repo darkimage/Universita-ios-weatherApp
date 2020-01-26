@@ -13,7 +13,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface WeatherForecastSlotView : WeatherView<WeatherViewProtocol>
--(id)initWithTimeIndex:(NSInteger)index;
+-(instancetype)initWithTimeIndex:(NSInteger)index;
 -(void)setTimeIndex:(NSInteger)index;
 @end
 
