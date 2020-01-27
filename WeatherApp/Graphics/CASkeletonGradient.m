@@ -20,10 +20,20 @@ static CASkeletonPosition createPosition(CGFloat offset){
 }
 
 NSString *kSkeletonAnimationKey = @"CASkeleton.SlidingAnimation";
+NSString *kSkeletonAnimationKeyOut = @"CASkeleton.FadeOutAnim";
+
+@interface CASkeletonGradient()
+@property (strong,nonatomic) UIColor* color1;
+@property (strong,nonatomic) UIColor* color2;
+@property (strong,nonatomic) SkeletonCallback callback;
+@end
 
 @implementation CASkeletonGradient
 
 - (void) setUpLayer{
+    self.color1 = [UIColor colorWithWhite:1 alpha:0.7];
+    self.color2 = [UIColor colorWithWhite:.8 alpha:0.9];
+    self.colors = @[(id)self.color1.CGColor, (id)self.color2.CGColor, (id)self.color1.CGColor, (id)self.color2.CGColor, (id)self.color1.CGColor];
     CASkeletonPosition startPointTransition = createPosition(0);
     CASkeletonPosition endPointTransition = createPosition(1);
     CASkeletonPosition seamPointTransition = createPosition(0.5);
@@ -61,18 +71,33 @@ NSString *kSkeletonAnimationKey = @"CASkeleton.SlidingAnimation";
                               [NSNumber numberWithFloat:seamPointTransition.end],
                               [NSNumber numberWithFloat:endPointTransition.end],nil];
 
-    CAAnimationGroup *animGroup = [[CAAnimationGroup alloc] init];
-    animGroup.animations = @[startPointAnim];
-    animGroup.duration = 1;
-    animGroup.repeatCount = HUGE_VALF;
-    animGroup.removedOnCompletion = false;
+    startPointAnim.duration = 1;
+    startPointAnim.repeatCount = HUGE_VALF;
+    startPointAnim.removedOnCompletion = false;
 
-    [self addAnimation:animGroup forKey:kSkeletonAnimationKey];
+    [self addAnimation:startPointAnim forKey:kSkeletonAnimationKey];
 }
 
 - (void)stopSkeleton
 {
     [self removeAnimationForKey:kSkeletonAnimationKey];
+}
+
+- (void) stopSkeletonAnimated:(SkeletonCallback)completion{
+    self.callback = completion;
+    UIColor* color1_out = [UIColor colorWithWhite:1 alpha:0.0];
+    UIColor* color2_out = [UIColor colorWithWhite:.8 alpha:0.0];
+    CABasicAnimation *fadeanim = [CABasicAnimation animationWithKeyPath:@"colors"];
+    fadeanim.fromValue = @[(id)self.color1.CGColor, (id)self.color2.CGColor, (id)self.color1.CGColor, (id)self.color2.CGColor, (id)self.color1.CGColor];
+    fadeanim.toValue = @[(id)color1_out.CGColor, (id)color2_out.CGColor, (id)color1_out.CGColor, (id)color2_out.CGColor, (id)color1_out.CGColor];
+    fadeanim.duration = 1.0f;
+    fadeanim.removedOnCompletion = TRUE;
+    fadeanim.delegate = self;
+    [self addAnimation:fadeanim forKey:kSkeletonAnimationKeyOut];
+}
+
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag{
+    self.callback();
 }
 
 @end

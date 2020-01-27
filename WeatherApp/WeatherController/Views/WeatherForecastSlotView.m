@@ -8,6 +8,7 @@
 
 #import "WeatherForecastSlotView.h"
 #import "UIView+WeatherViewCategory.h"
+#import "SkeletonView.h"
 
 @interface WeatherForecastSlotView()
 @property (strong, nonatomic) IBOutlet UIView *contentView;
@@ -16,6 +17,9 @@
 @property (strong, nonatomic) IBOutlet UILabel *PrecipitationLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *WeatherIcon;
 @property NSInteger index;
+@property (strong,nonatomic) SkeletonView* skeletonView;
+
+-(void) setUpSkeletons;
 @end
 
 @implementation WeatherForecastSlotView
@@ -38,9 +42,26 @@
 
 -(void)initView{
     [self initViewFromNib:@"WeatherForecastSlotView"];
+    _skeletonView = [[SkeletonView alloc] init];
     self.translatesAutoresizingMaskIntoConstraints = NO;
     [self.heightAnchor constraintEqualToConstant:self.contentView.bounds.size.height].active = true;
     [self.widthAnchor constraintEqualToConstant:self.contentView.bounds.size.width].active = true;
+    [self setUpSkeletons];
+}
+
+-(void) setUpSkeletons{
+    [self.skeletonView addView:self.TimeFromNowLabel withBorder:10];
+    [self.skeletonView addView:self.WeatherIcon withBorder:10];
+    self.TimeFromNowLabel.text = @"";
+    self.TemperatureLabel.text = @"";
+    self.PrecipitationLabel.text = @"";
+}
+
+-(void) onStartUpdate{
+    self.TimeFromNowLabel.text = @"";
+    self.TemperatureLabel.text = @"";
+    self.PrecipitationLabel.text = @"";
+    [self.skeletonView displaySkeletons];
 }
 
 -(void)setTimeIndex:(NSInteger)index{
@@ -60,6 +81,7 @@
     self.PrecipitationLabel.text = [NSString stringWithFormat:@"%.00f%%",[currWeather.mainHumidity floatValue]];
     self.TemperatureLabel.text = [NSString stringWithFormat:@"%.00f°",[currWeather.mainTemp floatValue]];
     self.WeatherIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"icon_%@", currWeather.weatherIcon]];
+    [self.skeletonView stopDisplaySkeletons];
 }
 
 @end

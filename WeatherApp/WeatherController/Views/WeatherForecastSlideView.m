@@ -43,6 +43,11 @@
     
 }
 
+-(void) onStartUpdate{
+    for (WeatherForecastSlotView* slot in self.slots) {
+        [slot onStartUpdate];
+    }
+}
 
 -(void) updateView:(nonnull CityWeather*)weather{
     for (int i=0; i<self.count; i++) {

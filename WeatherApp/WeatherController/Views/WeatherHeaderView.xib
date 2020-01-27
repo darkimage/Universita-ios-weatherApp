@@ -26,6 +26,10 @@
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Parma" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kha-5j-mo6" userLabel="CityName">
                     <rect key="frame" x="146" y="0.0" width="83.333333333333314" height="38"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="38" id="9aW-IW-NEg"/>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="83" id="ebv-ws-AtU"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="30"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
@@ -33,7 +37,11 @@
                     <size key="shadowOffset" width="2" height="2"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Clear sky" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TdF-0n-hPr" userLabel="TemperatureDesc">
-                    <rect key="frame" x="146.33333333333334" y="159.66666666666666" width="82.666666666666657" height="26"/>
+                    <rect key="frame" x="146" y="159.66666666666666" width="83" height="26"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="26" id="i4u-Eb-VsE"/>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="82" id="n7o-Fe-PVJ"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
@@ -42,6 +50,10 @@
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" text="21" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fdo-Na-8RB" userLabel="Temperature">
                     <rect key="frame" x="90.333333333333343" y="38.000000000000007" width="97.333333333333343" height="121.66666666666669"/>
+                    <constraints>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="97" id="gtb-RU-xGh"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="121" id="hhu-Mm-FyR"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="100"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
@@ -50,6 +62,10 @@
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="°" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="chV-j2-K5s" userLabel="TemperatureSymbol">
                     <rect key="frame" x="187.66666666666666" y="38.000000000000007" width="38.666666666666657" height="121.66666666666669"/>
+                    <constraints>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="38" id="DH4-Bf-4nf"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="121" id="hcI-Og-4k8"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="100"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>

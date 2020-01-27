@@ -48,9 +48,6 @@
     skeletonView.layer.masksToBounds = YES;
     
     CASkeletonGradient* skeletonLayer = [CASkeletonGradient layer];
-    UIColor* color1 = [UIColor colorWithWhite:1 alpha:0.7];
-    UIColor* color2 = [UIColor colorWithWhite:.8 alpha:0.9];
-    skeletonLayer.colors = @[(id)color1.CGColor, (id)color2.CGColor, (id)color1.CGColor, (id)color2.CGColor, (id)color1.CGColor];
     [skeletonLayer setUpLayer];
     skeletonLayer.frame = frame;
     [skeletonView.layer insertSublayer:skeletonLayer atIndex:0];
@@ -90,10 +87,11 @@
 -(void) stopDisplaySkeletons{
     for (int i = 0; i < self.views.count; i++) {
         CASkeletonGradient* skeletonGradient = (CASkeletonGradient*)[self.skeletonSubViews[i].layer.sublayers objectAtIndex:0];
-        [skeletonGradient stopSkeleton];
-        for (int i = 0; i< self.views.count; i++) {
-            self.skeletonSubViews[i].hidden = true;
-        }
+        [skeletonGradient stopSkeletonAnimated:^(){
+            for (int i = 0; i< self.views.count; i++) {
+                self.skeletonSubViews[i].hidden = true;
+            }
+        }];
     }
 }
 

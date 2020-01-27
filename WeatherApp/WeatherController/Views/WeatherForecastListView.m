@@ -55,4 +55,10 @@
     }
 }
 
+-(void) onStartUpdate{
+    for (WeatherItemView* item in self.itemList) {
+        [item onStartUpdate];
+    }
+}
+
 @end

@@ -27,6 +27,7 @@
 @property BOOL updateIsFromUser;
 
 -(void) performUpdateFromUser;
+-(void) notifyOnStartUpdate;
 @end
 
 @implementation WeatherViewController
@@ -44,6 +45,7 @@
     for (WeatherView* controller in self.controllers) {
         [self.stackView addArrangedSubview:controller];
     }
+    [self notifyOnStartUpdate];
     [self.stackView layoutIfNeeded];
     
     self.scrollView.delegate = self;
@@ -90,13 +92,21 @@
 }
 
 #pragma mark - Private Methods
+-(void) notifyOnStartUpdate{
+    for (WeatherView* controller in self.controllers) {
+        [controller onStartUpdate];
+    }
+}
+
 -(void) performUpdateFromUser{
     self.updateIsFromUser = YES;
+    [self notifyOnStartUpdate];
     [self.cityWeather performUpdate];
 }
 
 #pragma mark - Public Methods
 -(void) performUpdate{
+    [self notifyOnStartUpdate];
     [self.cityWeather performUpdate];
 }
 
@@ -106,6 +116,7 @@
 
 
 -(void) setCity:(NSInteger)cityID{
+    [self notifyOnStartUpdate];
     self.cityWeather = [[CityWeather alloc] initWithCityID:[NSNumber numberWithInteger:cityID]];
     self.cityWeather.delegate = self;
 }

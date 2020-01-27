@@ -11,10 +11,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CASkeletonGradient : CAGradientLayer
+typedef void (^SkeletonCallback)(void);
+@interface CASkeletonGradient : CAGradientLayer<CAAnimationDelegate>
 - (void) setUpLayer;
 - (void) animateSkeleton;
 - (void) stopSkeleton;
+- (void) stopSkeletonAnimated:(SkeletonCallback)completion;
 @end
 
 NS_ASSUME_NONNULL_END

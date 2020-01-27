@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol WeatherViewProtocol <NSObject>
 -(void) updateView:(nonnull CityWeather*)weather;
+-(void) onStartUpdate;
 -(void) initView;
 @end
 

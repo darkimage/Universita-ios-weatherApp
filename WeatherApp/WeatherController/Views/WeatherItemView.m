@@ -8,6 +8,7 @@
 
 #import "WeatherItemView.h"
 #import "UIView+WeatherViewCategory.h"
+#import "SkeletonView.h"
 
 @interface WeatherItemView()
 @property (strong, nonatomic) IBOutlet UILabel *TemperatureLabel;
@@ -15,8 +16,11 @@
 @property (strong, nonatomic) IBOutlet UILabel *TimeLabel;
 @property (strong, nonatomic) IBOutlet UIView *contentView;
 @property (strong, nonatomic) IBOutlet UIStackView *stackView;
+@property (strong, nonatomic) SkeletonView* skeletonView;
 @property NSInteger index;
 @property Boolean fromCurrent;
+
+-(void) setUpSkeletons;
 @end
 
 @implementation WeatherItemView
@@ -48,10 +52,26 @@
 
 -(void)initView{
     [self initViewFromNib:@"WeatherItemView"];
+    _skeletonView = [[SkeletonView alloc]init];
     self.translatesAutoresizingMaskIntoConstraints = NO;
     NSLayoutConstraint* height = [self.heightAnchor constraintEqualToConstant:self.contentView.bounds.size.height];
     height.active = YES;
     height.priority = UILayoutPriorityDefaultHigh;
+    [self setUpSkeletons];
+}
+
+-(void) setUpSkeletons{
+    [self.skeletonView addView:self.TemperatureLabel withBorder:5];
+    [self.skeletonView addView:self.weatherIcon withBorder:10];
+    [self.skeletonView addView:self.TimeLabel withBorder:10];
+    self.TemperatureLabel.text = @"";
+    self.TimeLabel.text = @"";
+}
+
+-(void) onStartUpdate{
+    self.TemperatureLabel.text = @"";
+    self.TimeLabel.text = @"";
+    [self.skeletonView displaySkeletons];
 }
 
 -(void) updateView:(CityWeather *)weather{
@@ -80,6 +100,7 @@
         //UPDATE ICON
         self.weatherIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"icon_%@", currWeather.weatherIcon]];
     }
+    [self.skeletonView stopDisplaySkeletons];
 }
 
 -(void)setTimeIndex:(NSInteger)index{

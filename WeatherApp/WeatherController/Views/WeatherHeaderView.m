@@ -10,6 +10,7 @@
 #import "WeatherAppModel.h"
 #import <RZViewActions/UIView+RZViewActions.h>
 #import "UIView+WeatherViewCategory.h"
+#import "SkeletonView.h"
 
 @interface WeatherHeaderView()
 @property (strong, nonatomic) IBOutlet UIView *content;
@@ -21,6 +22,9 @@
 @property (strong, nonatomic) NSString* segueIdentifier;
 @property (strong, nonatomic) NSNumber* city_ID;
 @property (weak, nonatomic) UIViewController* segueController;
+@property (strong, nonatomic) SkeletonView* skeletonView;
+
+-(void) setUpSkeletons;
 @end
 
 @implementation WeatherHeaderView
@@ -44,13 +48,32 @@
 }
 
 - (void)initView {
+    _skeletonView = [[SkeletonView alloc]init];
     [self initViewFromNib:@"WeatherHeaderView"];
     self.translatesAutoresizingMaskIntoConstraints = NO;
     [self.heightAnchor constraintEqualToConstant:self.content.bounds.size.height].active = true;
     UITapGestureRecognizer *tapGR;
     tapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
     tapGR.numberOfTapsRequired = 1;
+    [self setUpSkeletons];
     [self addGestureRecognizer:tapGR];
+}
+
+-(void) onStartUpdate{
+    self.TemperatureDesc.text = @"";
+    self.Temperature.text = @"";
+    self.CityName.text = @"";
+    [self.skeletonView displaySkeletons];
+}
+
+-(void) setUpSkeletons{
+    [self.skeletonView addView:self.TemperatureDesc withBorder:10];
+    [self.skeletonView addView:self.Temperature withBorder:10];
+    [self.skeletonView addView:self.WeatherIcon withBorder:10];
+    [self.skeletonView addView:self.CityName withBorder:10];
+    self.TemperatureDesc.text = @"";
+    self.Temperature.text = @"";
+    self.CityName.text = @"";
 }
 
 -(void) updateView:(CityWeather *)cityWeather{
@@ -59,6 +82,7 @@
     self.CityName.text = cityWeather.name;
     self.WeatherIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"icon_%@", cityWeather.current.weatherIcon]];
     self.city_ID = cityWeather.ID;
+    [self.skeletonView stopDisplaySkeletons];
 }
 
 -(void)handleTap:(UITapGestureRecognizer *)sender
