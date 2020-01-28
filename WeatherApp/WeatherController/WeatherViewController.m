@@ -60,6 +60,9 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [self.scrollView setContentSize:self.stackView.frame.size];
+    if(self.cityWeather.hasData){
+        [[[WeatherAppModel sharedModel] getCurrentAnimatedBackground] transitionTo:[[[WeatherAppModel sharedModel] getWeatherBackgroundPreset] setWeatherBackgroundPreset:self.cityWeather.current.weatherId toView:NULL]];
+    }
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -82,7 +85,9 @@
         for (WeatherView* controller in self.controllers) {
             [controller updateView:self.cityWeather];
         }
-        [[[WeatherAppModel sharedModel] getCurrentAnimatedBackground] transitionTo:[[[WeatherAppModel sharedModel] getWeatherBackgroundPreset] setWeatherBackgroundPreset:self.cityWeather.current.weatherId toView:NULL]];
+        if(self.view.window != nil){
+            [[[WeatherAppModel sharedModel] getCurrentAnimatedBackground] transitionTo:[[[WeatherAppModel sharedModel] getWeatherBackgroundPreset] setWeatherBackgroundPreset:self.cityWeather.current.weatherId toView:NULL]];
+        }
         [self.scrollView.refreshControl endRefreshing];
     });
 }

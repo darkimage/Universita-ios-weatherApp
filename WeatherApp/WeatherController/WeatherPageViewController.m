@@ -95,7 +95,6 @@
 //transizione in avanti
 - (nullable UIViewController *)pageViewController:(nonnull UIPageViewController *)pageViewController viewControllerBeforeViewController:(nonnull UIViewController *)viewController { 
     WeatherViewController* weatherView = (WeatherViewController*)viewController;
-    [weatherView performUpdate];
     NSInteger index = weatherView.pageIndex;
     if(index == 0 || index == NSNotFound){
         return nil;
@@ -108,7 +107,6 @@
 //transizione all'indietro
 - (nullable UIViewController *)pageViewController:(nonnull UIPageViewController *)pageViewController viewControllerAfterViewController:(nonnull UIViewController *)viewController { 
     WeatherViewController* weatherView = (WeatherViewController*)viewController;
-    [weatherView performUpdate];
     NSInteger index = weatherView.pageIndex;
     if(index == NSNotFound){
         return nil;
