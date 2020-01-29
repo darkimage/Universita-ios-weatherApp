@@ -26,9 +26,9 @@
     return self;
 }
 
-
 -(void) updateView:(nonnull CityWeather*)weather{}
 
 -(void) initView{}
 
+- (void)onStartUpdate {}
 @end
