@@ -23,6 +23,7 @@
 @property (strong,nonatomic) UIBarButtonItem* favoriteButton;
 @property NSInteger currentIndex; //Index attuale settato solo dopo che la transizione e completa
 @property NSInteger nextIndex;    //Index verso il quai si sta facendo una transizione
+@property BOOL shouldRefresh;
 
 //METODI PRIVATI
 - (WeatherViewController*) viewAtIndex:(NSInteger)index;
@@ -41,6 +42,7 @@
     
     self.currentIndex = 0;
     self.nextIndex = 0;
+    self.shouldRefresh = NO;
     self.viewControllers = [[NSMutableArray<WeatherViewController*> alloc] init];
 
     
@@ -76,16 +78,20 @@
     self.favoriteButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"no_fav"] style:UIBarButtonItemStylePlain target:self action:@selector(favoriteCurrentCity)];
     [self.favoriteButton setTintColor:[UIColor whiteColor]];
     self.navigationBar.rightBarButtonItems = @[self.favoriteButton, manageButton];
+    [self setUpFavoriteBadgeForCity:[[self.favoriteCities firstObject][0] integerValue]];
 }
 
 -(void) viewDidAppear:(BOOL)animated{
-    self.currentIndex = 0;
-    self.nextIndex = 0;
-    [super viewDidAppear:animated];
-    WeatherViewController* firstController = [self viewAtIndex:self.currentIndex];
-    NSArray* firstview = [[NSArray alloc]initWithObjects:firstController,nil];
-    [self setUpFavoriteBadgeForCity:[[firstController getWeatherData].ID integerValue]];
-    [self.pageController setViewControllers:firstview direction:UIPageViewControllerNavigationDirectionForward animated:true completion:nil];
+    if(self.shouldRefresh){
+        self.shouldRefresh = NO;
+        self.currentIndex = 0;
+        self.nextIndex = 0;
+        [super viewDidAppear:animated];
+        WeatherViewController* firstController = [self viewAtIndex:self.currentIndex];
+        NSArray* firstview = [[NSArray alloc]initWithObjects:firstController,nil];
+        [self setUpFavoriteBadgeForCity:[[firstController getWeatherData].ID integerValue]];
+        [self.pageController setViewControllers:firstview direction:UIPageViewControllerNavigationDirectionForward animated:true completion:nil];
+    }
 }
 
 #pragma mark - UIPageViewController Interface
@@ -145,6 +151,7 @@
  * Weather Manage Protocol Interface
  */
 -(void) onDeleteCityAtIndex:(NSInteger)index{
+    self.shouldRefresh = YES;
     [self.favoriteCities removeObjectAtIndex:index];
     [self.viewControllers removeObjectAtIndex:index];
     self.currentIndex = 0;
@@ -155,6 +162,7 @@
 }
 
 -(void) onAddCity:(CityWeather*)data{
+    self.shouldRefresh = YES;
     self.currentIndex = 0;
     self.nextIndex = 0;
     self.favoriteCities = [[NSMutableArray alloc] initWithArray:[[[WeatherAppModel sharedModel] getDatabase] getAddedCities] copyItems:YES];
