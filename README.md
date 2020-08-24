@@ -102,3 +102,6 @@ Alla fine dell’aggiornamento la classe **WeatherViewController** e nuovamente 
 <p align="center">
   <img width="280" height="550" src="https://raw.githubusercontent.com/darkimage/Universita-ios-weatherApp/master/Documents/ios_skeletal.png">
 </p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTE1NzQ2ODE0MTFdfQ==
+-->
